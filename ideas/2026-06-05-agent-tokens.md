@@ -1,11 +1,11 @@
 ---
 title: Explore selling agent tokens per tenant
-date: 2026-06-05T00:08:54.306047+00:00
+date: 2026-06-05T00:10:01.206594+00:00
 source: telegram
 status: raw-idea
 tenant: unknown
-department: security
-tags: ["IDEA"]
+department: product
+tags: ["IDEA", "QUESTION"]
 ---
 
 # Explore selling agent tokens per tenant
