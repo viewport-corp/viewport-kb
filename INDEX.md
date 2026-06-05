@@ -1,19 +1,22 @@
 # Viewport KB Index
 
-Generated: 2026-06-05T00:03:58.543455+00:00
+Generated: 2026-06-05T00:08:56.083052+00:00
+
+Total notes: 2
 
 ## By date
 
-_No notes yet._
+- [README.md](README.md)
+- [ideas/2026-06-05-agent-tokens.md](ideas/2026-06-05-agent-tokens.md)
 
 ## By tag
 
-_No notes yet._
+_Tag index pending deeper parser._
 
 ## By tenant
 
-_No notes yet._
+_Tenant index pending deeper parser._
 
 ## By status
 
-_No notes yet._
+_Status index pending deeper parser._
