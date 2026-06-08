@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Viewport Operations Report — MLG / MLH</title><meta name="robots" content="noindex"/><style>
+:root{--bg:#070b13;--panel:#101827;--panel2:#0d1422;--text:#edf4ff;--muted:#9fb0c9;--line:#263852;--ok:#27d17f;--wait:#f7c948;--risk:#ff6b6b;--info:#6cb6ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#17355e,#070b13 45%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}a{color:#9bd0ff}.wrap{max-width:1220px;margin:0 auto;padding:28px}.hero{padding:34px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(24,40,67,.95),rgba(9,14,25,.95));box-shadow:0 24px 80px rgba(0,0,0,.4)}h1{font-size:clamp(32px,6vw,60px);line-height:.98;margin:10px 0}h2{font-size:26px;margin:0 0 10px}h3{margin:0 0 8px}p{color:var(--muted);margin:8px 0}.badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:#12243a;border:1px solid #294d75;color:#b9dcff;font-weight:700;font-size:13px}nav{position:sticky;top:0;z-index:2;background:rgba(7,11,19,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}nav .wrap{padding:12px 28px;display:flex;gap:10px;flex-wrap:wrap}nav a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 11px;background:#101827;color:#d9e9ff;font-size:14px}section{margin:22px 0;padding:24px;border:1px solid var(--line);border-radius:24px;background:rgba(13,20,34,.92)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.feature,.mini,.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px}.state{display:inline-block;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin-bottom:8px}.ok{background:rgba(39,209,127,.15);color:#7dffbd}.wait{background:rgba(247,201,72,.15);color:#ffe18a}.risk{background:rgba(255,107,107,.16);color:#ff9b9b}.info{background:rgba(108,182,255,.15);color:#acd8ff}table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px;font-size:14px}td,th{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}th{color:#fff;background:#132238}code{background:#07101f;border:1px solid #263852;padding:2px 5px;border-radius:6px;color:#cfe6ff}ol li,ul li{margin:6px 0;color:#cbd8ec}.notice{border-left:4px solid var(--ok);padding:12px 14px;background:#0d221a;border-radius:12px;color:#dfffee}.danger{border-left:4px solid var(--risk);padding:12px 14px;background:#21100f;border-radius:12px;color:#ffd9d9}@media(max-width:850px){.grid,.grid2{grid-template-columns:1fr}.wrap{padding:18px}}
+</style></head><body>
+<nav><div class="wrap"><a href="/migration/">Main</a><a href="/migration/plan">Plan</a><a href="/migration/task">Tasks</a><a href="/migration/audit">Audit</a><a href="/migration/slack">Slack</a><a href="/migration/odoo">Odoo</a><a href="#mlg">MLG</a><a href="#mlh">MLH</a><a href="#slack">Slack 4-Layer</a><a href="#blueprint">Blueprint</a><a href="#decisions">Decisions</a></div></nav>
+<main class="wrap">
+<header class="hero"><span class="badge">Viewport / Modern Lao / Operations</span><h1>Operations Report — full system understanding + MLG/MLH deep dive</h1><p>GitHub-first operating picture for the first proof tenant: Modern Lao Group (MLG) and its construction subsidiary Modern Lao Homes (MLH). Source of truth: <code>viewport-corp/viewport-ops</code>. Built from five read-only intelligence scans (migration site, GitHub, MLG, MLH, deep MLG/MLH repos).</p><p><b>Generated:</b> 2026-06-09 · <b>Status:</b> research complete · <b>No secrets exposed.</b></p></header>
+
+<section id="summary"><h2>0 · Executive truth (one screen)</h2><div class="notice">Viewport has <b>thoroughly designed</b> a GitHub-first operating company — Slack = cockpit, Odoo = record, GitHub = truth, VPS = runtime, Sam = approval gate — for MLG + MLH. But today it is a <b>foundation layer, not a running machine.</b></div>
+<div class="grid2" style="margin-top:14px">
+<div class="card"><span class="state ok">Built &amp; live</span><p>MLG Slack workspace (team <code>MLG</code>, bot <code>modern_lao_odoo_contr</code>) — <b>15 channels, bot member of all 15</b>, full scopes. Credentials in <code>hermes/secrets/</code>. Public migration site. 72-container RuntimeContract foundation. 48-seat agent registry.</p></div>
+<div class="card"><span class="state wait">Paper / unbuilt</span><p>No live Slack <i>bot service</i> (signing/idempotency/write-policy). No live dashboard cockpit. Odoo production multi-company install (#15) gated. No enforced authority gateway. No memory brain. MLG <b>Socket-Mode app token missing</b>.</p></div>
+<div class="card"><span class="state risk">Security</span><p><b>14 <code>xoxb-</code> Slack tokens are exposed in Hermes session history</b> (issue #192). Rotate the MLG bot token before building on it.</p></div>
+<div class="card"><span class="state info">The point of MLH</span><p>Make MLH the cash engine (active pipeline Cameron / Nathong / Phaview + ~$150–200K recovery) while walling off MLH's legal risk — under one billion-$-grade Slack→Odoo layer.</p></div>
+</div></section>
+
+<section id="reality"><h2>1 · Built vs paper — honest audit</h2><table><thead><tr><th>Component</th><th>State</th><th>Note</th></tr></thead><tbody>
+<tr><td>MLG Slack workspace, 15 channels, bot member of all</td><td><span class="state ok">BUILT</span></td><td>team MLG <code>T0B7L6SG482</code></td></tr>
+<tr><td>Slack credentials (bot/signing/user/webhook)</td><td><span class="state ok">present</span></td><td>files under <code>hermes/secrets/</code>, not <code>.env</code></td></tr>
+<tr><td>MLG Socket-Mode app token (<code>xapp</code>)</td><td><span class="state risk">missing</span></td><td>needed for live events/slash commands</td></tr>
+<tr><td>Production Slack bot service</td><td><span class="state wait">paper</span></td><td>pages say "PARTIAL FOUNDATION"</td></tr>
+<tr><td>Live dashboard / division channels / canvases</td><td><span class="state wait">designed</span></td><td>local Apr-4 plan, unbuilt</td></tr>
+<tr><td>Odoo prod install + multi-company (#15)</td><td><span class="state wait">gated</span></td><td>two instances — see §6</td></tr>
+<tr><td>Authority gateway (capability risk tiers)</td><td><span class="state wait">schema only</span></td><td>AUDIT-FIND #189</td></tr>
+<tr><td>Company memory brain (GBrain vs Neo4j)</td><td><span class="state wait">undecided</span></td><td>#214 / #193-194, 0 embeddings</td></tr>
+<tr><td>Slack tokens leaked in session history</td><td><span class="state risk">rotate</span></td><td>issue #192 (14× <code>xoxb-</code>)</td></tr>
+<tr><td>VPS health</td><td><span class="state wait">watch</span></td><td>72 containers, 3 unhealthy, 56 no-repo, 50 no-domain</td></tr>
+</tbody></table></section>
+
+<section id="doctrine"><h2>2 · Operating doctrine — four planes</h2><table><tbody>
+<tr><th>GitHub</th><td>Control plane / source of truth. "If it's not in GitHub, it's not durable."</td></tr>
+<tr><th>Slack</th><td>Command room / cockpit. "Slack must be the operating cockpit, not a notification dump." Never the system of record.</td></tr>
+<tr><th>Odoo</th><td>Business system of record. Reached only via approved, scoped, logged, GitHub-tracked workflows.</td></tr>
+<tr><th>VPS</th><td>Disposable runtime. Nothing trusted unless mapped to GitHub + a RuntimeContract.</td></tr>
+<tr><th>Agents</th><td>Seats, not magic. Every seat: scope, lease, readiness R0–R5, tools, approval class, verifier, evidence.</td></tr>
+<tr><th>Sam</th><td>Approval guardrail: finance, legal, customer-facing, DNS, destructive runtime, billing, payroll, security.</td></tr>
+</tbody></table><p style="margin-top:10px">Closed loop (#213): <code>Capture → Classify → Store → Retrieve → Decide → Execute → Verify → Publish → Learn</code>.</p></section>
+
+<section id="mlg"><h2>3 · MLG — deep</h2>
+<p><b>Structure:</b> 7 divisions, each an Odoo analytic account — <b>Homes</b> (construction delivery), <b>Invest</b> (capital/funds), <b>Property</b> (asset mgmt), <b>Consulting</b> (advisory/market entry), <b>Agri</b> (export agriculture), <b>Trade</b> (logistics/import-export), <b>Tech</b> (AI/PropTech/ERP). Institutional 87-page site (<code>site-v4</code>, PRD-003 parchment + Syne/Cormorant/Inter/IBM Plex Mono).</p>
+<p><b>Entity:</b> Modern Lao Group Co., Ltd. (MOIC registration in progress), <b>51% Gary Snider (MD) / 49% Sam (CTO)</b>. Dead entities (don't cite): Modern Lao Sole Co., Veavor Global Co. Corporate paperwork Wave 1 generated; <span class="state risk">Articles still say 50/50 — must fix to 51/49</span>; Waves 2–4 not generated.</p>
+<p><b>Problem being solved:</b> Gary's failure modes (latency, vague commitments, subcontractor ghosting) → 70% absence-of-system / 30% discipline. Strategy: <i>"Don't fix Gary, build the system around him"</i> — CRM + structured intake + bots.</p>
+<p><b>Open decisions:</b> A) canonical site version at <code>modernlao.com/</code> (v4 unpromoted at <code>/site4/</code>); C) generate paperwork Waves 2–4 + fix brand spec + 51/49; D) which operational fix ships first (CRM + Gary re-scoping recommended).</p></section>
+
+<section id="mlh"><h2>4 · MLH — the construction money engine</h2>
+<div class="notice">MLH = the legacy/operational construction company being kept alive to <b>generate funds</b>, with liabilities walled off from clean MLG. Hard rule: separate MLG/MLH bank journals, channels, Odoo companies, portals — <b>never mix.</b></div>
+<div class="grid2" style="margin-top:12px">
+<div class="card"><span class="state ok">Cash now</span><h3>Active pipeline</h3><p>Cameron Stovold (hot — $3,500 design → build, portal live), Nathong/Vang Vieng (foundation poured, ~$1,800), Phaview pool villa. Recovery pipeline ~<b>$150–200K</b> across 10 named leads.</p></div>
+<div class="card"><span class="state risk">Walled-off risk</span><h3>Disputes (governed)</h3><p>Salome ($600 ghosted 2021 — <b>critical/48h</b>), Pui Ley (safety + $12.1K — <b>legal</b>), Win/Jacam (subcontractor fired), SFE ($7K+THB), Sunny/Shaun, Oliver/Ploy.</p></div>
+<div class="card"><span class="state info">Authorities</span><h3>Approval gates</h3><p><b>Dimitri = legal counsel</b> (safety/contract disputes); <b>Sam</b> (money &gt;$1K, settlements, DNS); <b>Gary</b> (ops, can't settle &gt;$500 alone).</p></div>
+<div class="card"><span class="state ok">Evidence</span><h3>COMMS VAULT</h3><p>11,442 SHA-256-verified rows (WhatsApp/FB/docs), auth-gated at <code>investor.modernlao.com/comms-vault</code>. Don't recreate — link to it.</p></div>
+</div></section>
+
+<section id="slack"><h2>5 · Slack — the 4-layer target architecture</h2><p>What looked like competing designs are <b>four layers of one system</b>:</p><table><thead><tr><th>Layer</th><th>What</th><th>State</th></tr></thead><tbody>
+<tr><td><b>4 · Agent-control room</b></td><td><code>#agent-control #hermes-planning #openclaw-execution #approvals #deployments #errors</code>; <code>/task-create /task-approve /agent-status</code></td><td><span class="state wait">designed</span></td></tr>
+<tr><td><b>3 · Business cockpit</b></td><td><code>live-dashboard</code> (hourly <code>chat.update</code>), <code>div-homes…div-tech</code>, living canvases, Telegram↔Slack bridge, escalation 2h→8h→24h</td><td><span class="state wait">designed</span></td></tr>
+<tr><td><b>2 · Department / approval (BUILT)</b></td><td>15 live: <code>mlg-*</code> (10) + <code>mlh-*</code> (3) + <code>viewport-escalations</code> + <code>incidents-security</code></td><td><span class="state ok">live</span></td></tr>
+<tr><td><b>1 · Control plane (not Slack)</b></td><td>GitHub truth · Odoo record · Sam gate</td><td><span class="state ok">core</span></td></tr>
+</tbody></table><p style="margin-top:10px">First primitive to build = the <b>Approval Packet</b>: Odoo record + Slack thread + GitHub issue + evidence IDs + risk class + decision buttons + expiry + reviewer + final action. <b>Fail-closed</b> (signing, idempotency, retries, rate limits).</p></section>
+
+<section id="odoo"><h2>6 · Odoo — reality + integration</h2>
+<div class="danger"><b>TWO Odoo instances — must reconcile.</b> (a) OLD self-hosted <code>apps.modernlao.com</code> (Odoo 17) — what the Hermes env points to; DB <code>modernlao</code> beside shared <code>platformx_odoo</code> (<b>never touch</b>); "to be redone." (b) NEW SaaS <code>modernlao.odoo.com</code> (~19.3) — where recent GitHub safe-setup landed: <b>2 companies (MLG USD + MLH LAK), 1 admin user, 34 apps, Project + Helpdesk live</b> (8 projects/28 tasks). <b>Decision: which is system of record.</b> Master data blank; USD-vs-LAK boundary unresolved.</div>
+<p style="margin-top:10px"><b>Write-policy ladder:</b> <code>L0 read → L1 draft → L2 approval-packet → L3 approved-execute → HOLD</code>. <b>Funds posture (locked):</b> <code>sale.order=0, purchase.order=0, account.move=0, payment=0, sign.request=0</code> — all financial apps HOLD.</p>
+<table style="margin-top:8px"><thead><tr><th>Slack</th><th>Odoo app</th><th>Gate</th></tr></thead><tbody>
+<tr><td><code>#mlg-sales-crm</code> / <code>#mlg-website-leads</code></td><td>CRM / Sales</td><td>approval before quote/customer activity</td></tr>
+<tr><td><code>#mlg-projects-delivery</code></td><td>Project / Timesheets / Planning</td><td>approval at quote→project</td></tr>
+<tr><td><code>#mlg-documents-sign</code></td><td>Documents / Sign</td><td>legal/signature approval before Sign</td></tr>
+<tr><td><code>#mlg-finance-review</code></td><td>Accounting / Invoicing / Expenses</td><td>no send/payment before approval</td></tr>
+<tr><td><code>#mlg-purchase-vendors</code></td><td>Purchase / Inventory</td><td>PO/vendor-bill approval</td></tr>
+<tr><td><code>#mlh-warranty-support</code> / <code>#mlh-legacy-issues</code></td><td>Helpdesk</td><td>evidence first; approval if legal/financial/customer</td></tr>
+<tr><td><code>#mlg-odoo-approvals</code> / <code>#mlg-odoo-audit</code></td><td>all writes</td><td>L2→L3 packet + append-only audit</td></tr>
+</tbody></table></section>
+
+<section id="repos"><h2>7 · GitHub control plane &amp; MLG/MLH repos</h2>
+<p><b><code>viewport-corp/viewport-ops</code></b> (private) — default branch <code>council/bootstrap-20260510</code>. 214 issues, 211 PRs. Migration site = Cloudflare passthrough Worker serving <code>viewport-corp/viewport-kb</code> (public) <code>main:public/migration/</code>.</p>
+<table><thead><tr><th>Repo</th><th>What it is</th><th>Domain / deploy</th></tr></thead><tbody>
+<tr><td><code>theplatformx/modern-lao-investor-site</code></td><td>MLG investor site + Comms-Vault API + Dimitri counsel + Cameron docs</td><td><code>investor.modernlao.com</code> · OTP-gated</td></tr>
+<tr><td><code>theplatformx/modern-lao-client-portal</code></td><td>MLH portal build/dev repo (first client Cameron/Sunny)</td><td><code>clients.modernlaohomes.com</code> (dev)</td></tr>
+<tr><td><code>theplatformx/modern-lao-homes-public-site</code></td><td>MLH public marketing site</td><td><code>modernlaohomes.com</code> · <b>deploy not approved</b></td></tr>
+<tr><td><code>viewport-corp/modern-lao-homes-client-portal</code></td><td><b>Production source-of-truth</b> portal: nginx+Dockerfile+compose, strict CSP, <code>/api/→mlh-api-handler</code></td><td><code>clients.modernlaohomes.com</code> · Dokploy</td></tr>
+</tbody></table>
+<p style="margin-top:10px"><b>Route-auth (incident-133-hardened):</b> <code>modernlaohomes.com</code>, <code>www</code>, <code>clients.modernlaohomes.com</code> → <b>public 200</b> (never domain-wide OTP); <code>modernlao.com</code>, <code>investor.modernlao.com</code>, <code>clients.modernlao.com</code> → <b>OTP 302</b> (<code>clients.modernlao.com</code> is MLG, not the MLH portal).</p>
+<p><b>Key issues:</b> #15 Odoo prod install (open, high) · #196 GitHubOps truth loop (the spine) · #213 closed-loop v0.1 · #214 GBrain · #192 secrets leak (security) · #133 OTP outage (root cause: runtime nginx not git-tracked) · #54 <code>clients.modernlao.com</code> duplicate Traefik label.</p></section>
+
+<section id="security"><h2>8 · Security &amp; governance</h2><div class="danger"><b>#192:</b> session history holds 14× <code>xoxb-</code>, 978× <code>sk-</code>, 138× <code>ghp_</code>, 277× telegram tokens, 65× CF keys. Rotate the MLG bot token before production; paraphrase-only captures; never commit raw Telegram.</div>
+<p style="margin-top:10px"><b>Capability risk tiers:</b> <code>repo.read</code> (t0 auto) · <code>repo.write_pr</code> (t2 PR-review) · <code>runtime.observe</code> (t1 auto) · <code>runtime.mutate</code> / <code>odoo.record.mutate</code> / <code>customer.external_send</code> (t3 <b>forbidden by default</b>) · <code>secrets.read</code> (t4 prohibited for agents). Agent readiness R0–R5; one executor per task (lease + heartbeat). Over-broad GitHub PAT → move to GitHub App auth.</p></section>
+
+<section id="vision"><h2>9 · The <code>viewport.llc/migration</code> vision</h2><p>Turn <code>/migration</code> from an honest orientation page into the <b>public living control tower</b> of an AI-operated company:</p><ol>
+<li><b>/migration/operations</b> (this page) — the canonical "what is true now," regenerated from GitHub on every merge.</li>
+<li><b>Real live status</b> — <code>status.json</code> driven by actual watchers (container/Odoo/Slack/domain health), not hand-edited.</li>
+<li><b>One evidence spine</b> — every claim links to a commit + redacted evidence; "no proof = in progress."</li>
+<li><b>Tenant lens</b> — per-tenant view (MLG, MLH, future) of channels, Odoo apps, portals, open approvals, money state.</li>
+<li><b>The loop made visible</b> — Capture→…→Learn as a live pipeline.</li>
+<li><b>Public-safe by construction</b> — redaction enforced in CI; the page is marketing <i>and</i> audit trail at once.</li></ol></section>
+
+<section id="blueprint"><h2>10 · Billion-$ Slack build → then Slack↔Odoo agents</h2><p><b>Principle:</b> Slack is the cockpit a construction group runs from on a phone. Gary taps buttons; Sam approves; agents do the work; Odoo records it; GitHub proves it.</p><ol>
+<li><b>Secure the base</b> — rotate leaked <code>xoxb</code> (#192), add MLG <code>xapp</code> (Socket Mode) + confirm signing secret; lock scopes to need.</li>
+<li><b>Slack bot service</b> (<code>services/agent-control-room</code>, GitHub App + Slack Bolt) — fail-closed: signing, idempotency, retries, rate-limits, audit link per action.</li>
+<li><b>Approval Packet engine</b> — universal primitive in <code>#mlg-odoo-approvals</code> / <code>#mlh-*</code>, buttons + expiry + escalation, audit in <code>#mlg-odoo-audit</code>.</li>
+<li><b>Odoo read path (L0/L1)</b> — events → Slack posts (CRM lead, invoice, task, helpdesk ticket); drafts only.</li>
+<li><b>Business cockpit (Layer 3)</b> — <code>live-dashboard</code> hourly refresh, <code>div-*</code> channels, living canvases; Telegram bridge for Gary.</li>
+<li><b>Slack→Odoo write path (L2→L3)</b> — slash/buttons that, after approval, execute scoped Odoo writes via agents; never customer-facing/financial/legal without Sam/Dimitri.</li>
+<li><b>Bi-directional agent loop</b> — Odoo automated actions → webhook → Slack; Slack approval → agent → Odoo; every step a GitHub task packet + evidence.</li>
+<li><b>Multi-company hard wall</b> — MLG vs MLH companies/journals/channels; no cross-tenant.</li></ol>
+<p><b>Top-class markers:</b> mobile-first cockpit, zero-spam (edit-in-place dashboards), every action reversible + audited, money/legal approval-gated, one memory brain, and a tenant template so the next client is a config — not a rebuild.</p></section>
+
+<section id="decisions"><h2>11 · Decisions Sam owes + sequence</h2><ol>
+<li><b>Channel model</b> — full 4-layer stack (recommended) vs cockpit-first vs control-plane-first.</li>
+<li><b>Token rotation</b> — approve rotating the leaked <code>xoxb</code> + clean MLG bot/app token (#192).</li>
+<li><b>Odoo system of record</b> — self-hosted <code>apps.modernlao.com</code> (17) vs SaaS <code>modernlao.odoo.com</code> (19.3); then authorize #15 + per-tenant DB + backup/restore.</li>
+<li><b>Memory backend</b> — GBrain (#214) vs Neo4j (#193/194) vs both.</li>
+<li><b>Authority gateway</b> — approve building API/CI enforcement of capability risk tiers (#189).</li></ol>
+<p style="margin-top:10px"><b>Sequence:</b> research (this report) → publish → Sam approves → secure base + bot service → Approval Packet → Odoo read → cockpit → Odoo write → bi-directional agents.</p></section>
+
+<footer class="wrap" style="color:#6f82a0;font-size:13px;padding-top:0">Generated 2026-06-09 from five read-only scans. Public-safe; no secrets. Source: <code>viewport-corp/viewport-kb</code>.</footer>
+</main></body></html>
