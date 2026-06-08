@@ -1,0 +1,44 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brief Given To Claude</title><style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#07111f;color:#edf5ff;line-height:1.62;margin:0}main{max-width:1120px;margin:auto;padding:32px 20px 80px}a{color:#7dd3fc}pre{background:#101827;border:1px solid #334155;border-radius:10px;padding:14px;overflow:auto;white-space:pre-wrap}code{background:#101827;border:1px solid #263244;border-radius:5px;padding:1px 5px}h1,h2,h3{line-height:1.2}h1{font-size:34px;color:#fff}h2{border-top:1px solid #243244;margin-top:34px;padding-top:24px;color:#bfdbfe}h3{color:#c4b5fd}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #334155;padding:8px;vertical-align:top}.nav{background:#101827;border-bottom:1px solid #334155;padding:12px 20px;position:sticky;top:0}.nav a{margin-right:14px}.meta{color:#94a3b8;font-size:14px}.warn{background:#3f2209;border:1px solid #f59e0b;color:#fde68a;border-radius:10px;padding:14px;margin:16px 0}</style></head><body><div class="nav"><a href="./">Read me</a><a href="./claude-viewport-loop-v01-full.html">Full loop design</a><a href="./CLAUDE-VIEWPORT-LOOP-BRIEF.html">Brief</a><a href="../claude-surgical-origin-audit-v2-20260608T103241Z/">Surgical audit</a></div><main><div class="meta">Generated: 2026-06-08T14:55:26.558002+00:00</div><h1>Claude Task: Design and Critique Viewport&#x27;s Closed Operating Loop v0.1</h1>
+
+<p>You are Claude Code, acting as independent architecture critic and recovery planner for Viewport.</p>
+
+<p>Sam sent an image showing a loop: Obsidian -&gt; Hermes -&gt; NotebookLM -&gt; publish back -&gt; repeat. The useful concept is a closed loop, not just those exact tools.</p>
+
+<p>Viewport needs the company-scale version:</p>
+<p>• Sam intent / Telegram / Slack / docs / runtime evidence / GitHub signals are captured.</p>
+<p>• Hermes classifies and creates/updates a GitHub task packet.</p>
+<p>• Shared memory/search retrieves prior decisions before action.</p>
+<p>• Authority gateway decides what agent can touch which tenant/repo/domain/runtime and what needs Sam approval.</p>
+<p>• Claude/Codex/OpenClaw/specialist agents work from the task packet with leases.</p>
+<p>• Evidence is captured: commands, links, screenshots, logs, PRs, runtime checks, rollback path.</p>
+<p>• Result is published back to GitHub, private evidence store, public-safe viewport.llc/migration report, and central memory.</p>
+<p>• Watchers/cron keep stale tasks, drift, and missing evidence visible.</p>
+
+<p>Required: produce a practical v0.1 system for Viewport, not a generic essay.</p>
+
+<p>Read these first:</p>
+<p>• /srv/viewport/council-audit/COUNCIL-MEMORY.md</p>
+<p>• /srv/viewport/council-audit/session-evidence-for-claude.md</p>
+<p>• /srv/viewport/council-audit/runs/claude-surgical-origin-audit-v2-20260608T103241Z/claude-surgical-answer-rerun.md</p>
+<p>• /srv/viewport/council-audit/runs/claude-surgical-origin-audit-v2-20260608T103241Z/ADDENDUM-automation-voice-correction.md</p>
+<p>• /srv/viewport/council-audit/repos/viewport-ops</p>
+<p>• /srv/viewport/council-audit/repos/viewport-ops-public</p>
+<p>• /srv/viewport/council-audit/repos/viewport-kb</p>
+<p>• live pages if available: https://viewport.llc/migration, /plan, /task, /audit, /status.json</p>
+
+<p>Answer in markdown with:</p>
+<p>1. Direct verdict: should Viewport use this loop? yes/no/partial.</p>
+<p>2. Exact Viewport loop: Capture -&gt; Classify -&gt; Store -&gt; Retrieve -&gt; Decide -&gt; Execute -&gt; Verify -&gt; Publish -&gt; Learn.</p>
+<p>3. v0.1 components and where they live: GitHub issue schema, labels, lease file/table, memory/search, evidence bundle, authority gateway, report page, watcher.</p>
+<p>4. What to build first in 48 hours.</p>
+<p>5. What NOT to build yet.</p>
+<p>6. Task packet schema fields.</p>
+<p>7. Authority gateway policy fields.</p>
+<p>8. Evidence bundle fields.</p>
+<p>9. Memory protocol: what goes in GitHub, DB/search, Obsidian/KB, migration report, private evidence.</p>
+<p>10. How Claude/Codex/OpenClaw/Hermes interact without split-brain.</p>
+<p>11. First 10 implementation tasks with GitHub issue titles.</p>
+<p>12. Risks and safety gates.</p>
+<p>13. Public report structure under /migration/reports and /migration/loop.</p>
+
+<p>Be brutal: Viewport does not need more disconnected artifacts. It needs one closed loop that proves Sam can say “work on this” and the system captures, routes, executes, verifies, publishes, and remembers.</p></main></body></html>

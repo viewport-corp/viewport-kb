@@ -1,0 +1,947 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claude Full Loop Design</title><style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#07111f;color:#edf5ff;line-height:1.62;margin:0}main{max-width:1120px;margin:auto;padding:32px 20px 80px}a{color:#7dd3fc}pre{background:#101827;border:1px solid #334155;border-radius:10px;padding:14px;overflow:auto;white-space:pre-wrap}code{background:#101827;border:1px solid #263244;border-radius:5px;padding:1px 5px}h1,h2,h3{line-height:1.2}h1{font-size:34px;color:#fff}h2{border-top:1px solid #243244;margin-top:34px;padding-top:24px;color:#bfdbfe}h3{color:#c4b5fd}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #334155;padding:8px;vertical-align:top}.nav{background:#101827;border-bottom:1px solid #334155;padding:12px 20px;position:sticky;top:0}.nav a{margin-right:14px}.meta{color:#94a3b8;font-size:14px}.warn{background:#3f2209;border:1px solid #f59e0b;color:#fde68a;border-radius:10px;padding:14px;margin:16px 0}</style></head><body><div class="nav"><a href="./">Read me</a><a href="./claude-viewport-loop-v01-full.html">Full loop design</a><a href="./CLAUDE-VIEWPORT-LOOP-BRIEF.html">Brief</a><a href="../claude-surgical-origin-audit-v2-20260608T103241Z/">Surgical audit</a></div><main><div class="meta">Generated: 2026-06-08T14:55:26.557009+00:00</div><p>Now I have everything I need. Here is the full 13-section report.</p>
+
+<p>---</p>
+
+<h1>VIEWPORT CLOSED OPERATING LOOP v0.1</h1>
+<p><strong>Date:</strong> 2026-06-08 | <strong>Author:</strong> Claude Sonnet 4.6 | <strong>Classification:</strong> Architecture + Recovery Plan</p>
+<p><strong>Source files read:</strong> CLAUDE-VIEWPORT-LOOP-BRIEF.md, COUNCIL-MEMORY.md, session-evidence-for-claude.md, claude-surgical-answer-rerun.md, ADDENDUM-automation-voice-correction.md, memory files</p>
+
+<p>---</p>
+
+<h2>1. DIRECT VERDICT</h2>
+
+<p><strong>Yes, with a critical correction to the framing.</strong></p>
+
+<p>The Obsidian→Hermes→NotebookLM→publish→repeat loop Sam described is the right shape. A closed loop where input is captured, classified, executed by an agent, verified, and published back is the correct pattern for a company this size running on AI agents. Viewport should absolutely build this.</p>
+
+<p>The correction: that loop <strong>does not exist at Viewport today, and building the full version before v0.1 runs once will produce the same result as the last 30-40 days.</strong> 488 Hermes sessions, 29,009 messages, and zero completed GitHub issue cycles is exactly what happens when you build the top of the stack before the bottom works.</p>
+
+<p><strong>The verdict is: build the loop. Build it bottom-up. Ship nothing at the top until the foundation closes once.</strong></p>
+
+<p>The five prerequisites that must all exist simultaneously before any automation is real:</p>
+<p>1. Durable task intake — Sam&#x27;s instruction converts to a machine-readable task any agent can pick up</p>
+<p>2. Shared context — agent knows current state without re-deriving it</p>
+<p>3. Authority grant — agent is permitted to act on production</p>
+<p>4. Verification loop — agent completes work, attaches evidence, closes the task</p>
+<p>5. Memory writeback — what was done persists so the next agent doesn&#x27;t repeat it</p>
+
+<p><strong>Zero of five exist right now.</strong> This report shows how to build all five in the right order.</p>
+
+<p>---</p>
+
+<h2>2. THE EXACT VIEWPORT LOOP</h2>
+
+<p>Nine stages, with Viewport-specific intake, agents, and outputs named explicitly.</p>
+
+<pre>
+CAPTURE
+  Surfaces: Telegram → Hermes | Slack #ops | GitHub issue comment | Sam voice note
+  Output: raw instruction record with source, timestamp, session_id
+  Owner: Hermes (primary), Claude Code (fallback for session-bound work)
+        ↓
+CLASSIFY
+  Input: raw instruction record
+  Rules: tenant (viewport|mlg|mlh|bccl|saathi) × domain (runtime|dns|secret|docs|code|infra|finance)
+         × priority (P0|P1|P2) × agent-seat (hermes|openclaw-&lt;role&gt;|claude|codex|human-sam)
+         × required_approval (yes|no) based on authority gateway policy
+  Output: labeled GitHub issue in viewport-corp/viewport-ops with task-packet schema fields
+  Owner: Hermes
+        ↓
+STORE
+  Input: classified GitHub issue
+  Action: write to GitHub issue body (source of truth) + append to tracker.json + optional KB entry
+  Rule: if tenant ≠ viewport, also write tenant-scoped stub to correct tenant repo
+  Owner: Hermes
+        ↓
+RETRIEVE
+  Input: assigned agent wakes from cron or event trigger
+  Action: read STATE.md → active issue body and last 5 comments → tracker.json last 10 → weekly digest
+  Rule: if any source inaccessible → write BLOCK comment on issue, alert Sam via Telegram
+  Output: full context packet in agent working memory before first tool call
+  Owner: assigned agent (OpenClaw seat, Claude Code, Codex)
+        ↓
+DECIDE
+  Input: full context packet + authority gateway policy
+  Rule: if action is in pre-authorized set → proceed | if action requires approval → write decision
+        packet to issue, post Telegram alert, wait for Sam label `approval:granted`
+  Outputs: action plan attached to issue as comment; lease record written
+  Owner: assigned agent + authority gateway check
+        ↓
+EXECUTE
+  Input: approved action plan + active lease
+  Rule: one lease per repo/domain/tenant combination at a time (lease table enforced)
+  Outputs: commands run, commits pushed, PRs opened, service changes applied
+  Owner: assigned agent within lease boundary
+        ↓
+VERIFY
+  Input: completed execution artifacts
+  Action: run defined acceptance criteria checks (CI, health endpoint, git log, diff)
+  Rule: if verification fails → write FAIL comment, do NOT close issue, alert Sam
+  Output: verification result (PASS|FAIL) attached to issue
+  Owner: verifier (separate from executor — can be Hermes reading execution output)
+        ↓
+PUBLISH
+  Input: verified artifacts
+  Targets: GitHub issue (close with evidence links) | tracker.json append | viewport-kb/decisions/
+            | public /migration/reports page if public-safe | status.json update | Telegram summary
+  Rule: private evidence goes to private evidence store only; public pages get redacted export
+  Owner: Hermes
+        ↓
+LEARN
+  Input: closed issue + evidence bundle + verification result
+  Action: write decision summary to viewport-kb, update agent seat&#x27;s workspace context,
+          update STATE.md `last_completed`, append tracker.json event, check drift vs STATE.md
+  Rule: no new session starts without reading the last LEARN output for its domain
+  Owner: Hermes + any agent that will pick up next task in same domain
+</pre>
+
+<p><strong>Critical invariant:</strong> The loop only closes when the GitHub issue closes with a linked evidence bundle. A session that ends without closing the issue is not a completed loop — it is a partial run that must be resumed, not restarted.</p>
+
+<p>---</p>
+
+<h2>3. V0.1 COMPONENTS — WHERE THEY LIVE</h2>
+
+<p>Eight components. Only these eight for v0.1. The location and format for each is specified to avoid the &quot;file on an unpushed branch&quot; problem that broke P0.</p>
+
+<p>---</p>
+
+<h3>3.1 GitHub Issue Schema</h3>
+
+<p><strong>Location:</strong> <code>viewport-corp/viewport-ops/.github/ISSUE_TEMPLATE/02-task-packet.yml</code></p>
+<p>(template already exists — this section specifies required fields, not a new file)</p>
+
+<p>Every task-packet issue must render these fields in its body. Missing required fields cause Hermes to reject the issue and reopen it with a format-error comment.</p>
+
+<p>---</p>
+
+<h3>3.2 Labels</h3>
+
+<p><strong>Location:</strong> GitHub org label set, enforced via <code>viewport-corp/viewport-ops/.github/labels.yml</code> + CI label sync action.</p>
+
+<p>Required label groups (exactly these, no others in v0.1):</p>
+
+<table>
+<tr><td>Group</td><td>Labels</td></tr>
+<tr><td>---</td><td>---</td></tr>
+<tr><td>State</td><td><code>state:active</code>, <code>state:blocked</code>, <code>state:review</code>, <code>state:done</code></td></tr>
+<tr><td>Priority</td><td><code>priority:p0</code>, <code>priority:p1</code>, <code>priority:p2</code></td></tr>
+<tr><td>Tenant</td><td><code>tenant:viewport</code>, <code>tenant:mlg</code>, <code>tenant:mlh</code>, <code>tenant:bccl</code>, <code>tenant:saathi</code></td></tr>
+<tr><td>Domain</td><td><code>domain:runtime</code>, <code>domain:dns</code>, <code>domain:secret</code>, <code>domain:docs</code>, <code>domain:code</code></td></tr>
+<tr><td>Approval</td><td><code>approval:required</code>, <code>approval:granted</code>, <code>approval:denied</code></td></tr>
+<tr><td>Agent</td><td><code>agent:hermes</code>, <code>agent:claude</code>, <code>agent:codex</code>, <code>agent:openclaw</code>, <code>agent:human</code></td></tr>
+</table>
+
+<p>One issue has exactly one label from each required group. If a group label is missing, Hermes adds <code>state:blocked</code> and posts a format error.</p>
+
+<p>---</p>
+
+<h3>3.3 Lease File</h3>
+
+<p><strong>Location:</strong> <code>viewport-corp/viewport-ops/Migration/council/leases/active-leases.json</code></p>
+
+<p>A single JSON file. Format:</p>
+
+<pre>
+{
+  &quot;leases&quot;: [
+    {
+      &quot;lease_id&quot;: &quot;lease-&lt;issue_number&gt;-&lt;ts_utc&gt;&quot;,
+      &quot;issue_number&quot;: 201,
+      &quot;agent&quot;: &quot;hermes&quot;,
+      &quot;tenant&quot;: &quot;viewport&quot;,
+      &quot;domain&quot;: &quot;secret&quot;,
+      &quot;resource_path&quot;: &quot;viewport-company-os/security/&quot;,
+      &quot;acquired_at&quot;: &quot;2026-06-09T02:00:00Z&quot;,
+      &quot;expires_at&quot;: &quot;2026-06-09T04:00:00Z&quot;,
+      &quot;state&quot;: &quot;active&quot;
+    }
+  ]
+}
+</pre>
+
+<p>Rules:</p>
+<p>• No two active leases may share the same <code>tenant</code> + <code>domain</code> combination.</p>
+<p>• Hermes writes the lease before starting work, commits to GitHub, reads back before any mutation.</p>
+<p>• Expired leases (past <code>expires_at</code>) are treated as released. Agent must re-acquire.</p>
+<p>• Lease file is committed to <code>main</code> directly (it is operating state, not versioned code).</p>
+
+<p>---</p>
+
+<h3>3.4 Memory and Search</h3>
+
+<p><strong>Location and what lives where:</strong></p>
+
+<table>
+<tr><td>Store</td><td>Location</td><td>What goes in it</td><td>Access</td></tr>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>GitHub issues (primary)</td><td><code>viewport-corp/viewport-ops</code></td><td>All task packets, lifecycle, evidence links</td><td>All agents via <code>gh</code> CLI or GitHub API</td></tr>
+<tr><td>tracker.json (append-only)</td><td><code>Migration/council/tracker.json</code></td><td>Completed rounds, task completions, agent handoffs</td><td>All agents; never edit, only append</td></tr>
+<tr><td>STATE.md (current phase state)</td><td><code>Migration/council/STATE.md</code></td><td>Active round, PAT status, sam_answers, current phase</td><td>All agents; Hermes writes; Claude Code reads</td></tr>
+<tr><td>viewport-kb decisions</td><td><code>viewport-corp/viewport-kb/decisions/YYYY-MM-DD-&lt;slug&gt;.md</code></td><td>Decision summaries, architectural choices, what was tried</td><td>All agents; written on task close</td></tr>
+<tr><td>Weekly digest</td><td><code>viewport-corp/viewport-kb/digests/YYYY-WW.md</code></td><td>Hermes weekly session summary (redacted)</td><td>All agents; Hermes writes every Sunday</td></tr>
+<tr><td>Private evidence</td><td><code>/srv/viewport/migration/evidence/private/</code></td><td>Raw logs, session exports, credential-redacted outputs</td><td>VPS-only, not in GitHub</td></tr>
+</table>
+
+<p><strong>Search:</strong> No new search infra in v0.1. Agents search GitHub issues via label filters. KB search via <code>grep</code> on cloned repo. Qdrant, Neo4j, Langfuse remain off until v0.2.</p>
+
+<p>---</p>
+
+<h3>3.5 Evidence Bundle</h3>
+
+<p>See Section 8 for full field specification. Location: evidence bundles are attached as issue comments (text fields) + committed to <code>viewport-company-os/evidence/YYYY-MM-DD-issue-&lt;n&gt;-&lt;slug&gt;.yaml</code>. One YAML file per closed issue.</p>
+
+<p>---</p>
+
+<h3>3.6 Authority Gateway</h3>
+
+<p><strong>Location:</strong> <code>viewport-corp/viewport-ops/viewport-company-os/authority-gateway/policy.yaml</code></p>
+
+<p>Not a running service in v0.1. A policy file that Hermes reads before every action and Claude Code reads at session start. It is enforced by convention in v0.1 (agent reads policy, refuses non-authorized actions) and by CI check (PR fails if changed without <code>approval:granted</code> label).</p>
+
+<p>See Section 7 for full policy field specification.</p>
+
+<p>---</p>
+
+<h3>3.7 Report Page</h3>
+
+<p><strong>Location:</strong> <code>viewport.llc/migration/loop</code> — a new sub-page of the existing migration report.</p>
+
+<p>Not a new build. The existing Cloudflare Worker that serves <code>/migration</code> is extended with a <code>/migration/loop</code> route. Content is generated from <code>public/migration/loop/index.html</code> committed to <code>viewport-corp/viewport-ops</code>. It shows the v0.1 loop: last 5 completed issues, current active issue, last watcher run time, loop health (green = closed in last 24h, yellow = stale &gt;48h, red = no close in 7d).</p>
+
+<p>See Section 13 for full public report structure.</p>
+
+<p>---</p>
+
+<h3>3.8 Watcher</h3>
+
+<p><strong>Location:</strong> OpenClaw cron config at <code>/srv/viewport/runtime/openclaw-fresh/config/cron/jobs.json</code> (live) + definition committed to <code>viewport-corp/viewport-ops/agent-seats/cron-watchdogs.yaml</code> (source of truth).</p>
+
+<p>V0.1 has exactly <strong>two</strong> watchers. No others until v0.2.</p>
+
+<p><strong>Watcher 1: Morning Brief</strong></p>
+<p>• Schedule: <code>0 2 * * *</code> UTC (09:00 Asia/Vientiane)</p>
+<p>• Action: read active GitHub issue, last 5 tracker.json entries, STATE.md phase</p>
+<p>• Output: 10-line Telegram message to Sam&#x27;s bot chat</p>
+<p>• Format: <code>Active: #&lt;n&gt; &lt;title&gt; | Blocked: &lt;Y/N&gt; &lt;reason&gt; | Yesterday: &lt;one action or &quot;nothing&quot;&gt; | Next: &lt;one action&gt; | Needs you: &lt;Y/N&gt;</code></p>
+
+<p><strong>Watcher 2: Stale Loop Detector</strong></p>
+<p>• Schedule: <code>0 10 * * *</code> UTC</p>
+<p>• Action: check if any <code>state:active</code> issue has had no Hermes comment in &gt;24h</p>
+<p>• Output: if stale, post <code>state:blocked</code> label + Telegram alert: &quot;Loop stalled: #&lt;n&gt; — no activity since &lt;ts&gt;. Diagnose before next session.&quot;</p>
+
+<p>---</p>
+
+<h2>4. WHAT TO BUILD FIRST IN 48 HOURS</h2>
+
+<p><strong>One deliverable per 12-hour block. No exceptions, no scope creep.</strong></p>
+
+<p>---</p>
+
+<h3>Hours 0–4: Sam does the PAT action (not Hermes, not Claude)</h3>
+
+<p>Sam goes to <code>github.com/settings/tokens</code>. Revokes the token with <code>admin:enterprise</code> scope referenced in <code>STATE.md</code>. Creates replacement <code>VIEWPORT_OPS_HERMES_PAT</code> with scope <code>repo, read:org</code> only, 90-day expiry. Adds the value to Hermes <code>.env</code> as <code>GITHUB_TOKEN_VIEWPORT_OPS</code>. Does not commit the value anywhere.</p>
+
+<p><strong>Proof:</strong> Old token shows &quot;Revoked&quot; in GitHub UI. <code>STATE.md</code> updated to <code>pat_revoked: true</code>. Committed and pushed.</p>
+
+<p>This is not optional. Every other step in the 48 hours is blocked until this is done. The council has been blocked here since 2026-05-10.</p>
+
+<p>---</p>
+
+<h3>Hours 4–8: Hermes authenticates and pushes</h3>
+
+<p>Hermes runs <code>gh repo view viewport-corp/viewport-ops</code> → confirms 200. Pushes the <code>council/bootstrap-20260510</code> branch (6 commits ahead of remote). Opens PR to merge to <code>main</code>. Does not merge without Sam review.</p>
+
+<p><strong>Proof:</strong> <code>git log --oneline origin/council/bootstrap-20260510</code> matches local. GitHub UI shows branch and PR.</p>
+
+<p>---</p>
+
+<h3>Hours 8–16: Label sync + one active issue</h3>
+
+<p>Hermes creates/verifies the label set (Section 3.2) in the repo. Hermes creates the one active task-packet issue:</p>
+
+<pre>
+Title: [ACTIVE] Viewport v0.1 Command Loop — bootstrap the closed operating loop
+Labels: state:active, priority:p0, tenant:viewport, domain:docs, agent:hermes
+Body: links to this report, 3 blockers (mount, secret rotation, watchers), 3 acceptance criteria
+</pre>
+
+<p>Hermes posts the issue URL to Telegram.</p>
+
+<p><strong>Proof:</strong> Issue exists, is labeled, Hermes can comment on it.</p>
+
+<p>---</p>
+
+<h3>Hours 16–24: First lease + first loop attempt</h3>
+
+<p>Hermes acquires a lease for <code>tenant:viewport, domain:docs</code>. Picks the smallest closeable task from the task board — recommended: write the <code>active-leases.json</code> stub file (it doesn&#x27;t exist yet, this is pure file creation, no mutation risk). Commits the file to a branch. Opens PR. Gets CI green. Sam merges. Hermes closes the issue with evidence.</p>
+
+<p><strong>Proof:</strong> One GitHub issue is closed with a PR link, commit SHA, and evidence comment. Task board shows 2 done. <code>tracker.json</code> has a new appended entry.</p>
+
+<p>---</p>
+
+<h3>Hours 24–48: Activate watchers</h3>
+
+<p>Hermes writes the two watcher job entries to the cron config file. Commits the cron definition to <code>cron-watchdogs.yaml</code>. Triggers a test run of Morning Brief. Sam confirms Telegram message received. Commits watcher state to <code>STATE.md</code>.</p>
+
+<p><strong>Proof:</strong> Telegram shows Morning Brief message. GitHub issue comment shows &quot;watcher activated: morning-brief-v1, stale-loop-detector-v1&quot;. Cron config committed to source.</p>
+
+<p>---</p>
+
+<p><strong>End state after 48 hours:</strong> PAT revoked, GitHub auth working, one closed loop, two watchers running, Sam receiving daily status. This is v0.1 running. Everything else is v0.2.</p>
+
+<p>---</p>
+
+<h2>5. WHAT NOT TO BUILD YET</h2>
+
+<p>This list is a hard stop. Any item on this list that gets touched before v0.1 closes once resets the clock to zero.</p>
+
+<table>
+<tr><td>Do not build</td><td>Why not</td><td>When it unlocks</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong>Neo4j / Qdrant semantic brain</strong></td><td>Two separate issues (#193, #194) were opened in the same week because there was no canonical active issue — the problem is not search, it is task hygiene. Adding vector search to a system with 0 closed loops solves the wrong problem.</td><td>After 10 loops close successfully</td></tr>
+<tr><td><strong>n8n / Langfuse / OpenHands orchestration</strong></td><td>Seven external tools are already running and unintegrated. More orchestration infrastructure before the simple loop (Hermes → GitHub issue → agent → evidence → close) works is tech debt accumulation disguised as progress.</td><td>After shared task queue is proven</td></tr>
+<tr><td><strong>New domain or subdomain setup</strong></td><td>61 Cloudflare zones, 21 ghost zones, bccl.la NS flip unresolved. Domain portfolio is already larger than the team can operate.</td><td>After DNS ownership matrix is complete</td></tr>
+<tr><td><strong>New Docker containers or Dokploy apps</strong></td><td>72 containers, 56 without repo links. Adding to an uncontrolled fleet makes reconciliation harder.</td><td>After RuntimeContracts exist for all 72</td></tr>
+<tr><td><strong>New OpenClaw agent seats or specialist configs</strong></td><td>26 fresh agents, 0 executing autonomously. Adding seats without a working queue and cron accomplishes nothing.</td><td>After existing queue is proven</td></tr>
+<tr><td><strong>New Slack channels, workflows, or modals</strong></td><td>Partial foundation exists and is marked validated. Building more surface before the existing surface has traffic is waste.</td><td>After first Hermes → GitHub → Slack notification loop works</td></tr>
+<tr><td><strong>New sections of the migration page</strong></td><td>The existing page is comprehensive and accurate. More content increases Sam&#x27;s reorientation cost and creates the false impression of forward progress.</td><td>After /migration/loop is live and green</td></tr>
+<tr><td><strong>Odoo extensions or new Odoo apps</strong></td><td>Business record system, not command plane. No automation should push to Odoo until the command plane works end-to-end.</td><td>After authority gateway is enforced at runtime</td></tr>
+<tr><td><strong>Multi-tenant isolation work (MLG/MLH/BCCL)</strong></td><td>Tenant isolation requires the single-tenant loop to work first.</td><td>After v0.1 closes 10 loops in <code>tenant:viewport</code></td></tr>
+<tr><td><strong>Mac dependency removal sprint</strong></td><td>Correct long-term direction but requires an approved deploy pipeline refactor. Not 48-hour work.</td><td>After VPS is authenticated to GitHub and deploy source is confirmed on VPS</td></tr>
+<tr><td><strong>Hermes DB cleanup / credential scrub</strong></td><td>Correct and necessary, but requires a careful session-by-session audit. Rushing this breaks Hermes continuity.</td><td>Days 3–4 of the 7-day plan, not the first 48 hours</td></tr>
+</table>
+
+<p>---</p>
+
+<h2>6. TASK PACKET SCHEMA FIELDS</h2>
+
+<p>Every GitHub issue that represents a unit of agent work must have these fields in its body. Hermes validates on create; CI validates on PR open.</p>
+
+<pre>
+# Task Packet — GitHub Issue Body Schema
+# Rendered via .github/ISSUE_TEMPLATE/02-task-packet.yml
+
+task_id:          # string — &quot;TP-NNN&quot; — auto-assigned from issue number
+title:            # string — human-readable description of the work
+intent_source:    # string — &quot;telegram:&lt;session_id&gt;&quot; | &quot;github:&lt;issue_url&gt;&quot; | &quot;sam:direct&quot;
+created_by:       # string — agent or &quot;sam&quot;
+created_at:       # ISO 8601 UTC
+
+tenant:           # enum — viewport | mlg | mlh | bccl | saathi | cross-tenant
+domain:           # enum — runtime | dns | secret | docs | code | infra | finance | security
+priority:         # enum — p0 | p1 | p2
+assigned_agent:   # enum — hermes | claude | codex | openclaw-&lt;role&gt; | human-sam
+
+scope_description: # string — what will be done and why
+out_of_scope:       # list of strings — what will NOT be done in this task
+
+acceptance_criteria:  # list of strings — verifiable checks (not &quot;looks good&quot;, but &quot;CI passes&quot; / &quot;HTTP 200&quot; / &quot;file committed&quot;)
+
+required_approval:  # bool — does this task touch runtime/dns/secrets/billing/customer-facing?
+approval_note:      # string — if required_approval=true, describe what Sam needs to approve
+
+blocked_by:         # list of strings — issue URLs or &quot;none&quot;
+blocking:           # list of strings — issue URLs or &quot;none&quot;
+
+lease_required:     # bool
+lease_tenant:       # string — must match tenant field
+lease_domain:       # string — must match domain field
+
+evidence_required:  # bool — always true for p0/p1
+evidence_bundle_path: # string — &quot;viewport-company-os/evidence/YYYY-MM-DD-issue-&lt;n&gt;-&lt;slug&gt;.yaml&quot; (filled on close)
+
+state_history:      # append-only list — each entry: {state, changed_by, changed_at, note}
+</pre>
+
+<p><strong>Validation rules:</strong></p>
+<p>• <code>required_approval: true</code> requires <code>approval:granted</code> label before agent may execute</p>
+<p>• <code>acceptance_criteria</code> must contain at least one verifiable, machine-checkable criterion (CI pass, HTTP status, file path, git SHA)</p>
+<p>• <code>evidence_bundle_path</code> must be filled before issue can be labeled <code>state:done</code></p>
+<p>• Any task touching <code>domain:secret</code> or <code>domain:dns</code> sets <code>required_approval: true</code> automatically</p>
+
+<p>---</p>
+
+<h2>7. AUTHORITY GATEWAY POLICY FIELDS</h2>
+
+<p><strong>Location:</strong> <code>viewport-company-os/authority-gateway/policy.yaml</code></p>
+<p><strong>Status in v0.1:</strong> read-only policy file, enforced by convention, checked by CI lint, not a running API.</p>
+
+<pre>
+# Authority Gateway Policy — v0.1
+# Every agent reads this before acting. CI fails if this file is changed without approval:granted label.
+
+version: &quot;0.1&quot;
+effective_date: &quot;2026-06-09&quot;
+approved_by: &quot;sam&quot;
+
+# Master automation gate
+automation_gate:
+  status: blocked           # blocked | conditional | open
+  reason: &quot;Secrets not rotated. OpenAI sk- 970 hits, ghp_ 138, Telegram tokens 276 in state.db.&quot;
+  unblock_condition: &quot;OpenAI keys rotated + GitHub PATs rotated + automation_gate.status manually set to conditional by Sam&quot;
+
+# Per-agent authority levels
+agents:
+  hermes:
+    max_scope: operator          # operator can route, classify, comment on issues, trigger agents
+    may_mutate_runtime: false    # requires Sam approval + RuntimeContract exists for target
+    may_push_to_main: false      # PRs only; main is protected
+    may_send_telegram: true      # can send to Sam&#x27;s bot chat
+    may_write_github_issues: true
+    may_close_github_issues: true
+    may_modify_dns: false
+    may_rotate_secrets: false
+    may_restart_containers: false   # requires Sam restart approval
+    tenant_scope: all
+    domain_scope: [docs, code, infra-read-only]
+
+  claude:
+    max_scope: specialist
+    may_mutate_runtime: false
+    may_push_to_main: false
+    may_send_telegram: false
+    may_write_github_issues: true
+    may_close_github_issues: false   # closes require Hermes verification
+    may_modify_dns: false
+    may_rotate_secrets: false
+    may_restart_containers: false
+    tenant_scope: [viewport]
+    domain_scope: [docs, code]
+
+  codex:
+    max_scope: specialist
+    may_mutate_runtime: false
+    may_push_to_main: false
+    may_send_telegram: false
+    may_write_github_issues: true
+    may_close_github_issues: false
+    tenant_scope: [viewport]
+    domain_scope: [code]
+
+  openclaw_any_seat:
+    max_scope: worker
+    may_mutate_runtime: false
+    may_push_to_main: false
+    may_send_telegram: false
+    may_write_github_issues: true
+    may_close_github_issues: false
+    tenant_scope: inherit_from_task_packet  # agent reads its task&#x27;s tenant field
+    domain_scope: inherit_from_task_packet
+
+# Actions that always require Sam approval regardless of agent
+sam_only_actions:
+  - restart_any_container
+  - modify_dns_record
+  - rotate_any_secret
+  - push_to_main_direct
+  - billing_change
+  - add_or_remove_github_org_member
+  - delete_any_repo_or_branch
+  - modify_authority_gateway_policy
+  - grant_expanded_autonomy
+
+# Pre-authorized actions (no Sam prompt needed if in this list and automation_gate.status != blocked)
+pre_authorized:
+  - create_github_issue
+  - comment_on_github_issue
+  - close_github_issue_with_evidence
+  - push_to_non_main_branch
+  - open_pull_request
+  - append_to_tracker_json
+  - write_to_viewport_kb_decisions
+  - send_morning_brief_telegram
+  - read_any_file_on_vps
+  - run_docker_inspect_read_only
+  - run_gh_api_read_only
+</pre>
+
+<p>---</p>
+
+<h2>8. EVIDENCE BUNDLE FIELDS</h2>
+
+<p><strong>Location:</strong> <code>viewport-company-os/evidence/YYYY-MM-DD-issue-&lt;n&gt;-&lt;slug&gt;.yaml</code></p>
+<p><strong>Written:</strong> by the executing agent on task completion, before closing the issue</p>
+<p><strong>Required:</strong> for any issue labeled <code>priority:p0</code> or <code>priority:p1</code>; optional for p2</p>
+
+<pre>
+# Evidence Bundle Schema
+evidence_bundle_id:   # string — &quot;EB-&lt;issue_number&gt;-&lt;ts_utc_short&gt;&quot;
+task_ref:             # string — GitHub issue URL
+closed_at:            # ISO 8601 UTC
+closed_by:            # agent name
+verified_by:          # agent name — must be different from closed_by OR &quot;sam&quot; if self-verified
+
+session_ids:          # list of strings — Hermes session IDs or Claude Code session IDs involved
+
+# What was actually done
+actions_taken:
+  - type: file_created | file_modified | pr_opened | pr_merged | issue_created | command_run | api_call
+    description: string
+    path_or_url: string     # file path, GitHub URL, or endpoint
+    timestamp: ISO 8601 UTC
+    reversible: bool
+    rollback_path: string   # how to undo; &quot;N/A&quot; only if truly irreversible and Sam approved
+
+# Proof artifacts
+artifacts:
+  - type: git_commit | pr_url | ci_log | http_response | file_content | screenshot | command_output
+    value: string           # SHA, URL, or short content
+    captured_at: ISO 8601 UTC
+    private: bool           # if true, artifact is in /srv/viewport/migration/evidence/private/ only
+
+# Acceptance criteria verification
+acceptance_criteria_results:
+  - criterion: string       # copied from task packet
+    result: pass | fail | skipped
+    proof: string           # how it was verified
+
+# Safety
+secrets_in_output: false    # must be false; if true, bundle is REJECTED and must be redacted before commit
+public_safe: bool           # if true, may appear in /migration/loop public page
+redaction_status: clean | contains_patterns_redacted
+
+# What was NOT done
+out_of_scope_confirmed:
+  - string                  # each item from task packet&#x27;s out_of_scope list, confirmed not touched
+
+# State after completion
+state_after:
+  github_auth: verified | unverified | not_applicable
+  runtime_unchanged: bool
+  tracker_json_appended: bool
+  kb_updated: bool
+</pre>
+
+<p>---</p>
+
+<h2>9. MEMORY PROTOCOL</h2>
+
+<p>Where every category of information lives, who writes it, and what never moves between categories.</p>
+
+<p>---</p>
+
+<h3>GitHub Issues (durable command ledger)</h3>
+
+<p><strong>What goes here:</strong> every unit of work (task packets), lifecycle state, evidence links, agent commentary, decision rationale, acceptance criteria results, blocker chains</p>
+
+<p><strong>Format:</strong> structured issue body (Section 6 schema) + threaded comments</p>
+
+<p><strong>Never here:</strong> raw API keys, session exports, Telegram message content, customer data, OAuth tokens, .env values, command output with credential patterns</p>
+
+<p><strong>Who writes:</strong> Hermes (creates and classifies), any assigned agent (comments and evidence), Sam (approval labels and direction)</p>
+
+<p><strong>Retention:</strong> permanent; closed issues are never deleted</p>
+
+<p>---</p>
+
+<h3>tracker.json (append-only operation log)</h3>
+
+<p><strong>Location:</strong> <code>Migration/council/tracker.json</code></p>
+
+<p><strong>What goes here:</strong> completed council rounds, task completions, agent handoffs, blocker escalations, Sam approval events</p>
+
+<p><strong>Format:</strong></p>
+<pre>
+{
+  &quot;events&quot;: [
+    {
+      &quot;ts_utc&quot;: &quot;2026-06-09T02:31:00Z&quot;,
+      &quot;event_type&quot;: &quot;task_completed|round_written|blocker_raised|sam_approved|handoff&quot;,
+      &quot;issue_ref&quot;: &quot;viewport-corp/viewport-ops#201&quot;,
+      &quot;agent&quot;: &quot;hermes&quot;,
+      &quot;summary&quot;: &quot;one sentence&quot;,
+      &quot;evidence_path&quot;: &quot;viewport-company-os/evidence/2026-06-09-issue-201-lease-stub.yaml&quot;
+    }
+  ]
+}
+</pre>
+
+<p><strong>Never here:</strong> full session transcripts, credential patterns, task content (that stays in GitHub issues)</p>
+
+<p><strong>Append-only rule:</strong> no event is ever edited or deleted after writing</p>
+
+<p>---</p>
+
+<h3>viewport-kb / Obsidian (decisions and patterns)</h3>
+
+<p><strong>Location:</strong> <code>viewport-corp/viewport-kb/decisions/</code>, <code>viewport-corp/viewport-kb/digests/</code></p>
+
+<p><strong>What goes here:</strong> architectural decisions (why we chose X over Y), patterns discovered across sessions (what keeps failing and why), weekly Hermes digest summary (redacted), agent coordination protocols</p>
+
+<p><strong>Format:</strong> markdown files, named <code>YYYY-MM-DD-&lt;slug&gt;.md</code></p>
+
+<p><strong>Written by:</strong> any agent at task close for decisions; Hermes weekly cron for digests</p>
+
+<p><strong>Never here:</strong> task packets (those are GitHub issues), credential patterns, live system state (that is STATE.md + tracker.json)</p>
+
+<p><strong>Sync rule:</strong> viewport-kb is the human-readable memory layer. Before any architectural discussion, agents grep this directory. It is not the source of truth for task state — GitHub issues are.</p>
+
+<p>---</p>
+
+<h3>Migration Report / Public Pages</h3>
+
+<p><strong>Location:</strong> <code>viewport.llc/migration</code> and sub-pages</p>
+
+<p><strong>What goes here:</strong> redacted public-safe summaries of completed work, loop health status, architecture decisions safe for public viewing, task board counts (not task bodies), verified agent capabilities</p>
+
+<p><strong>Never here:</strong> internal issue numbers without context, raw error logs, any credential pattern even if redacted, customer data, Telegram content, private company financials</p>
+
+<p><strong>Update trigger:</strong> on PR merge that includes public-safe evidence bundle with <code>public_safe: true</code>; never hand-edited, always generated from committed YAML</p>
+
+<p>---</p>
+
+<h3>Private Evidence Store</h3>
+
+<p><strong>Location:</strong> <code>/srv/viewport/migration/evidence/private/</code> (VPS only, not in GitHub)</p>
+
+<p><strong>What goes here:</strong> raw Hermes session exports (redaction-pending), command output containing sensitive paths, pre-redaction evidence bundles, raw Telegram session snippets used in audits, original screenshots before cropping</p>
+
+<p><strong>Never synced to GitHub.</strong> Only referenced (by path, not content) in evidence bundles marked <code>private: true</code>.</p>
+
+<p><strong>Retention:</strong> kept for 90 days, then audited for redaction and either promoted to public evidence or destroyed.</p>
+
+<p>---</p>
+
+<h2>10. HOW CLAUDE / CODEX / OPENCLAW / HERMES INTERACT WITHOUT SPLIT-BRAIN</h2>
+
+<p>The split-brain problem today: three separate memory stores (Hermes <code>state.db</code>, OpenClaw SQLite, Claude Code session) with no bridge. Same facts re-derived 488 times. Same blockers rediscovered. This section specifies the protocol that prevents it.</p>
+
+<p>---</p>
+
+<h3>The Single Rule</h3>
+
+<p><strong>GitHub is the shared brain. All agent coordination goes through GitHub issues and tracker.json. No agent-to-agent direct communication in v0.1.</strong></p>
+
+<p>No Slack channels between agents. No direct API calls from Hermes to OpenClaw. No shared SQLite. No shared filesystem beyond read-only access to the same repos. Every coordination message is a GitHub issue comment.</p>
+
+<p>---</p>
+
+<h3>Session Start Protocol (every agent, every session)</h3>
+
+<p>Before any agent begins work on anything, it reads in this exact order:</p>
+
+<p>1. <code>Migration/council/STATE.md</code> — current phase, active round, Sam&#x27;s last answer, automation gate status</p>
+<p>2. The single <code>state:active</code> GitHub issue — body and last 10 comments</p>
+<p>3. <code>tracker.json</code> — last 10 events</p>
+<p>4. <code>viewport-kb/digests/</code> — most recent weekly digest</p>
+<p>5. <code>authority-gateway/policy.yaml</code> — what this agent is allowed to do</p>
+
+<p>If any of steps 1–3 is inaccessible (mount missing, auth failure, file not found), the agent writes a <code>state:blocked</code> comment on the active issue and sends a Telegram alert before doing anything else.</p>
+
+<p>---</p>
+
+<h3>Task Routing</h3>
+
+<p>Sam → Hermes → GitHub issue: the only routing path in v0.1.</p>
+
+<p>Sam says &quot;work on X&quot; in Telegram. Hermes creates or updates a GitHub issue with task-packet schema. Hermes adds the agent label (<code>agent:openclaw</code>, <code>agent:claude</code>, etc.). The assigned agent&#x27;s cron runs, finds issues with its label in <code>state:active</code>, and picks up work. If multiple issues have the agent&#x27;s label, it picks the highest priority one.</p>
+
+<p><strong>No Hermes→OpenClaw direct call. No OpenClaw→Hermes callback. Only GitHub.</strong></p>
+
+<p>---</p>
+
+<h3>Handoff Protocol</h3>
+
+<p>When Agent A finishes and Agent B must continue:</p>
+
+<p>1. Agent A writes evidence bundle to <code>viewport-company-os/evidence/</code></p>
+<p>2. Agent A comments on the issue with: <code>HANDOFF TO: &lt;agent-b&gt; | Completed: &lt;what was done&gt; | Next: &lt;exact action for agent-b&gt; | Evidence: &lt;path&gt;</code></p>
+<p>3. Agent A removes its label, adds agent-b&#x27;s label</p>
+<p>4. Agent A appends tracker.json event with <code>event_type: handoff</code></p>
+<p>5. Agent B&#x27;s cron picks up the issue on next run</p>
+
+<p>No shared memory writeback needed. The issue comment IS the handoff.</p>
+
+<p>---</p>
+
+<h3>Conflict Prevention (Lease Enforcement)</h3>
+
+<p>Before any mutation, the executing agent:</p>
+
+<p>1. Reads <code>leases/active-leases.json</code> from GitHub</p>
+<p>2. Checks for active lease on same <code>tenant</code> + <code>domain</code></p>
+<p>3. If conflict: writes a blocked comment and stops</p>
+<p>4. If clear: writes its own lease entry, commits to GitHub, then begins work</p>
+<p>5. After work completes: marks its lease <code>state: released</code>, commits</p>
+
+<p><strong>Race condition note:</strong> Two agents reading simultaneously could both see no conflict. In v0.1, this is acceptable because only Hermes and Claude Code are likely to run simultaneously, and they work in different domains. A lease commit conflict (git merge conflict on the lease file) is the detection mechanism — whichever agent&#x27;s commit is rejected must back off.</p>
+
+<p>---</p>
+
+<h3>Memory Writeback</h3>
+
+<p>At session end, any agent that completed meaningful work writes:</p>
+<p>• A decision entry to <code>viewport-kb/decisions/</code> if an architectural choice was made</p>
+<p>• An event to <code>tracker.json</code></p>
+<p>• A comment on the closed issue with evidence bundle path</p>
+
+<p>Nothing else. No private SQLite sync. No session DB export. The agent&#x27;s private session memory is disposable. What goes into GitHub survives.</p>
+
+<p>---</p>
+
+<h2>11. FIRST 10 IMPLEMENTATION TASKS</h2>
+
+<p>Ready-to-create GitHub issues. Each scoped to close in one session. Ordered by dependency.</p>
+
+<p>---</p>
+
+<p><strong>TP-01: <code>[BOOTSTRAP] Revoke leaked PAT and create scoped replacement</code></strong></p>
+<p>• Tenant: viewport | Domain: secret | Priority: P0 | Agent: human-sam (GitHub UI only)</p>
+<p>• Acceptance: <code>STATE.md pat_revoked: true</code> committed and pushed; new PAT authenticates <code>gh repo view</code> returning 200</p>
+<p>• Depends on: nothing | Blocks: TP-02 through TP-10</p>
+
+<p>---</p>
+
+<p><strong>TP-02: <code>[BOOTSTRAP] Push council branch to remote and verify GitHub write path</code></strong></p>
+<p>• Tenant: viewport | Domain: code | Priority: P0 | Agent: hermes</p>
+<p>• Acceptance: <code>git log --oneline origin/council/bootstrap-20260510</code> matches local 6 commits; PR opened for main merge</p>
+<p>• Depends on: TP-01 | Blocks: TP-03, TP-06</p>
+
+<p>---</p>
+
+<p><strong>TP-03: <code>[INFRA] Create and sync label set for task-packet schema</code></strong></p>
+<p>• Tenant: viewport | Domain: code | Priority: P0 | Agent: hermes</p>
+<p>• Acceptance: all 6 label groups from Section 3.2 exist in viewport-corp/viewport-ops; CI label sync action passes</p>
+<p>• Depends on: TP-01</p>
+
+<p>---</p>
+
+<p><strong>TP-04: <code>[INFRA] Create active-leases.json stub file with validation schema</code></strong></p>
+<p>• Tenant: viewport | Domain: docs | Priority: P0 | Agent: hermes</p>
+<p>• Acceptance: <code>Migration/council/leases/active-leases.json</code> exists in main with empty leases array; JSON schema committed; CI validates format</p>
+<p>• Depends on: TP-02</p>
+
+<p>---</p>
+
+<p><strong>TP-05: <code>[INFRA] Write authority-gateway/policy.yaml with v0.1 policy</code></strong></p>
+<p>• Tenant: viewport | Domain: docs | Priority: P0 | Agent: claude (this produces the content) + hermes (commits)</p>
+<p>• Acceptance: file committed to <code>viewport-company-os/authority-gateway/policy.yaml</code>; CI lint passes; automation_gate reflects current blocked state accurately</p>
+<p>• Depends on: TP-02</p>
+
+<p>---</p>
+
+<p><strong>TP-06: <code>[SECURITY] Rotate OpenAI API keys — eliminate sk- patterns in Hermes session DB</code></strong></p>
+<p>• Tenant: viewport | Domain: secret | Priority: P0 | Agent: human-sam (rotation) + hermes (verify)</p>
+<p>• Acceptance: new OpenAI key confirmed working via Hermes API call; <code>automation_gate.status</code> updated; evidence bundle shows key names only (no values)</p>
+<p>• Depends on: TP-01 | Note: rotate GitHub PATs concurrently (138 ghp_ pattern hits)</p>
+
+<p>---</p>
+
+<p><strong>TP-07: <code>[INFRA] Apply Hermes migration evidence mount (/opt/data/migration)</code></strong></p>
+<p>• Tenant: viewport | Domain: runtime | Priority: P0 | Agent: hermes (with Sam restart approval)</p>
+<p>• Acceptance: <code>ls /opt/data/migration</code> inside Hermes container returns migration files; Telegram intake confirmed working after restart</p>
+<p>• Required approval: yes — Sam approves gateway restart</p>
+<p>• Depends on: TP-01</p>
+
+<p>---</p>
+
+<p><strong>TP-08: <code>[WATCHER] Activate morning-brief-v1 cron and stale-loop-detector-v1</code></strong></p>
+<p>• Tenant: viewport | Domain: infra | Priority: P0 | Agent: hermes</p>
+<p>• Acceptance: Sam receives Telegram message at 09:00 Asia/Vientiane; <code>cron-watchdogs.yaml</code> committed to source; cron config committed to OpenClaw live config</p>
+<p>• Depends on: TP-07 (Hermes needs mount to read active issue accurately)</p>
+
+<p>---</p>
+
+<p><strong>TP-09: <code>[LOOP] Write and push Council Round 001 — Phase P0 verification</code></strong></p>
+<p>• Tenant: viewport | Domain: docs | Priority: P0 | Agent: claude (this session)</p>
+<p>• Acceptance: <code>Migration/council/rounds/001-claude-round1-verification.md</code> exists in GitHub; <code>STATE.md active_round: 001</code>; <code>tracker.json</code> has appended event; Sam responds with <code>OK proceed P1</code> or correction</p>
+<p>• Depends on: TP-02 (must be able to push)</p>
+
+<p>---</p>
+
+<p><strong>TP-10: <code>[PROTOCOL] Hermes↔OpenClaw coordination protocol v0 design doc</code></strong></p>
+<p>• Tenant: viewport | Domain: docs | Priority: P1 | Agent: hermes + claude</p>
+<p>• Acceptance: document at <code>company-os/agent-operating-model/hermes-openclaw-coordination-v0.md</code>; covers intake channel (GitHub issue comment), routing (label→agent seat), reporting (issue comment + STATE.md), fallback (Sam Telegram alert if no activity in 4h); no runtime changes made</p>
+<p>• Depends on: TP-03, TP-05</p>
+
+<p>---</p>
+
+<h2>12. RISKS AND SAFETY GATES</h2>
+
+<p>Risks are ordered by current likelihood of causing catastrophic unrecoverable loss.</p>
+
+<p>---</p>
+
+<h3>Risk 1: PAT with admin:enterprise scope used during recovery work</h3>
+
+<p><strong>Likelihood:</strong> High. It is the current active token.</p>
+
+<p><strong>Impact:</strong> Any session using this PAT has permissions to delete repos, remove org members, modify org settings. If the token is logged (it is — <code>ghp_</code> pattern appears 138 times in <code>state.db</code>), any process that reads <code>state.db</code> has these permissions implicitly.</p>
+
+<p><strong>Gate:</strong> TP-01 must complete before any automation uses GitHub credentials. Until TP-01 closes, all GitHub operations require Sam to authenticate in the browser. No automated git push using the current broad PAT.</p>
+
+<p>---</p>
+
+<h3>Risk 2: Loop appears to close but evidence is not in GitHub</h3>
+
+<p><strong>Likelihood:</strong> High. This is exactly what produced <code>p0_foundation_completion.status: completed_safe_foundation</code> with the artifacts on an unpushed branch.</p>
+
+<p><strong>Impact:</strong> False progress signal. Sam reads status as green, starts new work, discovers broken foundation 3 days later.</p>
+
+<p><strong>Gate:</strong> &quot;Done&quot; means: evidence YAML is committed to <code>main</code>, GitHub issue is closed, tracker.json is appended, <code>git log --oneline origin/&lt;branch&gt;</code> confirms push. Any claim of completion without all four checks fails the acceptance criteria automatically.</p>
+
+<p>---</p>
+
+<h3>Risk 3: Hermes restart breaks Telegram intake</h3>
+
+<p><strong>Likelihood:</strong> Medium. Mount requires gateway restart. Prior audit found gateway restart was blocked specifically because of this risk.</p>
+
+<p><strong>Impact:</strong> Hermes goes offline. Sam loses his primary agent interface. Recovery requires manual VPS access and docker-compose debugging.</p>
+
+<p><strong>Gate (TP-07):</strong> Sam must explicitly approve restart in writing (&quot;I approve Hermes restart for migration mount&quot;). Hermes tests Telegram connectivity within 60 seconds of restart. If no Telegram self-test message received in 90 seconds, Hermes automatically rolls back the docker-compose change and alerts via alternative channel (email or GitHub issue comment).</p>
+
+<p>---</p>
+
+<h3>Risk 4: Duplicate task pickup — two agents work the same issue simultaneously</h3>
+
+<p><strong>Likelihood:</strong> Medium, once multiple agents are running with crons.</p>
+
+<p><strong>Impact:</strong> Conflicting commits, double-spend of work, potential conflicting evidence bundles.</p>
+
+<p><strong>Gate:</strong> Lease system (Section 3.3). Any agent that cannot acquire the lease on first GitHub commit must back off and post a blocked comment. The lease conflict is detected at git push time — a merge conflict on <code>active-leases.json</code> means the race was lost.</p>
+
+<p>---</p>
+
+<h3>Risk 5: Morning brief cron sends private data to Telegram</h3>
+
+<p><strong>Likelihood:</strong> Medium. Hermes has access to STATE.md, private session context, and evidence paths.</p>
+
+<p><strong>Gate:</strong> Morning brief template is constrained to: issue number, title, current state label, last tracker.json event type, and a one-line &quot;next action&quot; field. No raw content, no credential patterns, no paths to private evidence. The cron job has a pre-send sanitizer that rejects output containing <code>sk-</code>, <code>ghp_</code>, <code>xoxb-</code>, <code>AIza</code>, passwords, or email addresses.</p>
+
+<p>---</p>
+
+<h3>Risk 6: Scope creep before first loop closes</h3>
+
+<p><strong>Likelihood:</strong> High. The 30-40 day session evidence shows four recurring instances of this exact pattern.</p>
+
+<p><strong>Impact:</strong> The 48-hour build plan (Section 4) becomes a 7-day build plan, then a 14-day build plan, and v0.1 never actually closes.</p>
+
+<p><strong>Gate:</strong> This report&#x27;s Stop list (Section 5) is the gate. Sam reads it and says &quot;stops confirmed&quot; in Telegram before Hermes begins Day 1. Hermes treats any instruction that appears on the stop list during the 48-hour window as out-of-scope and responds with: &quot;That item is on the v0.1 stop list. I&#x27;ll add it to the v0.2 backlog issue and continue with the current task.&quot;</p>
+
+<p>---</p>
+
+<h3>Risk 7: Active issue gets manually labeled <code>state:done</code> without evidence</h3>
+
+<p><strong>Likelihood:</strong> Low but catastrophic. One label click produces a false completion signal that could trigger downstream automation in v0.2.</p>
+
+<p><strong>Gate:</strong> CI check on any issue receiving <code>state:done</code> label that has no committed evidence bundle path in its body. CI fails and adds a comment: &quot;Missing evidence bundle. Add <code>evidence_bundle_path:</code> field before closing.&quot; Sam can override by adding <code>approval:granted</code> label, but the override is logged.</p>
+
+<p>---</p>
+
+<h2>13. PUBLIC REPORT STRUCTURE: /migration/reports AND /migration/loop</h2>
+
+<p>---</p>
+
+<h3>/migration/loop (new, v0.1)</h3>
+
+<p><strong>Purpose:</strong> Live health status of the operating loop. Sam&#x27;s daily quick-check page. Green = loop closed in last 24h. Yellow = stale. Red = no close in 7 days.</p>
+
+<p><strong>Content generated from:</strong> <code>public/migration/loop/data.json</code> — updated by Hermes on every issue close. Served by existing Cloudflare Worker.</p>
+
+<p><strong>Page structure:</strong></p>
+
+<pre>
+viewport.llc/migration/loop
+
+LOOP STATUS: [GREEN | YELLOW | RED]
+Last closed loop: &lt;issue title&gt; — &lt;relative time&gt;
+Active task: #&lt;n&gt; &lt;title&gt; — &lt;state label&gt; — &lt;last activity&gt;
+
+LOOP HISTORY (last 10 closed issues)
+| #  | Title                          | Closed     | Agent  | Evidence |
+|----|-------------------------------|------------|--------|----------|
+| 205 | [example task]                | 2026-06-10 | hermes | [link]   |
+...
+
+WATCHER STATUS
+Morning Brief:     ACTIVE — last run 2026-06-10 02:00Z — delivered
+Stale Loop Detector: ACTIVE — last run 2026-06-10 10:00Z — no alerts
+
+AUTOMATION GATE: BLOCKED / CONDITIONAL / OPEN
+Current blocker: &lt;automation_gate.reason from policy.yaml&gt;
+
+DATA SOURCE: viewport-corp/viewport-ops (loop data updated on every issue close)
+LAST GENERATED: &lt;timestamp&gt;
+</pre>
+
+<p><strong>What is never shown here:</strong></p>
+<p>• Issue body content (link to GitHub, not copy)</p>
+<p>• Evidence bundle content (link to bundle, not contents)</p>
+<p>• Agent session IDs, private paths, credentials</p>
+<p>• Task counts or percentages that could mislead (no &quot;78% complete&quot; claims)</p>
+
+<p>---</p>
+
+<h3>/migration/reports (existing, restructured)</h3>
+
+<p><strong>Purpose:</strong> Historical record of architecture, completed milestones, and audit findings. Read-only after generation. Not updated to reflect current state (the loop page does that).</p>
+
+<p><strong>Restructured index:</strong></p>
+
+<pre>
+viewport.llc/migration/reports
+
+ARCHITECTURE REPORTS
+  /reports/2026-06-08-surgical-audit        — v2 surgical architecture audit
+  /reports/2026-06-08-automation-analysis   — why Viewport is not automated (this report&#x27;s addendum)
+  /reports/2026-06-08-loop-design           — this document (v0.1 loop spec)
+
+MILESTONE REPORTS (one per closed phase)
+  /reports/phase-p0-complete               — (not yet — will be written when Round 001 closes)
+
+AGENT CAPABILITY REPORTS
+  /reports/openclaw-readiness-26-seats     — generated from Phase 4P/4Q/4R sweeps
+  /reports/hermes-v0.15.2-audit            — session count, toolset list, capability state
+
+SECURITY REPORTS
+  /reports/2026-06-08-secrets-exposure     — redacted summary of session DB credential patterns
+  /reports/2026-06-08-pat-incident         — PAT exposure and rotation record (once complete)
+
+EVIDENCE ARCHIVE
+  /reports/evidence/                       — links to public-safe evidence YAML files
+</pre>
+
+<p><strong>Generation rule:</strong> Reports are written once and never edited after publication. If a finding changes (e.g., <code>pat_revoked</code> goes from false to true), a new dated report is added — the old one is not modified. This preserves the forensic record.</p>
+
+<p><strong>Public-safety rule:</strong> Every file under <code>/reports</code> passes through the same sanitizer as evidence bundles: no <code>sk-</code>, <code>ghp_</code>, <code>xoxb-</code>, <code>AIza</code>, email addresses, or private paths.</p>
+
+<p>---</p>
+
+<h3>How /migration/loop Gets Updated</h3>
+
+<p>On every GitHub issue close that has <code>public_safe: true</code> in its evidence bundle:</p>
+
+<p>1. Hermes runs <code>scripts/update_loop_data.py</code> — reads closed issue metadata and evidence bundle</p>
+<p>2. Script writes to <code>public/migration/loop/data.json</code> — appends to history array, updates last-closed, updates gate status from <code>policy.yaml</code></p>
+<p>3. Hermes commits <code>data.json</code> to main</p>
+<p>4. CI deploys updated Cloudflare Worker assets</p>
+<p>5. <code>/migration/loop</code> serves new data within 60 seconds</p>
+
+<p><strong>The loop page is only ever as current as the last closed issue.</strong> If no issue closes for 48 hours, the page goes yellow. If no issue closes for 7 days, the page goes red. This creates a visible accountability signal that does not require Sam to check GitHub directly.</p>
+
+<p>---</p>
+
+<h2>APPENDIX: COMPLETE EVIDENCE CROSS-REFERENCE FOR THIS REPORT</h2>
+
+<table>
+<tr><td>Claim</td><td>Source</td><td>Status</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>488 Hermes sessions in 30 days</td><td>session-evidence-for-claude.md (S11-HERMES)</td><td>Verified</td></tr>
+<tr><td>0 closed GitHub issue loops</td><td>claude-surgical-answer-rerun.md §2, task_board.done=1</td><td>Verified</td></tr>
+<tr><td>Council stuck at Round 000 since 2026-05-10</td><td>STATE.md active_round:000, tracker.json empty beyond bootstrap</td><td>Verified</td></tr>
+<tr><td>pat_revoked: false</td><td>STATE.md line 5</td><td>Verified</td></tr>
+<tr><td>automation_gate blocked (secret rotation required)</td><td>claude-surgical-answer-rerun.md §13 + ADDENDUM §THE DIRECT ANSWER</td><td>Verified</td></tr>
+<tr><td>/opt/data/migration not mounted in Hermes</td><td>audit S02-MOUNT</td><td>Verified</td></tr>
+<tr><td>0 running OpenClaw crons</td><td>audit S03-FRESH-CRON: 1 cron, enabled=False</td><td>Verified</td></tr>
+<tr><td>3 separate memory stores with no bridge</td><td>audit S04-BRAIN-REALITY</td><td>Verified</td></tr>
+<tr><td>Neo4j issue opened twice (#193, #194) same week</td><td>viewport-kb/decisions/2026-06-08-weekly-digest.md lines 21–23</td><td>Verified</td></tr>
+<tr><td>P0 artifacts on unpushed branch</td><td>audit S01-WRITE + local branch 6 commits ahead</td><td>Verified</td></tr>
+<tr><td>139 tasks, 1 done</td><td>status.json task_board</td><td>Verified</td></tr>
+<tr><td>Loop pattern: vision→artifacts→session ends→reset</td><td>session-evidence-for-claude.md Loop Pattern 1</td><td>Verified (4 instances)</td></tr>
+<tr><td>Mac as hidden deploy dependency</td><td>migration.text lines 311–312</td><td>Verified</td></tr>
+<tr><td>26 OpenClaw agent seats, 0 executing</td><td>audit S03-FRESH</td><td>Verified</td></tr>
+</table>
+
+<p>---</p>
+
+<p>*Report complete. 13 sections produced. Sources read: CLAUDE-VIEWPORT-LOOP-BRIEF.md, COUNCIL-MEMORY.md, session-evidence-for-claude.md, claude-surgical-answer-rerun.md, ADDENDUM-automation-voice-correction.md, memory/project-viewport-state.md, memory/user-sam-context.md. No files written. No runtime touched.*</p></main></body></html>
