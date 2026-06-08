@@ -1,0 +1,18 @@
+{
+  "memory_shared_brain": {
+    "recommendation": "Git-backed Obsidian/markdown as primary human/source brain; Qdrant as derived semantic index; Neo4j as derived relationship graph after schemas stabilize",
+    "already_on_vps": "Qdrant/Neo4j presence checked in Section 4; use only if running and wired"
+  },
+  "orchestration": {
+    "recommendation": "Custom Hermes routing + GitHub Issues/Actions control plane; n8n for external event glue; LangGraph only for app-specific deterministic agent flows"
+  },
+  "knowledge_base": {
+    "recommendation": "Obsidian/markdown + Git + Qdrant RAG; avoid Notion as source-of-truth lock-in for CompanyOS"
+  },
+  "secrets": {
+    "recommendation": "Infisical or Vault for organization/runtime secrets; GitHub Secrets for CI; env-only only bootstrap"
+  },
+  "observability": {
+    "recommendation": "Grafana + Prometheus/Loki/Tempo for infra; Langfuse for LLM traces; /migration/audit as founder-facing report"
+  }
+}

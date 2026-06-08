@@ -1,0 +1,42 @@
+{
+  "section": 10,
+  "title": "Plan vs reality gap table",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:46:36.570154+00:00",
+  "findings": [
+    {
+      "id": "S10-COUNTS",
+      "subject": "Plan/task counts",
+      "status": "FAIL",
+      "finding": "Current parsed ledger: 139 tasks, 33 phases, 58 NOW tasks. User request referenced older 127/36/52 counts; live board has evolved.",
+      "evidence": "evidence/full-system-audit/raw/section10-plan-reality.json",
+      "recommended_action": "Freeze canonical task ledger version before percentage claims."
+    },
+    {
+      "id": "S10-REALITY",
+      "subject": "Plan real vs intent",
+      "status": "FAIL",
+      "finding": "Approx NOW-task evidence ratio from ledger text: 70.7%. This is not full runtime proof.",
+      "evidence": "evidence/full-system-audit/raw/section10-plan-reality.json",
+      "recommended_action": "Require each DONE/IN PROGRESS verdict to link commit/runtime/API evidence."
+    },
+    {
+      "id": "S10-PHASES",
+      "subject": "36 phase verdicts",
+      "status": "UNKNOWN",
+      "finding": "Parsed 33 phase identifiers from current ledger, not exactly 36 canonical phases.",
+      "evidence": "evidence/full-system-audit/raw/section10-plan-reality.json",
+      "recommended_action": "Normalize /migration/plan phase IDs into machine-readable JSON."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section10-plan-reality.json"
+  ],
+  "recommended_action": "Normalize plan/task source and attach proof to each phase/task.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 190,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/190",
+    "error": null
+  }
+}

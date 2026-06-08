@@ -1,0 +1,345 @@
+{
+  "section-00.json": {
+    "source": "evidence/full-system-audit/sections/section-00.json",
+    "url": "/migration/audit/evidence/section-00.json",
+    "bytes": 1870,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-01.json": {
+    "source": "evidence/full-system-audit/sections/section-01.json",
+    "url": "/migration/audit/evidence/section-01.json",
+    "bytes": 3431,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-02.json": {
+    "source": "evidence/full-system-audit/sections/section-02.json",
+    "url": "/migration/audit/evidence/section-02.json",
+    "bytes": 3282,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-03.json": {
+    "source": "evidence/full-system-audit/sections/section-03.json",
+    "url": "/migration/audit/evidence/section-03.json",
+    "bytes": 3627,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-04.json": {
+    "source": "evidence/full-system-audit/sections/section-04.json",
+    "url": "/migration/audit/evidence/section-04.json",
+    "bytes": 2107,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-05.json": {
+    "source": "evidence/full-system-audit/sections/section-05.json",
+    "url": "/migration/audit/evidence/section-05.json",
+    "bytes": 2187,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-06.json": {
+    "source": "evidence/full-system-audit/sections/section-06.json",
+    "url": "/migration/audit/evidence/section-06.json",
+    "bytes": 1972,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-07.json": {
+    "source": "evidence/full-system-audit/sections/section-07.json",
+    "url": "/migration/audit/evidence/section-07.json",
+    "bytes": 1701,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-08.json": {
+    "source": "evidence/full-system-audit/sections/section-08.json",
+    "url": "/migration/audit/evidence/section-08.json",
+    "bytes": 1900,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-09.json": {
+    "source": "evidence/full-system-audit/sections/section-09.json",
+    "url": "/migration/audit/evidence/section-09.json",
+    "bytes": 1681,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-10.json": {
+    "source": "evidence/full-system-audit/sections/section-10.json",
+    "url": "/migration/audit/evidence/section-10.json",
+    "bytes": 1694,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-11.json": {
+    "source": "evidence/full-system-audit/sections/section-11.json",
+    "url": "/migration/audit/evidence/section-11.json",
+    "bytes": 2552,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "section-12.json": {
+    "source": "evidence/full-system-audit/sections/section-12.json",
+    "url": "/migration/audit/evidence/section-12.json",
+    "bytes": 2514,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "raw/section0-preflight.txt": {
+    "source": "evidence/full-system-audit/raw/section0-preflight.txt",
+    "url": "/migration/audit/evidence/raw/section0-preflight.txt",
+    "bytes": 4205,
+    "redactions": {
+      "openai_sk": 2
+    },
+    "total_redactions": 2,
+    "missing": false
+  },
+  "raw/section1-github-inventory.json": {
+    "source": "evidence/full-system-audit/raw/section1-github-inventory.json",
+    "url": "/migration/audit/evidence/raw/section1-github-inventory.json",
+    "bytes": 11810,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "raw/section2-vps-runtime.json": {
+    "source": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+    "url": "/migration/audit/evidence/raw/section2-vps-runtime.json",
+    "bytes": 196484,
+    "redactions": {
+      "ip_non_public": 40
+    },
+    "total_redactions": 40,
+    "missing": false
+  },
+  "raw/section2-vps-runtime.raw.txt": {
+    "source": "evidence/full-system-audit/raw/section2-vps-runtime.raw.txt",
+    "url": "/migration/audit/evidence/raw/section2-vps-runtime.raw.txt",
+    "bytes": 196485,
+    "redactions": {
+      "ip_non_public": 40
+    },
+    "total_redactions": 40,
+    "missing": false
+  },
+  "raw/section3-agent-fleet.json": {
+    "source": "evidence/full-system-audit/raw/section3-agent-fleet.json",
+    "url": "/migration/audit/evidence/raw/section3-agent-fleet.json",
+    "bytes": 242646,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "raw/section3-agent-fleet.raw.txt": {
+    "source": "evidence/full-system-audit/raw/section3-agent-fleet.raw.txt",
+    "url": "/migration/audit/evidence/raw/section3-agent-fleet.raw.txt",
+    "bytes": 242647,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "raw/section3-hermes-local.json": {
+    "source": "evidence/full-system-audit/raw/section3-hermes-local.json",
+    "url": "/migration/audit/evidence/raw/section3-hermes-local.json",
+    "bytes": 22286,
+    "redactions": {
+      "openai_sk": 2
+    },
+    "total_redactions": 2,
+    "missing": false
+  },
+  "raw/section4-brain.json": {
+    "source": "evidence/full-system-audit/raw/section4-brain.json",
+    "url": "/migration/audit/evidence/raw/section4-brain.json",
+    "bytes": 7903,
+    "redactions": {
+      "ip_non_public": 45
+    },
+    "total_redactions": 45,
+    "missing": false
+  },
+  "raw/section5-cloudflare-dns.json": {
+    "source": "evidence/full-system-audit/raw/section5-cloudflare-dns.json",
+    "url": "/migration/audit/evidence/raw/section5-cloudflare-dns.json",
+    "bytes": 183280,
+    "redactions": {
+      "ip_non_public": 62
+    },
+    "total_redactions": 62,
+    "missing": false
+  },
+  "raw/section6-observability.json": {
+    "source": "evidence/full-system-audit/raw/section6-observability.json",
+    "url": "/migration/audit/evidence/raw/section6-observability.json",
+    "bytes": 6902,
+    "redactions": {
+      "ip_non_public": 41
+    },
+    "total_redactions": 41,
+    "missing": false
+  },
+  "raw/section7-security.json": {
+    "source": "evidence/full-system-audit/raw/section7-security.json",
+    "url": "/migration/audit/evidence/raw/section7-security.json",
+    "bytes": 1072,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "raw/section8-old-docker-reference.json": {
+    "source": "evidence/full-system-audit/raw/section8-old-docker-reference.json",
+    "url": "/migration/audit/evidence/raw/section8-old-docker-reference.json",
+    "bytes": 231810,
+    "redactions": {
+      "ip_non_public": 57
+    },
+    "total_redactions": 57,
+    "missing": false
+  },
+  "raw/section9-companyos-schema.json": {
+    "source": "evidence/full-system-audit/raw/section9-companyos-schema.json",
+    "url": "/migration/audit/evidence/raw/section9-companyos-schema.json",
+    "bytes": 2551,
+    "redactions": {
+      "openai_sk": 10
+    },
+    "total_redactions": 10,
+    "missing": false
+  },
+  "raw/section10-plan-reality.json": {
+    "source": "evidence/full-system-audit/raw/section10-plan-reality.json",
+    "url": "/migration/audit/evidence/raw/section10-plan-reality.json",
+    "bytes": 544,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "raw/section11-history-exports.json": {
+    "source": "evidence/full-system-audit/raw/section11-history-exports.json",
+    "url": "/migration/audit/evidence/raw/section11-history-exports.json",
+    "bytes": 670,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "raw/section12-best-alternatives.json": {
+    "source": "evidence/full-system-audit/raw/section12-best-alternatives.json",
+    "url": "/migration/audit/evidence/raw/section12-best-alternatives.json",
+    "bytes": 956,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  },
+  "history/github-30d.json": {
+    "source": "evidence/full-system-audit/history/github-30d.json",
+    "url": "/migration/audit/evidence/history/github-30d.json",
+    "bytes": 70058,
+    "redactions": {
+      "openai_sk": 1,
+      "ip_non_public": 1
+    },
+    "total_redactions": 2,
+    "missing": false
+  },
+  "history/hermes-week-2026-18.md": {
+    "source": "evidence/full-system-audit/history/hermes-week-2026-18.md",
+    "url": "/migration/audit/evidence/history/hermes-week-2026-18.md",
+    "bytes": 1240307,
+    "redactions": {
+      "openai_sk": 47,
+      "github_pat": 2,
+      "cf_key": 2,
+      "google_key": 2,
+      "password_value": 23,
+      "secret_value": 3,
+      "ip_non_public": 148
+    },
+    "total_redactions": 227,
+    "missing": false
+  },
+  "history/hermes-week-2026-19.md": {
+    "source": "evidence/full-system-audit/history/hermes-week-2026-19.md",
+    "url": "/migration/audit/evidence/history/hermes-week-2026-19.md",
+    "bytes": 1321948,
+    "redactions": {
+      "openai_sk": 20,
+      "telegram_env": 6,
+      "cf_key": 1,
+      "google_key": 3,
+      "password_value": 2,
+      "secret_value": 21,
+      "ip_non_public": 253
+    },
+    "total_redactions": 306,
+    "missing": false
+  },
+  "history/hermes-week-2026-20.md": {
+    "source": "evidence/full-system-audit/history/hermes-week-2026-20.md",
+    "url": "/migration/audit/evidence/history/hermes-week-2026-20.md",
+    "bytes": 293001,
+    "redactions": {
+      "openai_sk": 5,
+      "google_key": 1,
+      "secret_value": 4,
+      "ip_non_public": 5
+    },
+    "total_redactions": 15,
+    "missing": false
+  },
+  "history/hermes-week-2026-21.md": {
+    "source": "evidence/full-system-audit/history/hermes-week-2026-21.md",
+    "url": "/migration/audit/evidence/history/hermes-week-2026-21.md",
+    "bytes": 1427072,
+    "redactions": {
+      "openai_sk": 37,
+      "cf_key": 2,
+      "google_key": 5,
+      "password_value": 2,
+      "secret_value": 33,
+      "ip_non_public": 68
+    },
+    "total_redactions": 147,
+    "missing": false
+  },
+  "history/hermes-week-2026-22.md": {
+    "source": "evidence/full-system-audit/history/hermes-week-2026-22.md",
+    "url": "/migration/audit/evidence/history/hermes-week-2026-22.md",
+    "bytes": 1582395,
+    "redactions": {
+      "openai_sk": 55,
+      "google_key": 2,
+      "password_value": 2,
+      "secret_value": 38,
+      "ip_non_public": 94
+    },
+    "total_redactions": 191,
+    "missing": false
+  },
+  "history/openclaw-30d-summary.json": {
+    "source": "evidence/full-system-audit/history/openclaw-30d-summary.json",
+    "url": "/migration/audit/evidence/history/openclaw-30d-summary.json",
+    "bytes": 59,
+    "redactions": {},
+    "total_redactions": 0,
+    "missing": false
+  }
+}

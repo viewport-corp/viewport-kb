@@ -1,0 +1,69 @@
+{
+  "section": 1,
+  "title": "GitHub full inventory",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T22:57:07.263175+00:00",
+  "findings": [
+    {
+      "id": "S01-REPOS",
+      "subject": "viewport-corp repository inventory",
+      "status": "PASS",
+      "finding": "GitHub API returned 9 repositories for viewport-corp.",
+      "evidence": "evidence/full-system-audit/raw/section1-github-inventory.json",
+      "recommended_action": "Review repo-level gaps below."
+    },
+    {
+      "id": "S01-WRITE",
+      "subject": "GitHub write access test",
+      "status": "PASS",
+      "finding": "Test issue result: {'created': True, 'issue_number': 177, 'url': 'https://github.com/viewport-corp/viewport-ops/issues/177', 'close_status': 200, 'verified_state': 'closed'}",
+      "evidence": "evidence/full-system-audit/raw/section1-github-inventory.json",
+      "recommended_action": "If FAIL, repair GitHub auth before relying on GitHub as source of truth."
+    },
+    {
+      "id": "S01-NO-COMMIT-30",
+      "subject": "Repos with no commits in last 30 days",
+      "status": "PASS",
+      "finding": "0 repos have no default-branch commit in last 30 days.",
+      "evidence": "evidence/full-system-audit/raw/section1-github-inventory.json",
+      "recommended_action": "Confirm whether each is archive/reference or revive work."
+    },
+    {
+      "id": "S01-ISSUES-NO-PRS",
+      "subject": "Repos with issues but no linked/open PRs",
+      "status": "FAIL",
+      "finding": "1 repos have open issues and zero open PRs by search count.",
+      "evidence": "evidence/full-system-audit/raw/section1-github-inventory.json",
+      "recommended_action": "Triage active issues; link PRs or close stale issues."
+    },
+    {
+      "id": "S01-RUNTIME-CONTRACTS",
+      "subject": "Repos with runtime contracts",
+      "status": "PASS",
+      "finding": "3 repos contain runtime-contract files.",
+      "evidence": "evidence/full-system-audit/raw/section1-github-inventory.json",
+      "recommended_action": "Add RuntimeContract files for every deployed runtime."
+    },
+    {
+      "id": "S01-OWNER",
+      "subject": "Missing tenant/owner assignment",
+      "status": "FAIL",
+      "finding": "2 repos could not be assigned to Viewport/MLG/BCCL by name/topics/description.",
+      "evidence": "evidence/full-system-audit/raw/section1-github-inventory.json",
+      "recommended_action": "Add explicit tenant/owner metadata/topic to each repo."
+    },
+    {
+      "id": "S01-PAT",
+      "subject": "PAT scope/expiry",
+      "status": "UNKNOWN",
+      "finding": "GitHub token scopes header: admin:enterprise, admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook, admin:ssh_signing_key, audit_log, codespace, copilot, delete:packages, delete_repo, gist, notifications, project, repo, user, workflow, write:discussion, write:network_configurations, write:packages; expiration header: UNKNOWN.",
+      "evidence": "evidence/full-system-audit/raw/section1-github-inventory.json",
+      "recommended_action": "Recommend GitHub App auth for least-privilege, auditable, revocable automation instead of broad PAT reliance."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section1-github-inventory.json",
+    "evidence/full-system-audit/sections/section-01.json"
+  ],
+  "recommended_action": "Switch automation to GitHub App auth and triage repos missing owners/runtime contracts/active PR links."
+}

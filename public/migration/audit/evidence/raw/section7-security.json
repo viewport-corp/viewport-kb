@@ -1,0 +1,20 @@
+{
+  "tracked_sensitive_candidates": {
+    "cmd": "git ls-files | grep -E \"(^|/)\\.env(\\.|$)|docker-compose.*ya?ml|compose.*ya?ml\" || true",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "compose_env_candidates": {
+    "cmd": "python3 - <<'PY'\nfrom pathlib import Path\nfor p in Path('.').rglob('*'):\n if p.is_file() and p.stat().st_size<500000 and any(x in p.name.lower() for x in ['compose','docker-compose','.env']): print(p)\nPY",
+    "exit_code": 0,
+    "stdout": "audit-runs/20260516T204527Z/remote-slices/02_compose_env_service_paths.txt\n",
+    "stderr": ""
+  },
+  "session_secret_pattern_counts": {
+    "cmd": "python3 - <<'PY'\nimport sqlite3,re\ncon=sqlite3.connect('/opt/data/state.db')\npatterns=['sk-','xoxb-','ghp_','AIza','CF_API_KEY','TELEGRAM_BOT_TOKEN']\nfor pat in patterns:\n c=con.execute('select count(*) from messages where content like ?',('%'+pat+'%',)).fetchone()[0]\n print(pat,c)\nPY",
+    "exit_code": 0,
+    "stdout": "sk- 970\nxoxb- 14\nghp_ 138\nAIza 32\nCF_API_KEY 61\nTELEGRAM_BOT_TOKEN 276\n",
+    "stderr": ""
+  }
+}

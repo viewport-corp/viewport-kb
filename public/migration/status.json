@@ -1,0 +1,379 @@
+{
+  "schema_version": "viewport-status-v1",
+  "generated_at_utc": "2026-06-05T02:06:47.612314+00:00",
+  "source": "viewport-corp/viewport-ops branch ops/openclaw-github-flow-44",
+  "public_url": "https://viewport.llc/migration/status",
+  "ui_contract": "React UI should fetch https://viewport.llc/migration/status.json and render this object; Hermes updates JSON only.",
+  "company": {
+    "name": "Viewport Corporation",
+    "mission": "Build an AI operating company / CompanyOS for tenants, departments, agents, and evidence-backed execution."
+  },
+  "system_health": {
+    "hermes": {
+      "status": "ONLINE",
+      "version": "v0.15.2",
+      "note": "gateway restart still needed for live Telegram intake hook from previous pipeline task"
+    },
+    "vps": {
+      "hostname": "vmi3130827",
+      "public_ip": "194.163.153.171",
+      "container_count": 72,
+      "unhealthy_containers": 3,
+      "no_repo_containers": 56
+    },
+    "github": {
+      "org": "viewport-corp",
+      "write": "OK",
+      "pat_expiry": "unknown"
+    },
+    "domains": {
+      "cloudflare_zones": 61,
+      "ghost_zones": 21,
+      "bccl_la": "UNKNOWN"
+    },
+    "audit": {
+      "last_audit": "2026-06-05",
+      "sections": 13,
+      "pass": 2,
+      "fail": 10,
+      "unknown": 1,
+      "redacted_public_evidence_files": 36,
+      "total_redactions": 1187
+    }
+  },
+  "today_focus": [
+    {
+      "title": "Replace static /status UI with Sam-built React component",
+      "owner": "Sam UI + Hermes data",
+      "state": "ready-for-ui",
+      "data_endpoint": "/migration/status.json"
+    },
+    {
+      "title": "Keep /migration/audit evidence public, redacted, and Claude-readable",
+      "owner": "Hermes",
+      "state": "live"
+    },
+    {
+      "title": "Finish live Telegram intake hook activation",
+      "owner": "Hermes",
+      "state": "blocked",
+      "blocker": "gateway restart approval was blocked by smart approval"
+    }
+  ],
+  "active_tasks": [
+    {
+      "id": "setup4",
+      "title": "Wire classifier/capture to Telegram intake and test",
+      "owner": "Hermes",
+      "status": "pending",
+      "blocker": "gateway restart required to load plugin"
+    },
+    {
+      "id": "accept",
+      "title": "Run all four intake acceptance tests with live Telegram evidence",
+      "owner": "Hermes",
+      "status": "pending",
+      "blocker": "same gateway restart blocker"
+    },
+    {
+      "id": "status-react",
+      "title": "Sam builds production React /status UI against /migration/status.json",
+      "owner": "Sam + Hermes",
+      "status": "ready"
+    }
+  ],
+  "task_board": {
+    "total": 139,
+    "now": 58,
+    "next": 73,
+    "blocked": 4,
+    "done": 1
+  },
+  "blocked": [
+    {
+      "title": "Live Telegram intake hook not active yet",
+      "reason": "Hermes gateway restart blocked by smart approval",
+      "evidence": "https://github.com/viewport-corp/viewport-os/issues/2"
+    }
+  ],
+  "completed_today": [
+    {
+      "title": "Full audit evidence publish + navigation redesign",
+      "evidence": "https://viewport.llc/migration/audit/evidence/redaction-report.json",
+      "issue": "https://github.com/viewport-corp/viewport-ops/issues/195"
+    }
+  ],
+  "recent_failures": [
+    {
+      "what": "Embedded Cloudflare Worker exceeded 3 MiB size limit",
+      "resolved": true,
+      "fix": "switched to lightweight Worker proxying committed GitHub files"
+    },
+    {
+      "what": "Hermes gateway restart blocked",
+      "resolved": false,
+      "fix": "needs allowed restart window / approval"
+    }
+  ],
+  "agent_handoff_pack": {
+    "read_this_first": [
+      "https://github.com/viewport-corp/viewport-os/blob/main/HANDOFF.md",
+      "https://viewport.llc/migration/audit",
+      "https://viewport.llc/migration/task"
+    ],
+    "do_not_touch": [
+      "old Docker/OpenClaw live services without Sam approval",
+      "secrets/raw Telegram sessions",
+      "DNS/billing/legal/destructive changes without explicit approval"
+    ],
+    "active_tenants": [
+      "Viewport",
+      "MLG/MLH",
+      "BCCL"
+    ],
+    "github_org": "viewport-corp",
+    "vps": "194.163.153.171",
+    "next_priority": "Activate intake-to-persistence live hook once gateway restart is approved."
+  },
+  "links": {
+    "migration": "https://viewport.llc/migration/",
+    "plan": "https://viewport.llc/migration/plan",
+    "tasks": "https://viewport.llc/migration/task",
+    "audit": "https://viewport.llc/migration/audit",
+    "status": "https://viewport.llc/migration/status",
+    "status_json": "https://viewport.llc/migration/status.json",
+    "handoff": "https://github.com/viewport-corp/viewport-os/blob/main/HANDOFF.md"
+  },
+  "status_page_contract": {
+    "owner": "Hermes data endpoint; Sam/React may replace presentation",
+    "rule": "UI can improve; content/data cannot shrink without explicit approval",
+    "endpoint": "/migration/status.json",
+    "mobile": "responsive cards, 44px touch targets, scroll-safe tables"
+  },
+  "instruction_files": [
+    {
+      "name": "HANDOFF.md",
+      "url": "https://github.com/viewport-corp/viewport-os/blob/main/HANDOFF.md",
+      "purpose": "last session/system handoff"
+    },
+    {
+      "name": "Migration",
+      "url": "https://viewport.llc/migration/",
+      "purpose": "main command dashboard and full research"
+    },
+    {
+      "name": "Plan",
+      "url": "https://viewport.llc/migration/plan",
+      "purpose": "phase plan, gates, evidence"
+    },
+    {
+      "name": "Tasks",
+      "url": "https://viewport.llc/migration/task",
+      "purpose": "execution board"
+    },
+    {
+      "name": "Audit",
+      "url": "https://viewport.llc/migration/audit",
+      "purpose": "full evidence audit"
+    },
+    {
+      "name": "KB index",
+      "url": "https://github.com/viewport-corp/viewport-kb/blob/main/INDEX.md",
+      "purpose": "anti-amnesia knowledge base"
+    }
+  ],
+  "slack_odoo_operating_flows": [
+    {
+      "area": "Documents",
+      "slack": "Approval thread/channel when legal or signature is needed",
+      "odoo": "Documents / document folder",
+      "flow": "Document needed \u2192 Odoo document folder \u2192 Slack approval if legal/signature \u2192 sign only after approval"
+    },
+    {
+      "area": "Helpdesk",
+      "slack": "#mlh-warranty-support, #mlh-legacy-issues",
+      "odoo": "Helpdesk",
+      "flow": "MLH issue \u2192 Slack issue thread \u2192 Odoo helpdesk ticket \u2192 evidence attached \u2192 agent suggests next action \u2192 approval if legal/financial/customer-facing"
+    },
+    {
+      "area": "Finance",
+      "slack": "#mlg-finance-review",
+      "odoo": "Accounting / Invoicing / Expenses",
+      "flow": "Draft invoice/payment/expense \u2192 Slack finance review \u2192 Odoo record \u2192 approval before sending/payment/customer-facing action"
+    }
+  ],
+  "gsd_ralphloop": {
+    "status": "active_repo_only",
+    "active_issue": "https://github.com/viewport-corp/viewport-ops/issues/196",
+    "branch": "ops/gsd-ralphloop-githubops-runtime",
+    "contract": "viewport-company-os/workflows/gsd-ralphloop-operating-contract.yaml",
+    "active_queue": "viewport-company-os/tasks/gsd-ralphloop-active-queue.yaml",
+    "proof": "viewport-company-os/evidence/gsd-ralphloop-activation-proof.yaml",
+    "loop": [
+      "Goal",
+      "Setup",
+      "Do",
+      "Verify",
+      "Diagnose",
+      "Fix",
+      "Repeat",
+      "Evidence"
+    ],
+    "runtime_boundary": "VPS runtime is read-only reconciliation until RuntimeContracts/backups/rollback/approval gates exist.",
+    "next": "Convert VPS runtime reconciliation into RuntimeContract-backed GitHub task packets."
+  },
+  "vps_runtime_reconciliation": {
+    "schema_version": "0.1.0",
+    "generated_at_utc": "2026-06-05T03:24:04.776774+00:00",
+    "github_issue": "https://github.com/viewport-corp/viewport-ops/issues/196",
+    "source": "read-only ssh platformx-vps-root docker ps -a --format json",
+    "verification": {
+      "total_containers": 72,
+      "running_containers": 65,
+      "unhealthy_containers": 3,
+      "families": {
+        "platformx": 30,
+        "mlh": 10,
+        "coolify": 5,
+        "dokploy": 3,
+        "oh": 3,
+        "origin": 3,
+        "saathi": 3,
+        "mlg": 2,
+        "viewport": 2,
+        "2dab5b8f": 1,
+        "crusher": 1,
+        "dokploy.1.9f2qhxd9d8vlrhdg03lusvrv5": 1,
+        "hermes": 1,
+        "local": 1,
+        "mc": 1,
+        "modernlao": 1,
+        "openclaw": 1,
+        "portainer": 1,
+        "qfphb1umk5ce9jfmifel9o5k": 1,
+        "weft": 1
+      }
+    },
+    "runtime_contract_policy": {
+      "mode": "read_only_reconciliation_until_runtime_contracts_exist",
+      "contract_template": "viewport-company-os/runtime/runtime-contract-template.yaml",
+      "required_before_mutation": [
+        "owner",
+        "tenant",
+        "repo/source",
+        "domain/routes",
+        "data/volume backup",
+        "healthcheck",
+        "rollback",
+        "approval class"
+      ]
+    },
+    "priority_queue": [
+      {
+        "priority": "P0",
+        "container": "saathi-app-1",
+        "status": "Up 4 weeks (unhealthy)",
+        "image": "saathi-app:latest",
+        "required_next": "Create/attach RuntimeContract and issue before any restart/fix; collect logs read-only if needed.",
+        "mutation_allowed": false
+      },
+      {
+        "priority": "P0",
+        "container": "origin-backend",
+        "status": "Up 5 weeks (unhealthy)",
+        "image": "origin-backend:latest",
+        "required_next": "Create/attach RuntimeContract and issue before any restart/fix; collect logs read-only if needed.",
+        "mutation_allowed": false
+      },
+      {
+        "priority": "P0",
+        "container": "platformx-nextcloud",
+        "status": "Up 5 weeks (unhealthy)",
+        "image": "nextcloud:28-apache",
+        "required_next": "Create/attach RuntimeContract and issue before any restart/fix; collect logs read-only if needed.",
+        "mutation_allowed": false
+      },
+      {
+        "priority": "P1",
+        "container_group": "unmapped_runtime_contracts",
+        "count": 72,
+        "required_next": "Map each container to owner/tenant/repo/domain/backup/rollback in GitHub before runtime mutation.",
+        "mutation_allowed": false
+      }
+    ],
+    "all_container_names": [
+      "openclaw-sbx-agent-bizdev-134566cd",
+      "modernlao-site",
+      "mlh-comms-vault-api",
+      "viewport-openclaw-fresh-openclaw-cli-1",
+      "viewport-openclaw-fresh-openclaw-gateway-1",
+      "mlg-auth-gate",
+      "mlh-client-portal-dokploy-staging-mdifsm-mlh-client-portal-1",
+      "mlh-client-portal-staging-20260530T235208Z",
+      "mlh-clients-portal-clean-v3-20260530T231239Z",
+      "mlh-clients-portal-clean-v2-20260530T231050Z",
+      "mlh-clients-portal-clean-20260530T230742Z",
+      "dokploy-traefik",
+      "dokploy.1.9f2qhxd9d8vlrhdg03lusvrv5",
+      "dokploy-redis.1.d0dgsgijhwzsv4b9592nmk60y",
+      "dokploy-postgres.1.sioj8xf6a7vb361xtqhdfbm43",
+      "coolify",
+      "coolify-db",
+      "coolify-redis",
+      "coolify-realtime",
+      "mlh-api-handler",
+      "coolify-sentinel",
+      "mlh-api-handler-before-cameron-20260515002135",
+      "mlh-api-handler-bad-20260514232618",
+      "hermes-bccl",
+      "crusher-verify-api",
+      "mlh-api-handler-prev-20260514231437",
+      "qfphb1umk5ce9jfmifel9o5k-050628046616",
+      "saathi-app-1",
+      "saathi-postgres-1",
+      "saathi-redis-1",
+      "weft-local-postgres",
+      "platformx-performer-web",
+      "mlg-jacam-api",
+      "platformx-mc-daemon",
+      "platformx-mc-api",
+      "mc_postgres",
+      "platformx-n8n",
+      "platformx-mem0",
+      "portainer",
+      "platformx-neo4j",
+      "platformx-mc-dashboard",
+      "platformx-anythingllm",
+      "platformx-claude-memory",
+      "platformx-litellm",
+      "platformx-odoo-db",
+      "platformx-nginx",
+      "platformx-odoo",
+      "platformx-langfuse",
+      "platformx-langfuse-db",
+      "platformx-redis",
+      "platformx-fileserver",
+      "2dab5b8f-117d-42db-b2c9-bf5f146cb13d-111804257337",
+      "origin-backend",
+      "platformx-coder",
+      "platformx-qdrant",
+      "local-registry",
+      "origin-worker",
+      "origin-redis",
+      "platformx-discord-bot",
+      "platformx-litellm-db",
+      "platformx-nextcloud",
+      "platformx-nextcloud-db",
+      "platformx-claudecodeui",
+      "oh-agent-server-6gCRPbTA90M4Jf9PnG9E9H",
+      "platformx-council-frontend",
+      "platformx-council-backend",
+      "oh-agent-server-7E6YLaYWJp9rhyHHe8kvpk",
+      "oh-agent-server-2vTzHnwvsriBnKmbYovPby",
+      "platformx-openhands",
+      "platformx-openwebui",
+      "platformx-pipelines",
+      "platformx-council-nginx"
+    ]
+  }
+}

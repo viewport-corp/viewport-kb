@@ -1,0 +1,417 @@
+{
+  "collected_at": "2026-06-04T22:57:07.263175+00:00",
+  "org": "viewport-corp",
+  "api_user": "theplatformx",
+  "token_scopes_header": "admin:enterprise, admin:gpg_key, admin:org, admin:org_hook, admin:public_key, admin:repo_hook, admin:ssh_signing_key, audit_log, codespace, copilot, delete:packages, delete_repo, gist, notifications, project, repo, user, workflow, write:discussion, write:network_configurations, write:packages",
+  "token_expiration_header": "UNKNOWN",
+  "repo_count": 9,
+  "repos": [
+    {
+      "name": "viewport-ops",
+      "full_name": "viewport-corp/viewport-ops",
+      "visibility": "private",
+      "private": true,
+      "description": "Viewport Corporation operations, governance, migration council, and GitHub-first control plane.",
+      "default_branch": "council/bootstrap-20260510",
+      "branch_protection_status": "unknown_http_403",
+      "last_commit": {
+        "date": "2026-06-01T19:18:45Z",
+        "author": "theplatformx",
+        "sha": "1556ee90d5adf9dfbd27686323f288d0aa7378fe"
+      },
+      "open_issues_count": 4,
+      "open_prs_count": 0,
+      "files": {
+        "AGENTS.md": true,
+        "CLAUDE.md": true,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": true
+      },
+      "topics": [],
+      "labels_count": 100,
+      "tenant": "Viewport",
+      "last_deploy_artifact": {
+        "artifact_count": 0,
+        "latest_release": null
+      },
+      "issues_but_no_prs": true
+    },
+    {
+      "name": "migration-dashboard-internal",
+      "full_name": "viewport-corp/migration-dashboard-internal",
+      "visibility": "private",
+      "private": true,
+      "description": "Internal private Viewport migration dashboard inspired by ReleaseBar; not a public fork.",
+      "default_branch": "main",
+      "branch_protection_status": "unknown_http_403",
+      "last_commit": {
+        "date": "2026-05-31T18:46:13Z",
+        "author": "Hermes Operator",
+        "sha": "996897ee50d70cf72d28e84b59e68bc1bd7e436d"
+      },
+      "open_issues_count": 0,
+      "open_prs_count": 1,
+      "files": {
+        "AGENTS.md": true,
+        "CLAUDE.md": false,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": false
+      },
+      "topics": [],
+      "labels_count": 11,
+      "tenant": "Viewport",
+      "last_deploy_artifact": {
+        "artifact_count": 0,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    },
+    {
+      "name": "fork-hermes-agent",
+      "full_name": "viewport-corp/fork-hermes-agent",
+      "visibility": "public",
+      "private": false,
+      "description": "The agent that grows with you",
+      "default_branch": "main",
+      "branch_protection_status": "not_protected",
+      "last_commit": {
+        "date": "2026-05-31T09:04:28Z",
+        "author": "CodeX",
+        "sha": "6e9ac2249ca0974c89b3aeebab3a7ba753928ecf"
+      },
+      "open_issues_count": 0,
+      "open_prs_count": 0,
+      "files": {
+        "AGENTS.md": true,
+        "CLAUDE.md": true,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": false
+      },
+      "topics": [],
+      "labels_count": 9,
+      "tenant": "Viewport",
+      "last_deploy_artifact": {
+        "artifact_count": 8,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    },
+    {
+      "name": "fork-openclaw",
+      "full_name": "viewport-corp/fork-openclaw",
+      "visibility": "public",
+      "private": false,
+      "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. \ud83e\udd9e ",
+      "default_branch": "main",
+      "branch_protection_status": "not_protected",
+      "last_commit": {
+        "date": "2026-05-31T09:02:57Z",
+        "author": "CodeX",
+        "sha": "9c90878611a1b0e8175664a7a213c29f05b9c740"
+      },
+      "open_issues_count": 1,
+      "open_prs_count": 1,
+      "files": {
+        "AGENTS.md": true,
+        "CLAUDE.md": true,
+        "HANDOFF.md": true,
+        "README": true,
+        "runtime_contract": true
+      },
+      "topics": [],
+      "labels_count": 9,
+      "tenant": "Viewport",
+      "last_deploy_artifact": {
+        "artifact_count": 87,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    },
+    {
+      "name": "product-tradex",
+      "full_name": "viewport-corp/product-tradex",
+      "visibility": "private",
+      "private": true,
+      "description": "TradeX experimental product repo",
+      "default_branch": "main",
+      "branch_protection_status": "unknown_http_403",
+      "last_commit": {
+        "date": "2026-05-31T02:16:32Z",
+        "author": "theplatformx",
+        "sha": "847de9999886a0f8e7073f21a2c6b74dde76bd5e"
+      },
+      "open_issues_count": 0,
+      "open_prs_count": 0,
+      "files": {
+        "AGENTS.md": true,
+        "CLAUDE.md": false,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": true
+      },
+      "topics": [],
+      "labels_count": 9,
+      "tenant": "unknown",
+      "last_deploy_artifact": {
+        "artifact_count": 0,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    },
+    {
+      "name": "modern-lao-homes-client-portal",
+      "full_name": "viewport-corp/modern-lao-homes-client-portal",
+      "visibility": "private",
+      "private": true,
+      "description": "Modern Lao Homes client portal source and Dokploy deployment package. Private; client-facing content only.",
+      "default_branch": "main",
+      "branch_protection_status": "unknown_http_403",
+      "last_commit": {
+        "date": "2026-05-31T01:38:47Z",
+        "author": "Hermes",
+        "sha": "fb392335dcd362eb72e23865559e6ddb0e136845"
+      },
+      "open_issues_count": 0,
+      "open_prs_count": 0,
+      "files": {
+        "AGENTS.md": false,
+        "CLAUDE.md": false,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": false
+      },
+      "topics": [],
+      "labels_count": 9,
+      "tenant": "MLG/MLH",
+      "last_deploy_artifact": {
+        "artifact_count": 0,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    },
+    {
+      "name": "demo-repository",
+      "full_name": "viewport-corp/demo-repository",
+      "visibility": "private",
+      "private": true,
+      "description": "A code repository designed to show the best GitHub has to offer.",
+      "default_branch": "main",
+      "branch_protection_status": "unknown_http_403",
+      "last_commit": {
+        "date": "2026-05-30T13:48:53Z",
+        "author": "theplatformx",
+        "sha": "296cbedbe0c4ef28848ade01f39101358d04be07"
+      },
+      "open_issues_count": 0,
+      "open_prs_count": 0,
+      "files": {
+        "AGENTS.md": false,
+        "CLAUDE.md": false,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": false
+      },
+      "topics": [],
+      "labels_count": 9,
+      "tenant": "unknown",
+      "last_deploy_artifact": {
+        "artifact_count": 0,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    },
+    {
+      "name": "tenant-bccl-laowise-website",
+      "full_name": "viewport-corp/tenant-bccl-laowise-website",
+      "visibility": "private",
+      "private": true,
+      "description": "Tenant BCCL / LaoWise website source. BCCL-only access boundary.",
+      "default_branch": "main",
+      "branch_protection_status": "unknown_http_403",
+      "last_commit": {
+        "date": "2026-05-12T19:00:40Z",
+        "author": "VIEWPORT",
+        "sha": "08d267e3c2c4ecc5186b8aba39ed0d52fe5e6061"
+      },
+      "open_issues_count": 0,
+      "open_prs_count": 0,
+      "files": {
+        "AGENTS.md": false,
+        "CLAUDE.md": false,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": false
+      },
+      "topics": [],
+      "labels_count": 9,
+      "tenant": "BCCL",
+      "last_deploy_artifact": {
+        "artifact_count": 0,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    },
+    {
+      "name": "fork-hermes-bccl",
+      "full_name": "viewport-corp/fork-hermes-bccl",
+      "visibility": "public",
+      "private": false,
+      "description": "The agent that grows with you",
+      "default_branch": "main",
+      "branch_protection_status": "not_protected",
+      "last_commit": {
+        "date": "2026-05-11T18:20:58Z",
+        "author": "kshitij",
+        "sha": "ce0f529cde11f743a5cd2a8ee8a0d52088cb2065"
+      },
+      "open_issues_count": 0,
+      "open_prs_count": 0,
+      "files": {
+        "AGENTS.md": true,
+        "CLAUDE.md": true,
+        "HANDOFF.md": false,
+        "README": true,
+        "runtime_contract": false
+      },
+      "topics": [],
+      "labels_count": 9,
+      "tenant": "BCCL",
+      "last_deploy_artifact": {
+        "artifact_count": 0,
+        "latest_release": null
+      },
+      "issues_but_no_prs": false
+    }
+  ],
+  "lists": {
+    "no_commits_last_30_days": [],
+    "issues_but_no_open_prs": [
+      "viewport-corp/viewport-ops"
+    ],
+    "runtime_contracts": [
+      "viewport-corp/viewport-ops",
+      "viewport-corp/fork-openclaw",
+      "viewport-corp/product-tradex"
+    ],
+    "missing_owner_assignment": [
+      "viewport-corp/product-tradex",
+      "viewport-corp/demo-repository"
+    ],
+    "missing_readme": [],
+    "missing_agents_md": [
+      "viewport-corp/modern-lao-homes-client-portal",
+      "viewport-corp/demo-repository",
+      "viewport-corp/tenant-bccl-laowise-website"
+    ]
+  },
+  "write_test": {
+    "created": true,
+    "issue_number": 177,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/177",
+    "close_status": 200,
+    "verified_state": "closed"
+  },
+  "audit_find_issue": {
+    "status": 201,
+    "number": 178,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/178",
+    "error": null
+  },
+  "rate_limit": {
+    "resources": {
+      "core": {
+        "limit": 5000,
+        "used": 0,
+        "remaining": 5000,
+        "reset": 1780617429
+      },
+      "search": {
+        "limit": 30,
+        "used": 0,
+        "remaining": 30,
+        "reset": 1780613889
+      },
+      "graphql": {
+        "limit": 5000,
+        "used": 11,
+        "remaining": 4989,
+        "reset": 1780615929
+      },
+      "integration_manifest": {
+        "limit": 5000,
+        "used": 0,
+        "remaining": 5000,
+        "reset": 1780617429
+      },
+      "source_import": {
+        "limit": 100,
+        "used": 0,
+        "remaining": 100,
+        "reset": 1780613889
+      },
+      "code_scanning_upload": {
+        "limit": 5000,
+        "used": 0,
+        "remaining": 5000,
+        "reset": 1780617429
+      },
+      "code_scanning_autofix": {
+        "limit": 10,
+        "used": 0,
+        "remaining": 10,
+        "reset": 1780613889
+      },
+      "actions_runner_registration": {
+        "limit": 10000,
+        "used": 0,
+        "remaining": 10000,
+        "reset": 1780617429
+      },
+      "scim": {
+        "limit": 15000,
+        "used": 0,
+        "remaining": 15000,
+        "reset": 1780617429
+      },
+      "dependency_snapshots": {
+        "limit": 100,
+        "used": 0,
+        "remaining": 100,
+        "reset": 1780613889
+      },
+      "dependency_sbom": {
+        "limit": 100,
+        "used": 0,
+        "remaining": 100,
+        "reset": 1780613889
+      },
+      "audit_log": {
+        "limit": 1750,
+        "used": 0,
+        "remaining": 1750,
+        "reset": 1780617429
+      },
+      "audit_log_streaming": {
+        "limit": 15,
+        "used": 0,
+        "remaining": 15,
+        "reset": 1780617429
+      },
+      "code_search": {
+        "limit": 10,
+        "used": 0,
+        "remaining": 10,
+        "reset": 1780613889
+      }
+    },
+    "rate": {
+      "limit": 5000,
+      "used": 0,
+      "remaining": 5000,
+      "reset": 1780617429
+    }
+  }
+}

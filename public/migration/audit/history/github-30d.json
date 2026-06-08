@@ -1,0 +1,1501 @@
+{
+  "repos": [
+    {
+      "repo": "viewport-corp/fork-hermes-agent",
+      "issues_prs_count": 5,
+      "commits_count": 100,
+      "issues_prs": [
+        {
+          "n": 5,
+          "title": "chore: merge upstream Hermes latest into Viewport fork",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 4,
+          "title": "chore: sync Hermes fork with upstream latest",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 3,
+          "title": "fix(gateway): queue Telegram sends and repair Viewport healthcheck",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 2,
+          "title": "deploy: fix runtime \u2014 add command, fix healthcheck, bind mount",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 1,
+          "title": "deploy: initial docker-compose.yml for docker-viewport daemon",
+          "state": "closed",
+          "is_pr": true
+        }
+      ],
+      "commits": [
+        {
+          "sha": "6e9ac2249ca0974c89b3aeebab3a7ba753928ecf",
+          "msg": "Merge remote-tracking branch 'upstream/main'"
+        },
+        {
+          "sha": "4ccd141b15a4fe42992fd288cbd34ca60fb77bb3",
+          "msg": "Merge pull request #35776 from kshitijk4poor/fix/curses-arrow-key-decode\n\nfix(cli): decode raw arrow-key escape sequences in curses menus"
+        },
+        {
+          "sha": "3463c97a362cc99f30174519f21ec15b98e835e9",
+          "msg": "fix(cli): decode raw arrow-key escape sequences in curses menus\n\nThe setup wizard's provider/model pickers (curses_radiolist via\nprompt_choice) bailed to the numbered \"Select [1-N]\" fallback the momen"
+        },
+        {
+          "sha": "0cd7d54b00106d8992803a918ce55d5c205550f3",
+          "msg": "feat(kanban): goal_mode cards run workers in a /goal loop (#35710)\n\n* feat(kanban): goal_mode cards run workers in a /goal loop\n\nA goal_mode card wraps its dispatched worker in the Ralph-style goal\nlo"
+        },
+        {
+          "sha": "32899279a744805350be891ccf3ae08289efc702",
+          "msg": "fix(gateway): detach pending_watchers batch + normalize LRU caches + align test fixtures + AUTHOR_MAP\n\nSelf-review follow-up on top of the salvaged perf fixes:\n\n- gateway/run.py (both watcher-drain si"
+        },
+        {
+          "sha": "0036c729238afd33b23210726cf6b21606fea047",
+          "msg": "fix(gateway): upgrade plugin/bundle error logging and fix O(n^2) watcher recovery\n\nN43 \u2014 Silent plugin/bundle errors:\n- Plugin command dispatch: logger.debug() -> logger.warning()\n- Bundle dispatch: l"
+        },
+        {
+          "sha": "eb9bfd39248b1a0f5a2f694c0e80110c630590b0",
+          "msg": "fix(T5): replace time.sleep(0.25) with asyncio.sleep in MCP auth reconnect poll\n\nPAIN BEFORE:\nInside _handle_auth_error_and_retry() (a sync function that runs on the MCP\nevent loop thread), there was "
+        },
+        {
+          "sha": "91a98d15190181814b68792a0431ae8bc034e462",
+          "msg": "fix: tool_output_limits re-reads config on every call (no caching)"
+        },
+        {
+          "sha": "3c21fed099727965fcb547bb9b263afe6b573cb0",
+          "msg": "fix(bluebubbles): cap _guid_cache with LRU eviction to prevent unbounded growth\n\nThe _guid_cache dict grows without bound as new contacts/groups are\nresolved.  In a long-running gateway instance with "
+        },
+        {
+          "sha": "e8cacb57d531137dec3109617e807b30ff5187c9",
+          "msg": "fix(feishu): cap _message_text_cache with LRU eviction to prevent unbounded growth\n\n_message_text_cache was a plain dict with no size limit. Every unique\nmessage_id whose text was fetched (for reply-c"
+        },
+        {
+          "sha": "e1293bde4ed039a0b32c14b003708dc16a7b6df3",
+          "msg": "feat(models): refresh model catalog hourly instead of daily (#35756)\n\nLower the model_catalog disk-cache TTL from 24h to 1h so freshly\npublished model-catalog.json deploys reach the picker within an h"
+        },
+        {
+          "sha": "ca03486b6a5a86e2be28d83d4cad61770619e7fb",
+          "msg": "fix(streaming): stop duplicating tool-call args from cumulative-resend providers (#35718)\n\nDeepSeek / Baidu Qianfan stream tool-call arguments in cumulative mode:\neach chunk resends the full arguments"
+        },
+        {
+          "sha": "0ffbcbbe7d484757ada355afdbfae24910676ea7",
+          "msg": "fix(vision): cap embedded image size before it wedges a session (#35732)\n\nResize vision tool-result images down to a 4 MB embed cap at load time,\nnot just at the 20 MB hard ceiling. A 5-20 MB image pr"
+        },
+        {
+          "sha": "d4e7b2fc198383d536f5e59173f822e652eda049",
+          "msg": "fix(voice): allow /voice over SSH when a sound server is reachable (#35719)\n\nSSH sessions hard-failed voice mode on the presence of SSH_* env vars\nalone, even when a PulseAudio/PipeWire server is runn"
+        },
+        {
+          "sha": "d276018378b861cff5d998e54bf1d9d415207ad0",
+          "msg": "docs(toolsets): clarify all/* wildcard does not enable kanban (#35729)\n\nThe all/* wildcard expands to every registered toolset, but a handful of\ntools have an additional check_fn gate on top of toolse"
+        },
+        {
+          "sha": "bd72d333dce5153750ac42fbb374f942b6aecbbe",
+          "msg": "fix(gateway,cron): reuse existing _HERMES_GATEWAY marker; tighten cron regex\n\nFollow-up to the salvaged #30728:\n- Gateway already exports _HERMES_GATEWAY=1 at startup (gateway/run.py) and\n  cli.py alr"
+        },
+        {
+          "sha": "5cd6c1717d22f52342dd0c9630b8f9f06048d6ba",
+          "msg": "fix(gateway,cron): prevent agent restart loops via self-targeting gateway commands (#30719)\n\nThree defenses against SIGTERM-respawn loops when agent schedules its\nown gateway restart under launchd/sys"
+        },
+        {
+          "sha": "9b78f411c8be21ff90136cafefae65451c24804b",
+          "msg": "fix(security): neutralize file paths in mutation-verifier footer (#35584) (#35684)\n\nThe per-turn file-mutation verifier footer rendered failed-write paths as\nbare absolute paths in the user-facing res"
+        },
+        {
+          "sha": "dc4de143778ab2e156063513fe64d6b41a675860",
+          "msg": "fix(telegram): retry on httpx pool timeout instead of dropping the send (#35664)\n\nWhen PTB's general httpx pool is exhausted, it converts httpx.PoolTimeout\ninto telegram.error.TimedOut whose message s"
+        },
+        {
+          "sha": "559e5ff57a1249a38f99a49961060eddecde7555",
+          "msg": "chore: merge upstream Hermes latest into Viewport fork (#5)\n\nMerged by Hermes under viewport-ops issue #88 after lightweight syntax validation. Runtime apply remains gated."
+        },
+        {
+          "sha": "f347272e7445bd424d3c5278a7a6044d4554120a",
+          "msg": "chore: merge upstream Hermes latest into Viewport fork"
+        },
+        {
+          "sha": "02d1da49de5086946256cc157ff928dcffbe8ca1",
+          "msg": "Block Hermes root config in media delivery"
+        },
+        {
+          "sha": "50db2d9c12f2734b4ba8bbeb3c92a6e14e786a02",
+          "msg": "feat(models): add deepseek-v4-flash, trim variants, group curated lists by maker (#35659)\n\n* feat(models): add deepseek-v4-flash to OpenRouter + Nous curated lists\n\ndeepseek/deepseek-v4-flash was alre"
+        },
+        {
+          "sha": "fe62424ac481fb83a6f2df52b02635abbe624a64",
+          "msg": "test(redact): assert Discord mentions pass through unchanged\n\nRewrite TestDiscordMentions as negative assertions (mentions survive the\nredactor) and clean up the orphaned comment + dangling whitespace"
+        },
+        {
+          "sha": "c2cbe2c97df442aba8d1d5ffad70f5f376c30ea1",
+          "msg": "fix: remove Discord mention redaction from secret scrubber"
+        },
+        {
+          "sha": "9ed9af2f7d5c8db93da721b3c9efd00ed0e02cc0",
+          "msg": "fix(update): name new config options in migration prompt; skip prompt for pure version bumps (#35658)\n\nThe 'hermes update' config-migration prompt printed only counts ('1 new\nconfig option available')"
+        },
+        {
+          "sha": "b1d34cf6e28f3aa161ca9788eb7ff0c76bf8b7f6",
+          "msg": "fix(tui): clamp bogus terminal dimensions (WSL 131072x1) (#35657)\n\nSome hosts (notably WSL) report a junk window size such as 131072 columns\nby 1 row. Both the Ink fork and our components only guard a"
+        },
+        {
+          "sha": "cd067ab91ee4ab0f0628f6d6b385e7b89d0cb9b9",
+          "msg": "fix(tui): swallow degraded mouse-burst noise so a stalled loop can't lock the composer (#35512)\n\n* fix(tui): swallow degraded mouse-burst noise so a stalled loop can't lock the composer\n\nWhen the Node"
+        },
+        {
+          "sha": "355af2c20f495b97c22c9aeb4c227fb0ca010da7",
+          "msg": "fix(session): survive missing FTS5 runtimes"
+        },
+        {
+          "sha": "ec67def5bf4e95d9dd1d3ab85c46179f3f97613f",
+          "msg": "fix(install): refresh stale uv so installs actually get FTS5 Python (#35541)\n\nThe installer's ensure_fts5() handled a no-FTS5 Python by running\n'uv python install --reinstall', but WHICH Python builds"
+        },
+        {
+          "sha": "4ec0adebe834c4a3a3838e83f47c7fadeb62380e",
+          "msg": "fix(gateway): denylist config.yaml for media delivery (belt-and-suspenders)\n\nDefense-in-depth on top of the EphemeralReply gate: even if a config.yaml\npath reaches response text via some other path, i"
+        },
+        {
+          "sha": "bdfba45247ed2b742d6f452353e6dbcdaaf8e9e6",
+          "msg": "fix(gateway): stop system tips from auto-uploading local files"
+        },
+        {
+          "sha": "b1a25404b638bfbd79ce4d08b49afc0ee1361528",
+          "msg": "perf(read_file): make compact gutter the only format; drop HERMES_READ_GUTTER (#35532)\n\nThe compact \"<n>|content\" gutter from #35368 is now the sole behavior.\nRemoves the HERMES_READ_GUTTER=padded esc"
+        },
+        {
+          "sha": "5921d667855880b0aa2083a50f001748aed52f3e",
+          "msg": "fix(cli): stop OSC 11 bg probe from trapping users in a stray editor (#35441)\n\nOver SSH the OSC 11 background-color query round-trip routinely exceeds\nthe 100ms read budget, so _query_osc11_background"
+        },
+        {
+          "sha": "6a72af044c44c9a05137bc448bc65ecf0ace5a89",
+          "msg": "fix(managed-gateway): keep tool availability scans off the Nous token-refresh path"
+        },
+        {
+          "sha": "96643b4a52b118477b07c838e30eb8ae7372062c",
+          "msg": "fix(file-tools): anchor relative-path resolution to absolute base; report resolved path (#35399)\n\nRelative paths in write_file/patch could resolve against the agent PROCESS cwd\ninstead of the terminal"
+        },
+        {
+          "sha": "0c6e133c0434ec856d4aea2b08f216f36c0e7dac",
+          "msg": "perf(cli): stop eager MCP discovery from blocking agent-capable startup"
+        },
+        {
+          "sha": "b47cb1bbf27926454854834c0ca381c39628ab9d",
+          "msg": "feat(kanban): file attachments on tasks (#35395)\n\nTasks can now carry file attachments (PDFs, images, source docs) that\nworkers read directly \u2014 closes the gap where source material had to be\npasted as"
+        },
+        {
+          "sha": "20d073fd0b1f21ae6baaff954961d56a7f64973a",
+          "msg": "test: update extract_local_files Windows-path test for new matching behavior\n\ntest_windows_path_not_matched asserted the pre-fix POSIX-only behavior.\nThe Windows drive-letter support now intentionally"
+        },
+        {
+          "sha": "1b955450e31734bd0398f4d80d995dcee6d1ab28",
+          "msg": "test: use raw docstring in test_run_tool_media_re to silence escape warning"
+        },
+        {
+          "sha": "51d165a8e71ca84112708af4a9add7a71e4ee424",
+          "msg": "fix(gateway): support Windows absolute paths in MEDIA tag regex and extract_local_files (#34632)\n\nThe MEDIA_TAG_CLEANUP_RE and extract_local_files path regex both used\n(?:~/|/) to anchor paths, which "
+        },
+        {
+          "sha": "45465b0d5d8c7b2db7df6d9e466589cdef9136c0",
+          "msg": "fix(gateway): never auto-pause platforms on transient network/DNS failures (#35387)\n\nThe per-platform reconnect watcher auto-paused a platform after 10\nconsecutive reconnect failures, setting next_ret"
+        },
+        {
+          "sha": "cddb7283d9d10bcea9df2bd8b39eb0b19be39f3d",
+          "msg": "fix(gateway): config.yaml path for WhatsApp/Weixin text-batch delays\n\nConvert the salvaged text-debounce delays from HERMES_* env vars to\nconfig.yaml (gateway.platforms.<name>.extra.text_batch_delay_s"
+        },
+        {
+          "sha": "b0ce47daac99f032a1e4ec2f0f9085e4cd5f585b",
+          "msg": "feat: add text debounce batching for WhatsApp and WeChat platforms\n\nWhatsApp and WeChat (Weixin/iLink) both deliver messages individually\nwithout any client-side batching, so rapid multi-message burst"
+        },
+        {
+          "sha": "234ac009376daba225525195afca96be8a82634c",
+          "msg": "fix(dashboard): allow insecure WS peers on explicit non-loopback binds (#35386)\n\nThe merged 0.0.0.0/:: insecure-bind fix (#35141) did not cover binding\ndirectly to a specific non-loopback address (e.g"
+        },
+        {
+          "sha": "433bffff51ec1a731fabc29637a17d5f4fc9f422",
+          "msg": "fix(cli): surface oneshot agent exceptions to stderr with rc=1\n\nLayer an exception guard on top of the empty-response fix so a crash\ninside the agent (e.g. OSError from prompt_toolkit/Vt100 when stdou"
+        },
+        {
+          "sha": "9fbde54b5176b6a2fef198b6d870704a3fd994d6",
+          "msg": "fix(cli): fail closed on empty oneshot responses"
+        },
+        {
+          "sha": "92ad7cc62cf030820d1eee9ceabd40f9b4c2cd9e",
+          "msg": "fix(browser): recover from CDP DOM-node serialization crash in browser_console (#35385)\n\nbrowser_console(expression=\"document.body\") returned the cryptic CDP error\n\"Object reference chain is too long\""
+        },
+        {
+          "sha": "42bbd221e8e38a0c8213cff9e2d16a640d0d8760",
+          "msg": "fix(compressor): strip stale handoff prefix on resume; reconcile #26290+#32787 (#35344)\n\nA handoff persisted under an older SUMMARY_PREFIX can be inherited into a\nresumed lineage. _strip_summary_prefi"
+        },
+        {
+          "sha": "56b8dccf252fcb60fa7b69c623071e096d2e2ce2",
+          "msg": "fix(compressor): treat unanswered user questions as Active Task, not 'None'\n\nThe Active Task field in compression summaries is the single most important\nfield for task continuity across context bounda"
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/viewport-ops",
+      "issues_prs_count": 100,
+      "commits_count": 69,
+      "issues_prs": [
+        {
+          "n": 190,
+          "title": "[AUDIT-FIND] Section 10 audit gaps \u2014 2026-06-04 23:46 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 189,
+          "title": "[AUDIT-FIND] Section 9 audit gaps \u2014 2026-06-04 23:46 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 188,
+          "title": "[AUDIT-FIND] Section 8 audit gaps \u2014 2026-06-04 23:46 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 187,
+          "title": "[AUDIT-FIND] Section 7 audit gaps \u2014 2026-06-04 23:46 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 186,
+          "title": "[AUDIT-FIND] Section 6 audit gaps \u2014 2026-06-04 23:46 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 185,
+          "title": "[AUDIT-FIND] Section 5 audit gaps \u2014 2026-06-04 23:46 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 184,
+          "title": "[AUDIT-FIND] Section 4 audit gaps \u2014 2026-06-04 23:44 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 183,
+          "title": "[AUDIT-FIND] Section 3 agent fleet gaps \u2014 2026-06-04 23:36 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 182,
+          "title": "[AUDIT-FIND] Section 2 VPS runtime inventory gaps \u2014 2026-06-04 23:23 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 181,
+          "title": "[AUDIT-FIND] Section 2 VPS runtime inventory gaps \u2014 2026-06-04 23:09 UTC",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 180,
+          "title": "[AUDIT-FIND] Section 2 VPS runtime inventory gaps \u2014 2026-06-04 23:05 UTC",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 179,
+          "title": "[AUDIT-FIND] Section 2 VPS runtime inventory gaps \u2014 2026-06-04 23:01 UTC",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 178,
+          "title": "[AUDIT-FIND] Section 1 GitHub inventory gaps \u2014 2026-06-04 22:57 UTC",
+          "state": "open",
+          "is_pr": false
+        },
+        {
+          "n": 177,
+          "title": "[AUDIT-TEST] GitHub write access verification 2026-06-04T22:57:53.945325+00:00",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 176,
+          "title": "Complete Odoo agent readiness gate",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 175,
+          "title": "Odoo agent readiness gate \u2014 central CompanyOS support before execution",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 174,
+          "title": "Enforce universal agent entry protocol",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 173,
+          "title": "Add Modern Lao Homes adoption plan evidence",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 172,
+          "title": "Harden active agent seat kill switches",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 171,
+          "title": "CompanyOS: gate Agent QA golden set in CI",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 170,
+          "title": "CompanyOS: gate Stage 2 shadow agents in CI",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 169,
+          "title": "companyos: add Stage 2 shadow routing matrix",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 168,
+          "title": "companyos: validate agent qa golden set",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 167,
+          "title": "CompanyOS: normalize remaining first-wave shadow seats",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 166,
+          "title": "Add Proof Case 007 agent QA golden-set fixture",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 165,
+          "title": "companyos: harden Stage 2 tools policy traceability",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 164,
+          "title": "companyos: harden Stage 2 shadow seat policies",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 163,
+          "title": "Validate Stage 2 agency seat fragments",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 162,
+          "title": "Stage 2: Normalize first-wave agency agents into Viewport shadow seat fragments",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 161,
+          "title": "Add Hermes operator runtime charter evidence",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 160,
+          "title": "Add Stage 2 agency agent seat fragments",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 159,
+          "title": "Stage 2: Normalize first-wave agency agents into Viewport seat fragments",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 158,
+          "title": "Harden CompanyOS intake raw request capture",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 157,
+          "title": "Stage 1: Catalog agency-agents source material for Viewport seats",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 156,
+          "title": "Stage 1: Curate agency-agents source-material catalog for Viewport seats",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 155,
+          "title": "Add SRE proof case 005 evidence",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 154,
+          "title": "Audit agency-agents for CompanyOS/OpenClaw adoption",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 153,
+          "title": "Audit agency-agents for Viewport CompanyOS/OpenClaw adoption",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 152,
+          "title": "Proof Case 003: GitHub Office routing evidence",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 151,
+          "title": "Proof Case 002: PMO weekly operating review pack",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 150,
+          "title": "Prepare issue 148 agent-readiness-drift activation candidate",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 149,
+          "title": "Phase 4W: Founder-visible CompanyOS proof and dry-run evidence",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 148,
+          "title": "Activation candidate: agent-readiness-drift read-only watcher",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 147,
+          "title": "CompanyOS founder-visible proof artifact and watcher dry-run evidence",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 146,
+          "title": "Phase 4V: Add agent promotion proof gate",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 145,
+          "title": "Phase 4V: Add agent promotion proof gate",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 144,
+          "title": "Phase 4U: Add CompanyOS routing/audit integration",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 143,
+          "title": "Phase 4U: Add CompanyOS routing/audit integration map",
+          "state": "closed",
+          "is_pr": false
+        },
+        {
+          "n": 142,
+          "title": "Phase 4T: enforce proof-loop evidence schema",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 141,
+          "title": "Phase 4T: enforce GSD/Ralph proof-loop evidence schema",
+          "state": "closed",
+          "is_pr": false
+        }
+      ],
+      "commits": [
+        {
+          "sha": "1556ee90d5adf9dfbd27686323f288d0aa7378fe",
+          "msg": "Complete Odoo agent readiness gate (#176)\n\n* Add Odoo agent readiness gate evidence\n\n* Link Odoo readiness evidence to PR\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "2acde340a9f8e8b53f1aa5cebb49ceba15ebe2c9",
+          "msg": "Enforce universal agent entry protocol (#174)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "0da2510a57a7690258f5a12a7752ba89235a839a",
+          "msg": "Merge Modern Lao Homes adoption plan (#173)\n\nAdd Modern Lao Homes adoption plan evidence"
+        },
+        {
+          "sha": "774e734c5e4f64929ec99afffc4bed40e2d2a042",
+          "msg": "Link MLH adoption evidence to PR 173"
+        },
+        {
+          "sha": "dadcefaf9283e5956278244052803600089ec014",
+          "msg": "Add MLH adoption plan evidence"
+        },
+        {
+          "sha": "f58a9d7110f74a4667a7aa9ba5c792f8d074228e",
+          "msg": "Harden active agent seat kill switches (#172)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "4bd263626c03ca40e2e80cbd110dc7ed33d5d2c4",
+          "msg": "CompanyOS: gate Agent QA golden set in CI (#171)\n\n* CompanyOS: gate Agent QA golden set in CI\n\n* CompanyOS: record Agent QA CI gate PR evidence\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.loca"
+        },
+        {
+          "sha": "d9b4b0a36fb1eb304816feecfdd0debd18ebd744",
+          "msg": "CompanyOS: gate Stage 2 shadow agents in CI (#170)\n\n* companyos: gate stage2 shadow agents in ci\n\n* companyos: record stage2 ci gate pr evidence\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.loc"
+        },
+        {
+          "sha": "495036d34c13e9bbec1761510c05f5687f29e8f4",
+          "msg": "companyos: add Stage 2 shadow routing matrix (#169)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "1b29beef23fd5fcab1e7adb8cf2173facc49fa92",
+          "msg": "companyos: validate agent qa golden set (#168)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "08c5cb68529e1e8a07d83c80187d88f271443e67",
+          "msg": "companyos: normalize remaining first-wave shadow seats (#167)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "0f35a7f7a8668350f6cc81e80388b884eb8e68aa",
+          "msg": "Add Proof Case 007 agent QA golden-set fixture (#166)\n\n* Add agent QA golden-set fixture\n\n* Record PR link for proof case 007 evidence\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "5dcf52e9b2b3116caad74147e84f8325df927f4d",
+          "msg": "companyos: harden Stage 2 tools policy traceability (#165)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "bdcc54e469c3a308f6763959768dd19d1935a022",
+          "msg": "companyos: harden Stage 2 shadow seat policies (#164)\n\nAdds AGENTS/SOUL/IDENTITY policy drafts, fragment identity metadata, validator hardening, and evidence updates for #97."
+        },
+        {
+          "sha": "714cf62ac500a4eb4cfe6b524a24d1ddd2eb5d2e",
+          "msg": "Validate Stage 2 agency seat fragments (#163)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "0e68839f114656543fbab32b56b276ad7694035b",
+          "msg": "Add workflow architect source fragment"
+        },
+        {
+          "sha": "280edb75e29073c5fbf93a52cad0abedaeaac5ad",
+          "msg": "Merge PR #161: Add Hermes operator runtime charter evidence\n\n* Add Hermes runtime charter evidence\n\n* Link Hermes charter evidence to PR 161\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "aaa34036c85e5cf91558205cf88022a8e5d1abaa",
+          "msg": "Merge PR #160: Add Stage 2 agency agent seat fragments\n\n* Add stage 2 agency agent seat fragments\n\n* Update stage 2 evidence PR link\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "68dd58ff6e789e994688f6319140b4bdd79cac21",
+          "msg": "Harden CompanyOS intake raw request capture (#158)\n\n* Harden CompanyOS intake raw request capture\n\n* Link intake evidence to PR 158\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "f1aae19aced6434081afd366fdd26814e82385b3",
+          "msg": "Merge agency source-material catalog (#157)\n\nStage 1: Catalog agency-agents source material for Viewport seats"
+        },
+        {
+          "sha": "247c76396ff9bfcd2075e84c5932db82ecd56980",
+          "msg": "Link agency source catalog evidence to PR 157"
+        },
+        {
+          "sha": "b16efb20060db614803ab0cf69235833b44990d3",
+          "msg": "Catalog agency-agents source material for Viewport seats"
+        },
+        {
+          "sha": "611cd7caefb6a3199818094b080a88be144cbd9d",
+          "msg": "Merge SRE proof case 005 evidence (#155)\n\n* Add SRE proof case 005 evidence\n\nIssue: #66\n\nValidation: python3 control-plane/validators/validate-foundation.py\n\nValidation: bash scripts/check-repo-bounda"
+        },
+        {
+          "sha": "f5d945c7581ebd5538ff7815fec3ca3c99258a95",
+          "msg": "Merge agency-agents CompanyOS adoption audit (#154)\n\nAudit agency-agents for CompanyOS/OpenClaw adoption"
+        },
+        {
+          "sha": "166d8bb0de88a9b8788cf7f99e829df800771504",
+          "msg": "Link agency-agents audit evidence to PR 154"
+        },
+        {
+          "sha": "0057416f30d45397bc47b98b05952cec2aaeaae6",
+          "msg": "Audit agency-agents for CompanyOS adoption"
+        },
+        {
+          "sha": "80c5cb4b9ff7bfaff9aa809c5224208adf254fa0",
+          "msg": "Merge Proof Case 003 GitHub Office routing evidence (#152)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "1244e56ae8b458e876cc29a5847fcc4e1fa3a878",
+          "msg": "Merge Proof Case 002 PMO weekly operating review pack (#151)\n\nProof Case 002: PMO weekly operating review pack"
+        },
+        {
+          "sha": "901857f8b0212b8bb7fb928b90b2823bce9bbe36",
+          "msg": "Link PMO review evidence to PR 151"
+        },
+        {
+          "sha": "1dbbbe38dbb7bb97e7876a84f0d879be0d6273c1",
+          "msg": "Add PMO weekly operating review proof case"
+        },
+        {
+          "sha": "abbb945645ddcbffbf44c2886e00f6fdd8fad355",
+          "msg": "Prepare issue 148 agent-readiness-drift activation candidate (#150)\n\nRepo-only candidate prep. No scheduler/runtime activation."
+        },
+        {
+          "sha": "85c9050dc9a441ecb9549d2644bafaa24dfcd79b",
+          "msg": "Merge Phase 4W founder-visible CompanyOS proof (#149)\n\n* Phase 4W: add founder-visible CompanyOS proof\n\n* Phase 4W: link proof PR evidence\n\n---------\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "92fc2f3081437f4cf91cc758ea2d2ee3139175f3",
+          "msg": "Merge Phase 4V agent promotion proof gate (#146)\n\nCo-authored-by: Hermes <hermes@viewport.local>"
+        },
+        {
+          "sha": "0adabd51b59873dccb86767b703643243c411821",
+          "msg": "Merge Phase 4U routing/audit integration (#144)\n\nCloses #143."
+        },
+        {
+          "sha": "893b02402b85103862c9821e2a9f4404b231f83d",
+          "msg": "Merge Phase 4T proof-loop schema (#142)\n\nCloses #141"
+        },
+        {
+          "sha": "410da1f4b4868f13e89fdc41d1e2f7dd67f965ff",
+          "msg": "Merge Phase 4S watcher dry-run proof loop (#140)\n\nCloses #139."
+        },
+        {
+          "sha": "0a7bb99b7d19ca76723ef8bee9d9fcc02e0c48e9",
+          "msg": "Phase 4R: Correct readiness evidence classification (#138)\n\nCloses #137."
+        },
+        {
+          "sha": "652e2ac3310d54fc4a443a220d1b97a4e271a1b3",
+          "msg": "Phase 4R: Record remaining readiness sweep (#136)\n\nCloses #135."
+        },
+        {
+          "sha": "c1e80ada8f0d04b48845058436af73db6f56a5aa",
+          "msg": "Incident 133: Record MLH public auth-gate hotfix (#134)\n\nCloses #133."
+        },
+        {
+          "sha": "c95ab4b1a2da1eca3794371c2b0d1fbea5b34276",
+          "msg": "Phase 4Q: Record readiness batch 2 evidence (#132)\n\nCloses #131."
+        },
+        {
+          "sha": "287d0c3447abab47b18c69aed4cca10490794b27",
+          "msg": "Phase 4P: Record readiness batch 1 evidence (#130)\n\nCloses #129."
+        },
+        {
+          "sha": "01df8b7141b593074e058aecb0438e18892d687b",
+          "msg": "Phase 4L-4O: Centralize CompanyOS agent routing and watchers (#128)\n\nCloses #127. Adds central runtime seat index, watcher registry, readiness packets, routing/review loop, and evidence."
+        },
+        {
+          "sha": "29831c12e9761d997d25a973c83514e8c374e393",
+          "msg": "Record Phase 4J/4K OpenClaw runtime evidence (#126)\n\nUpdates #123 with runtime verification evidence."
+        },
+        {
+          "sha": "93286d518b16b10a312e2e1a4d6b1076585edaad",
+          "msg": "Fix Phase 4JK OpenClaw smoke command quoting (#125)\n\nUpdates #123."
+        },
+        {
+          "sha": "6a36be0fda6ae8ba3d76e615c463978909102111",
+          "msg": "Phase 4J/4K: Activate remaining OpenClaw agents (#124)\n\nCloses #123. Adds remaining agent registration/workspace apply package."
+        },
+        {
+          "sha": "57c57e01f7a4832499f4fcd3536145f6294fd24d",
+          "msg": "Record Phase 4I OpenClaw Wave 2 runtime evidence (#122)\n\nUpdates #120 with runtime verification evidence."
+        },
+        {
+          "sha": "4f21f6961cdce79f08486dd356314e49b9edf234",
+          "msg": "Phase 4I: Register Wave 2 OpenClaw governance agents (#121)\n\nCloses #120. Adds Wave 2 registration/workspace apply package."
+        },
+        {
+          "sha": "36b99668ddd986c5c1b455c63b31173631124213",
+          "msg": "Record Phase 4H OpenClaw workspace evidence (#119)\n\nUpdates #117 with runtime verification evidence."
+        },
+        {
+          "sha": "3372e744609967dc2ffa1fa376f85cee34be65df",
+          "msg": "Phase 4H: Bind Wave 1 OpenClaw agent workspaces (#118)\n\nCloses #117. Adds per-agent workspace templates and apply script."
+        },
+        {
+          "sha": "5a5349673713e5ba47c9f28e498efc440519b7bf",
+          "msg": "Record Phase 4G OpenClaw hardening evidence (#116)\n\nUpdates #114 with runtime verification evidence."
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/fork-openclaw",
+      "issues_prs_count": 4,
+      "commits_count": 100,
+      "issues_prs": [
+        {
+          "n": 4,
+          "title": "chore: sync OpenClaw fork with upstream latest",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 3,
+          "title": "fix(openclaw): expose GH_TOKEN alias for Viewport GitHub token",
+          "state": "open",
+          "is_pr": true
+        },
+        {
+          "n": 2,
+          "title": "fix(openclaw): expose GH_TOKEN alias for Viewport GitHub token",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 1,
+          "title": "Visible OpenClaw Telegram coordination and runtime responsiveness",
+          "state": "open",
+          "is_pr": false
+        }
+      ],
+      "commits": [
+        {
+          "sha": "9c90878611a1b0e8175664a7a213c29f05b9c740",
+          "msg": "Merge remote-tracking branch 'upstream/main'"
+        },
+        {
+          "sha": "3a4943ef87ee7df0d5fd51ddc763b507ca066c50",
+          "msg": "fix(ci): repair sms channel checks"
+        },
+        {
+          "sha": "84b025eb622176483ebb1615a88059a4368b3775",
+          "msg": "fix(e2e): make plugin sweep wrappers executable"
+        },
+        {
+          "sha": "a776de25e8b047ae96d6530877f907b95634f7d3",
+          "msg": "fix(auto-reply): redact secrets in config show output (#88496)\n\n* fix(auto-reply): redact config show secrets\n\n* fix(auto-reply): use schema redaction for config show\n\n* fix(auto-reply): redact config"
+        },
+        {
+          "sha": "b4aaca3365bab167d568f381177bc9412fc8e7c3",
+          "msg": "fix(ci): repair copilot sdk drift"
+        },
+        {
+          "sha": "f5eca3f84cbf0ce63ae0ca709856242ac9284722",
+          "msg": "chore(lint): enable object and reassignment rules"
+        },
+        {
+          "sha": "ea11b8ad3d48d1a69ef5adf082b3639afe78ab22",
+          "msg": "docs: expand SMS channel setup guide"
+        },
+        {
+          "sha": "d4f78c9339442cc04c912c3547dcd2addf840c55",
+          "msg": "ci: harden Crabbox Testbox runs"
+        },
+        {
+          "sha": "15ae2deb3067a4c1238eac61d50018facc748b95",
+          "msg": "fix(webchat): preserve refresh-visible history and composer state (#83992)\n\nWebChat now stores/restores composer draft and queued sends across refresh, scoped by gateway/session/agent. It skips in-fli"
+        },
+        {
+          "sha": "e6ce83487c6ce590d453d7815582d67cac4d20a1",
+          "msg": "fix(check): restore core typecheck"
+        },
+        {
+          "sha": "3513e8bfd9c15d0bae066e75551feef3813f3230",
+          "msg": "feat: add Twilio SMS channel\n\nAdd a bundled SMS channel backed by Twilio inbound webhooks and outbound text delivery.\n\nIncludes signed webhook validation, pairing/allowlist access, Messaging Service s"
+        },
+        {
+          "sha": "0f1767a26a602ce63d6ebc5611f7f25f282d8c72",
+          "msg": "fix(telegram): support media message edits\n\nFixes #86161.\n\nRoute Telegram media-message edits through the Telegram caption/reply-markup APIs instead of always calling `editMessageText`. Button-only ed"
+        },
+        {
+          "sha": "63a95930ca679549f4f5bd88f09ab28e0b1d1bc8",
+          "msg": "chore: remove stale unsafe assertion suppressions"
+        },
+        {
+          "sha": "b81adc6202b2be0c86db60627716161cd5dd1116",
+          "msg": "fix(ci): keep unsafe assertion lint disabled"
+        },
+        {
+          "sha": "0ac725278d0514d6a6a334a48181c7025fbe82fb",
+          "msg": "Revert \"fix(ci): annotate unsafe boundary casts\"\n\nThis reverts commit 8a40f90f621d419b78dec49f9636c01e96873764."
+        },
+        {
+          "sha": "4471335d261f5018bf8e7eb1a3e5a66caca450c5",
+          "msg": "Revert \"fix(ci): clean core unsafe assertions\"\n\nThis reverts commit 88203c9b1058d439af62223ec29155cc10c9f9fc."
+        },
+        {
+          "sha": "b78dd6a9ca30e7df0c2dbf0868833e67d6b3f561",
+          "msg": "test: remove channel test isolation hack\n\nRemove isolate: true from the channel Vitest config and fix the leaking fake-timer/mock tests so the lane runs under the shared non-isolated runner. Verified "
+        },
+        {
+          "sha": "15c151181791d41e462c1d12d924ed526b0b6956",
+          "msg": "fix(agents): clear stale compaction bindings"
+        },
+        {
+          "sha": "5e1e029d9116814b8dca915641386dfaa06e7493",
+          "msg": "fix(agents): skip below-target CLI compaction failures"
+        },
+        {
+          "sha": "48ccc50282ebf41175aefe821903380a98b596bb",
+          "msg": "chore: update dependencies"
+        },
+        {
+          "sha": "5a8bb1a7d2c4b621236299a249d2f8561c33151c",
+          "msg": "docs: add Skill Workshop guide"
+        },
+        {
+          "sha": "e1ad5f51707e42286e06c5be18adab49f508ae17",
+          "msg": "docs: remove divider comments (#88115)"
+        },
+        {
+          "sha": "88203c9b1058d439af62223ec29155cc10c9f9fc",
+          "msg": "fix(ci): clean core unsafe assertions"
+        },
+        {
+          "sha": "b48c72cd198b831cd86fd77b3f26f25d9c0f97ad",
+          "msg": "fix(discord): deliver same-session channel replies\n\nDeliver same-session channel replies directly while preserving stale-reply guards.\n\nThe fix bypasses the announce decider only when the requester an"
+        },
+        {
+          "sha": "8a40f90f621d419b78dec49f9636c01e96873764",
+          "msg": "fix(ci): annotate unsafe boundary casts"
+        },
+        {
+          "sha": "ae651e72101a583b664fd1ef91ba3fd439b8996d",
+          "msg": "docs: add permission modes page"
+        },
+        {
+          "sha": "4d95ae39d4329579c3e17f422847f3cf871c8974",
+          "msg": "fix(ci): repair extension type drift"
+        },
+        {
+          "sha": "e6782254e45752eb1ba51df0b0968c5f12d74826",
+          "msg": "perf: avoid blocking gateway bind on control ui build"
+        },
+        {
+          "sha": "59694e86d96832337e89a7e75803b6a166bc7441",
+          "msg": "chore(lint): enable structured clone rules"
+        },
+        {
+          "sha": "87664ed096b980d4b6191a6d9595f3b6533347d6",
+          "msg": "Fix iMessage startup watch replay (#88406)\n\n* fix(imessage): start watch after existing local rows\n\n* test(imessage): cover stale startup watch rows\n\n* fix(imessage): keep watch startup tolerant of db"
+        },
+        {
+          "sha": "1fd9fe2b33a99225571bf4462bb92bf36148bc90",
+          "msg": "fix(ci): isolate timer-sensitive tests"
+        },
+        {
+          "sha": "122ae5db9e8364a5c482b7322fb27a8ca70848ad",
+          "msg": "perf: lazy-load agent reply payload formatter"
+        },
+        {
+          "sha": "930b371a2f4cd5c49b620ca32feefb372b2a7a94",
+          "msg": "refactor(telegram): persist plugin state in sqlite\n\nMove Telegram plugin-local state from JSON sidecars into plugin-state SQLite. Keep legacy JSON handling in startup and doctor migration plans, with "
+        },
+        {
+          "sha": "b9fe0894a6da4994f534885b874787b4e912ca2e",
+          "msg": "chore(lint): enable additional cleanup rules"
+        },
+        {
+          "sha": "444562b3decab356b109cfa02b16cf8af80340d4",
+          "msg": "chore: remove stale dead code"
+        },
+        {
+          "sha": "ce547bfd44a66750c4cee34c572c358e5440958f",
+          "msg": "fix(ci): stabilize ui paste and telegram types"
+        },
+        {
+          "sha": "d4d7fdbc59f28f1b83f118089167d8a303dd1b72",
+          "msg": "fix(ci): satisfy strict nullish guards"
+        },
+        {
+          "sha": "096bd13962c53ade5921d05a6a8b0f2350c015aa",
+          "msg": "build(OpenClawKit): make ElevenLabsKit optional behind Talk trait\n\nAdds a default-enabled SwiftPM Talk trait for OpenClawKit so chat-only consumers can opt out with traits: [] and avoid resolving Elev"
+        },
+        {
+          "sha": "4eba3e5d7db963d6fbdcfa8abf305500b184eb1f",
+          "msg": "chore(lint): enable more readability rules"
+        },
+        {
+          "sha": "9c3cf35e08b3b7e7a44d03157159ea8df9d61a71",
+          "msg": "fix(ci): stop channel timers holding vitest open"
+        },
+        {
+          "sha": "deb7bc6539356f81ea24fe5696e04b93387c29c4",
+          "msg": "chore(lint): enable readability lint rules"
+        },
+        {
+          "sha": "0211a3aa9f7c195d1de2a069fc835437a4f9d694",
+          "msg": "fix(ci): restore main validation"
+        },
+        {
+          "sha": "ade6e7769ba087908bda469f77a042aaad7831fd",
+          "msg": "perf: prewarm gateway runtime plugins"
+        },
+        {
+          "sha": "f1cb9f2f6a75494b038c6db0e09a206f5f3c0dbd",
+          "msg": "fix(slack): keep DM thread turns out of active steering\n\nKeep Slack direct-message sessions stable while tracking routed Slack thread ids on active reply operations. Different top-level Slack DM threa"
+        },
+        {
+          "sha": "667393be8fc55bc2799f7585b7b070b7efa50801",
+          "msg": "fix(commands): make /skill load workspace skills\n\nFixes #88056.\n\nReload workspace skill commands for `/skill <name>` when directive resolution supplied only an empty placeholder list, so the generic s"
+        },
+        {
+          "sha": "72c61bc1235bd255f9278bccbe272d31e6e40ef3",
+          "msg": "fix(telegram): align DM topic session routing\n\nAlign Telegram proactive DM-topic outbound session routing with inbound reply routing.\n\nThe Telegram plugin now uses the chat-scoped DM-topic suffix for "
+        },
+        {
+          "sha": "b372af6b81cc0cb4e2bc42b551140dbbada6b96f",
+          "msg": "test: keep timeout clamp checks under one second"
+        },
+        {
+          "sha": "04b68e8fa4d120990a8f7fd8b159cb7fb9ee40c8",
+          "msg": "fix(shared): restore number coercion barrel"
+        },
+        {
+          "sha": "9f99acf12d41a93e05f688e67b1428b06e575d49",
+          "msg": "test: restore marketplace cleanup coverage"
+        },
+        {
+          "sha": "23dac6c26348625dacb31e05d53faf23b3bf94d5",
+          "msg": "test: keep vitest cases under one second"
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/fork-hermes-bccl",
+      "issues_prs_count": 0,
+      "commits_count": 100,
+      "issues_prs": [],
+      "commits": [
+        {
+          "sha": "ce0f529cde11f743a5cd2a8ee8a0d52088cb2065",
+          "msg": "chore: ruff auto-fix C401, C416, C408, PLR1722 (#23940)\n\nC401:   set(x for x in y) -> {x for x in y}      (set comprehension)\nC416:   [(k,v) for k,v in d] -> list(d.items())  (unnecessary listcomp)\nC4"
+        },
+        {
+          "sha": "7b76366552eb0e2fbdf156c261403202ac064737",
+          "msg": "feat(prompt-cache): cross-session 1h prefix cache for Claude on Anthropic / OpenRouter / Nous Portal (#23828)\n\nCuts input cost for first-turn Claude requests by ~85-90% on subsequent\nsessions within a"
+        },
+        {
+          "sha": "2ec8d2b42ffecec2128f1004c0a8451378057d42",
+          "msg": "chore: ruff auto-fix PLR6201 \u2014 tuple \u2192 set in membership tests (#23937)\n\nReplace  with  for all literal-tuple\nmembership tests. Set lookup is O(1) vs O(n) for tuple \u2014 consistent\nmicro-optimization acr"
+        },
+        {
+          "sha": "8c11710314af38ec59371ed540272392217a1c26",
+          "msg": "chore(release): add AUTHOR_MAP entry for wuli666"
+        },
+        {
+          "sha": "111b859e49fd7b2abe30c1426ebd74101bb59477",
+          "msg": "fix(auxiliary): evict async wrappers on poisoned client (follow-up to #23482)\n\n#23482 fixed cache poisoning in the sync path: when a Codex auxiliary\ntimeout closes the underlying OpenAI client, _evict"
+        },
+        {
+          "sha": "1d007167541ef5405fde620fdcce6dfcd79c0628",
+          "msg": "fix(cli,tui): align CJK / wide-char markdown tables (#23863)\n\nCJK and emoji glyphs render as two terminal cells but JS String#length\nand the model's own padding count them as one, so any markdown tabl"
+        },
+        {
+          "sha": "657874460f8e2cff18e9940df1a987513278c43e",
+          "msg": "chore: ruff auto-fixes \u2014 collapsible-else-if, if-stmt-min-max, dict.fromkeys (#23926)\n\nPLR5501 (collapsible-else-if): 28 instances \u2014 else: if: \u2192 elif:\nPLR1730 (if-stmt-min-max):   15 instances \u2014 if x<"
+        },
+        {
+          "sha": "8e2eb4b511967a0ad776c0c667f6914072e1b7ec",
+          "msg": "fix(/model): surface Nous Portal models from remote catalog manifest (#23912)\n\nThe /model picker for Nous Portal users was returning the in-repo\n_PROVIDER_MODELS[\"nous\"] snapshot \u2014 which only updates "
+        },
+        {
+          "sha": "cc9e788c14188bb9691237472d1c8c5bcf929eeb",
+          "msg": "fix(cli): defensive _slash_confirm_state access + AUTHOR_MAP\n\n- getattr(self, '_slash_confirm_state', None) at the two read sites that\n  trip object.__new__(HermesCLI) test fixtures (test_cli_external"
+        },
+        {
+          "sha": "054f56857842a25b8ef5f627c7c951de28eee52a",
+          "msg": "fix: use TUI modal for slash confirmations"
+        },
+        {
+          "sha": "e155f2aca9dc9135141d37d3aade060a9a02e470",
+          "msg": "rebuild model catalog"
+        },
+        {
+          "sha": "283381b1ce9dd8d69aaba88639d50d1f825c2121",
+          "msg": "fix(dashboard): validate dist exists when --skip-build is set\n\nFollow-up to PR #23824. Adds two correctness fixes on top of the\ncontributor's salvaged commit:\n\n1. Stale-dist fallback no longer gated o"
+        },
+        {
+          "sha": "7085f4e238508b94c9bf034c3d9bc268a49d8228",
+          "msg": "fix(dashboard): fallback to stale dist, retry build, add --skip-build flag\n\nThree improvements for non-interactive contexts (Windows Scheduled\nTasks, CI/CD) where the web UI build may fail (issue #238"
+        },
+        {
+          "sha": "88a2ce4ae52f18a946b538db7559adfce1cc2591",
+          "msg": "chore: AUTHOR_MAP entry for VinceZcrikl noreply (#23647)"
+        },
+        {
+          "sha": "a479ec01ed73ed43d8649f88781e433aedd980a0",
+          "msg": "fix: make web UI build output decoding robust on Windows\n\nOn Windows systems using a Chinese GBK locale, `hermes update` could misreport the Web UI build as failed even when `npm run build` actually s"
+        },
+        {
+          "sha": "7026af4e23030a1c01a388ac60575bbf3b011187",
+          "msg": "fix(agent): catch ChatGPT-account Codex data-URL rejection so images are stripped instead of cascading to compression (#23602)\n\nWhen the user's main provider is openai-codex on the ChatGPT-account\nbac"
+        },
+        {
+          "sha": "3e7145e0bbcded852a5324ceb549fe5ca94ac924",
+          "msg": "revert: roll back /goal checklist + /subgoal feature stack (#23813)\n\n* Revert \"fix(goals): force judge to use tool calls instead of JSON-text replies (#23547)\"\n\nThis reverts commit a63a2b7c78562cd4eaf"
+        },
+        {
+          "sha": "1d4a4997b1dd5baa27f19a2397557e1b082d75f2",
+          "msg": "chore: AUTHOR_MAP entries for sudo-hardening salvage contributors\n\n- openclaw@agent.local \u2192 29206394 (PR #22194)\n- freedemon@gmail.com  \u2192 fr33d3m0n (PR #21128)"
+        },
+        {
+          "sha": "976d8e27ad4f2ba59ba5fc14a0c1e811267712d5",
+          "msg": "fix(approval): catch sudo with stdin/askpass/shell privilege flags\n\nAdds the only #17873 category not covered by the in-flight PRs #17962\n(briandevans, reverse shell + download-execute) and #7993 (SHL"
+        },
+        {
+          "sha": "9520a1ccdfd4d735b9450fe8624c44ff7f54d5fd",
+          "msg": "fix(terminal): block sudo -S password guessing when SUDO_PASSWORD is not set\n\nFixes #9590: Block explicit sudo -S (stdin password mode) commands\nwhen the SUDO_PASSWORD environment variable is not conf"
+        },
+        {
+          "sha": "494824fb110cab494071c792632640d49a485943",
+          "msg": "chore: remove unused sentinel in test_send_message_tool"
+        },
+        {
+          "sha": "571248348725b840acf0bcde43ffbecbba56fe2d",
+          "msg": "fix: guard resolve_profile_env against missing profile dirs\n\nThe _default_spawn HERMES_HOME injection (PR #23356) calls\nresolve_profile_env which raises FileNotFoundError when the profile\ndir doesn't "
+        },
+        {
+          "sha": "7087702210027444c6f2017bccf5a094f4a4c335",
+          "msg": "chore: add salvage contributors to AUTHOR_MAP\n\nFor PRs #23206 (Frowtek), #23252 (Sylw3ster), #23358 (dmnkhorvath),\n#23659 (smwbev), and #23356 (TurgutKural) \u2014 all part of the kanban\nbug-fix batch salv"
+        },
+        {
+          "sha": "a1854ac07c08c903ee1d4124746d8c08d911614a",
+          "msg": "fix(kanban): treat archived parent tasks as terminal for dependency resolution\n\nWhen a parent task is archived, dependent child tasks were stuck in\ntodo forever because recompute_ready and claim_task "
+        },
+        {
+          "sha": "27cfe725431346e8cbac141a8b91bedba0121f4a",
+          "msg": "fix(kanban): use localized column label in select-all aria label"
+        },
+        {
+          "sha": "379e7dd014275ca066dc7ee3d7f0a1dfd61c2bdd",
+          "msg": "test(send_message): cover _check_send_message gating paths\n\nAdds a TestCheckSendMessage class with 7 focused tests pinning the\nfour passing conditions and the failure modes:\n\n  - HERMES_KANBAN_TASK gr"
+        },
+        {
+          "sha": "8ac998cb0caba8dbc382ecf6af1b17c5ecad6ad0",
+          "msg": "fix(send_message): allow kanban workers to call send_message\n\nThe kanban dispatcher sets HERMES_KANBAN_TASK on every spawned worker\nbut launches it with the assignee profile's HERMES_HOME (e.g.\n~/.her"
+        },
+        {
+          "sha": "5af315c4cc833e20d7306053cbee295b3f0639af",
+          "msg": "fix(kanban): inject HERMES_HOME into worker subprocess env\n\nDefault spawn did not propagate HERMES_HOME when forking kanban workers.\nThe worker's env is copied from the parent via dict(os.environ), so"
+        },
+        {
+          "sha": "641e40c4bd8eb3f7db995cf3181ad9e81483f13f",
+          "msg": "fix(kanban): restore HERMES_KANBAN_BOARD after scoped slash override"
+        },
+        {
+          "sha": "2b3bf17dfa7f75c05174198f80457e6f483d2131",
+          "msg": "fix(kanban): call kanban_block on iteration-budget exhaustion to prevent protocol violation\n\nWhen a kanban worker subprocess hits the iteration budget, the agent\nloop strips tools and asks the model f"
+        },
+        {
+          "sha": "f6d4f3c37daddc88040dd44d68399400ac12df29",
+          "msg": "fix(kanban): route gateway create auto-subscribe to explicit board"
+        },
+        {
+          "sha": "64145a1996554e4e81b694e9737421f34f44e212",
+          "msg": "fix(nix): replace chown -R with targeted find in container entrypoint (#23633)\n\nThe container entrypoint ran `chown -R` on $HERMES_HOME every start.\n`chown` strips the setgid bit (kernel security beha"
+        },
+        {
+          "sha": "5606258855f7937659527ffffca9d9d7ef6fadc5",
+          "msg": "feat(nix): add extraDependencyGroups for sealed venv extras (#21817)\n\nExpose the dependency-groups parameter from python.nix through\nhermes-agent.nix and the NixOS module, allowing users to opt into\np"
+        },
+        {
+          "sha": "d992fd9aaf9fdb3a3f6f4ab449581da77da81e72",
+          "msg": "feat(deps): add hindsight-client as optional dependency (#21818)\n\nDeclares hindsight-client as an optional dependency group [hindsight]\nin pyproject.toml. This allows build-time inclusion for environm"
+        },
+        {
+          "sha": "ebf2ea584ab2ca37cd70b80b4d8c3bc23604cf47",
+          "msg": "feat(terminal,cli): docker_extra_args + display.timestamps\n\nTwo independent opt-in QoL toggles, both off by default.\n\nterminal.docker_extra_args:\n- List of extra flags appended verbatim to docker run "
+        },
+        {
+          "sha": "228b7d27bdb9b8461b9650137dd3aa2b739879eb",
+          "msg": "fix(auxiliary): cache 402'd providers as unhealthy with TTL to stop per-call retry storms (#23597)\n\nWhen an auxiliary provider returns HTTP 402 (credit / payment), every\nsubsequent compression / title"
+        },
+        {
+          "sha": "ace1c4ea8ccefd8019e7a6a8378f6197c47636fc",
+          "msg": "fix(discord): typing indicator task not cleaned up after API error\n\nWhen the Discord typing API call fails (rate limit, network error, 403),\n_typing_loop returns early but the stale task remains in _t"
+        },
+        {
+          "sha": "0458d99f22d56dccde0c173254a348c85a79ad7e",
+          "msg": "chore(release): AUTHOR_MAP entry for Mibayy clawhub email"
+        },
+        {
+          "sha": "95260407002819d98962c6f4859eae22bd2caa52",
+          "msg": "chore(skills/stocks): tighten SKILL.md to modern format"
+        },
+        {
+          "sha": "2ea957fc41f47fb6db177cb077e18722b17ef0d0",
+          "msg": "chore(skills/stocks): relocate to optional-skills/finance/stocks/"
+        },
+        {
+          "sha": "896a7ce261f8fc6dc427550becb5d661f1040457",
+          "msg": "feat: add stocks & finance skill (Yahoo Finance, no API key)\n\n5 commands: quote, search, history, compare, crypto\nZero dependencies, Python stdlib only.\nSupports multi-symbol queries and crypto prices"
+        },
+        {
+          "sha": "bf2cc8b31c73f69d6c8fce97aa00607077bb8a67",
+          "msg": "Merge pull request #20317 from NousResearch/meta/security-policy\n\ndocs(security): rewrite policy around OS-level isolation as the boundary"
+        },
+        {
+          "sha": "228a4d11ae258635cfecc1c322c1712191b6db3c",
+          "msg": "fix(config): warn loudly on YAML parse failure instead of silent default fallback (#23585)\n\nA YAML parse error in ~/.hermes/config.yaml caused load_config() to print\none line to stdout (Warning: Faile"
+        },
+        {
+          "sha": "3af3c4eb8c65c42bdba1a7d9b11266ded5fa6d9f",
+          "msg": "fix(misc): three small defensive fixes from PR #1974\n\nSalvages the three substantive low-severity fixes from Gutslabs' #1974\n\"misc bug fixes\" bundle.  The other 8 claims in that PR were either\nalready"
+        },
+        {
+          "sha": "482d49cf9065b800451bfedc221f22ac609378ef",
+          "msg": "chore: AUTHOR_MAP entry for wilsen0"
+        },
+        {
+          "sha": "edb4a2bda5f8092dae45992bd18876156abc3729",
+          "msg": "test(telegram): cover env-clamped helper + adaptive text-batch tiers\n\n- New tests/gateway/test_telegram_text_batch_perf.py:\n  TestEnvFloatClamped \u2014 7 tests covering default-when-unset, valid\n  parse, "
+        },
+        {
+          "sha": "ac95b8cdbec1748d1255cee8bb39aa5f92254864",
+          "msg": "perf(gateway): tune Telegram cadence + adaptive fast-path for short replies\n\nRe-authored against current main from PR #10388 by @wilsen0.  The\noriginal branch is 3800+ commits stale and could not be c"
+        },
+        {
+          "sha": "e3b88a8fe2be0e0493a1b4dfc30ae55a8e7ffa56",
+          "msg": "rename(skills): api-testing -> rest-graphql-debug (#23589)\n\nMore specific name. The skill is REST + GraphQL debugging end-to-end,\nnot generic 'api testing' (a smoke-test pytest scaffold is one short\ns"
+        },
+        {
+          "sha": "5f767879e6ef2e5c141c43c7e3252913415d2fd6",
+          "msg": "chore(release): AUTHOR_MAP entry for Hugo-SEQUIER"
+        },
+        {
+          "sha": "1f899393dcddf630ac890637d5950afab242f90d",
+          "msg": "chore(skills/hyperliquid): tighten SKILL.md to modern format\n\n- description shortened to <=60 chars\n- platforms gated to [linux, macos, windows] (stdlib-only, all OK)\n- author credits Hugo Sequier\n- c"
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/tenant-bccl-laowise-website",
+      "issues_prs_count": 0,
+      "commits_count": 8,
+      "issues_prs": [],
+      "commits": [
+        {
+          "sha": "08d267e3c2c4ecc5186b8aba39ed0d52fe5e6061",
+          "msg": "Add generated LaoWise image system\n\nAdds the broader generated asset set requested for LAOWISE: application, dashboard, document vault, invoice, brand kit, CRM, content, local seller, founder, package"
+        },
+        {
+          "sha": "cf19aa83d3782795674a15be79917ac550a93c44",
+          "msg": "Use generated LaoWise hero image\n\nIncorporates the Codex-generated PNG hero asset into the live homepage instead of only keeping generated SVG placeholders. The original generated image remains in the"
+        },
+        {
+          "sha": "9f646ec6bac2020b0b3722152a6d2e98148ad9d0",
+          "msg": "Replace LaoWise with a responsive product site\n\nReplaces the prior dark incremental layout with a new light-first customer-facing SaaS site: responsive CSS menu, generated workspace hero, generated se"
+        },
+        {
+          "sha": "fef0917a6c0ae51f51b568a81e5f3611d7effd77",
+          "msg": "Ground the LaoWise visual system\n\nReworks the homepage away from the neon AI-template look by moving to a calmer charcoal, ivory, olive, and muted-lime palette, adding a Codex-generated commerce/produ"
+        },
+        {
+          "sha": "4ff7a4eed977d1b0b5f4aa960898c56faa3c318e",
+          "msg": "Show the LaoWise product workspace\n\nAdds a concrete Business Setup OS surface to the public site so visitors can see the dashboard, customer workspace, application pipeline, document vault, invoice de"
+        },
+        {
+          "sha": "9045f2f4d9bc7a53d51877aed87e664741a0ef99",
+          "msg": "Build the public LaoWise customer experience\n\nReplaces the internal-plan style page with a public customer-facing static product website for LAOWISE smart-start. The page now uses the supplied LAOWISE"
+        },
+        {
+          "sha": "eba3e9c1256502ec6209d98de67694e96d6a5553",
+          "msg": "Prepare LaoWise static site for GitHub Pages\n\nThe site is a plain static MVP, so the repo now declares the laowise.la custom domain directly and removes Vercel/Netlify-specific config to keep the host"
+        },
+        {
+          "sha": "b49388d0ef853ccadf63678b26a4a6db025fe58a",
+          "msg": "baseline: LaoWise static website"
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/demo-repository",
+      "issues_prs_count": 0,
+      "commits_count": 1,
+      "issues_prs": [],
+      "commits": [
+        {
+          "sha": "296cbedbe0c4ef28848ade01f39101358d04be07",
+          "msg": "Initial commit"
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/modern-lao-homes-client-portal",
+      "issues_prs_count": 0,
+      "commits_count": 1,
+      "issues_prs": [],
+      "commits": [
+        {
+          "sha": "fb392335dcd362eb72e23865559e6ddb0e136845",
+          "msg": "feat: import MLH client portal source for Dokploy"
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/product-tradex",
+      "issues_prs_count": 2,
+      "commits_count": 2,
+      "issues_prs": [
+        {
+          "n": 2,
+          "title": "feat: import tradex product foundation",
+          "state": "closed",
+          "is_pr": true
+        },
+        {
+          "n": 1,
+          "title": "Initial TradeX product import and fixture-mode baseline",
+          "state": "closed",
+          "is_pr": false
+        }
+      ],
+      "commits": [
+        {
+          "sha": "847de9999886a0f8e7073f21a2c6b74dde76bd5e",
+          "msg": "feat: import tradex product foundation (#2)\n\nCo-authored-by: OpenClaw <openclaw@viewport.local>"
+        },
+        {
+          "sha": "328e2e1d1120e16e42d10a82eeba2cca92ca6b8a",
+          "msg": "Initial commit"
+        }
+      ]
+    },
+    {
+      "repo": "viewport-corp/migration-dashboard-internal",
+      "issues_prs_count": 1,
+      "commits_count": 100,
+      "issues_prs": [
+        {
+          "n": 1,
+          "title": "chore(deps): bump svelte from 5.55.10 to 5.56.0",
+          "state": "open",
+          "is_pr": true
+        }
+      ],
+      "commits": [
+        {
+          "sha": "996897ee50d70cf72d28e84b59e68bc1bd7e436d",
+          "msg": "chore: mark ReleaseBar mirror as internal and disable deploy"
+        },
+        {
+          "sha": "9f3fc61981cb4093429338be13fd2623009ac414",
+          "msg": "chore(deps-dev): bump oxlint from 1.66.0 to 1.67.0 (#39)\n\nBumps [oxlint](https://github.com/oxc-project/oxc/tree/HEAD/npm/oxlint) from 1.66.0 to 1.67.0.\n- [Release notes](https://github.com/oxc-projec"
+        },
+        {
+          "sha": "0b582395b559a60f0dce9d2e202926e205b304a2",
+          "msg": "chore(deps-dev): bump oxfmt from 0.51.0 to 0.52.0 (#36)\n\nBumps [oxfmt](https://github.com/oxc-project/oxc/tree/HEAD/npm/oxfmt) from 0.51.0 to 0.52.0.\n- [Release notes](https://github.com/oxc-project/o"
+        },
+        {
+          "sha": "df8ba1636a8411d296587dbb9144d4acf947aeda",
+          "msg": "chore(deps): bump svelte from 5.55.9 to 5.55.10 (#37)\n\nBumps [svelte](https://github.com/sveltejs/svelte/tree/HEAD/packages/svelte) from 5.55.9 to 5.55.10.\n- [Release notes](https://github.com/sveltej"
+        },
+        {
+          "sha": "8fecf1039e7587f56499658be6b742792517a1f1",
+          "msg": "chore(deps): bump valibot from 1.4.0 to 1.4.1 (#38)\n\nBumps [valibot](https://github.com/open-circle/valibot) from 1.4.0 to 1.4.1.\n- [Release notes](https://github.com/open-circle/valibot/releases)\n- ["
+        },
+        {
+          "sha": "069a3cab37ea58cdb9931d17f92694e6d02d3bdd",
+          "msg": "fix: defer queued GraphQL backoff jobs"
+        },
+        {
+          "sha": "539d82665fe1af5b44526eeed9264276fdfd5d3c",
+          "msg": "fix: tolerate empty GitHub API bodies"
+        },
+        {
+          "sha": "226468823d079f163b00d567a7855513d30d523f",
+          "msg": "perf: reduce GitHub quota waste"
+        },
+        {
+          "sha": "d169f23f669ff1411f9d5df3ebb93ae5a7e3eeeb",
+          "msg": "fix: tolerate malformed owner activity events (#35)"
+        },
+        {
+          "sha": "ce1054fafa049da285b744325398b05f45edd814",
+          "msg": "fix: clear releasebar hot language state (#29)"
+        },
+        {
+          "sha": "01723a291b2c2e1aa65419f8a3a32e5d8fb084d5",
+          "msg": "docs: update changelog for contributor fixes"
+        },
+        {
+          "sha": "2f6c9e382fdc2b707c1c96ffffa4685c4a3cc4aa",
+          "msg": "feat: support tokenized dashboard search (#28)"
+        },
+        {
+          "sha": "03006effd13591e98ac986ee853786a16e0833ba",
+          "msg": "feat(ui): clarify trust score tooltips (#31)"
+        },
+        {
+          "sha": "48bc8ef3206a563f1ac102d7745f14a052d0cec9",
+          "msg": "fix: use theme-aware background for trust section in light mode (#30)\n\n* fix: use theme-aware background for trust section in light mode\n\n* chore: remove blank line"
+        },
+        {
+          "sha": "4e93aaa2d2325b440191f12c511c107565f613eb",
+          "msg": "perf: reduce GitHub token refresh waste"
+        },
+        {
+          "sha": "843090f6fcad600a3c84238015de218e02293064",
+          "msg": "fix: track GitHub App install coverage"
+        },
+        {
+          "sha": "394446173c6d4579b6c9f61af8e03b765a5d356d",
+          "msg": "fix: avoid OAuth for public GitHub connect"
+        },
+        {
+          "sha": "0e0f015b0c941a5917f3a7536fcd582f262ca233",
+          "msg": "fix: keep mobile header actions in viewport"
+        },
+        {
+          "sha": "f01ecd8ac4a8a94c6f6c5fa90183117444551400",
+          "msg": "fix: cache repository detail live probes"
+        },
+        {
+          "sha": "1ca25510535fe14b72cc70af48b85d4af05f4b50",
+          "msg": "fix: cache repository detail GitHub probes"
+        },
+        {
+          "sha": "6f4323955bc4345bb2b7396e338ca16098c19d66",
+          "msg": "docs: note Cloudflare account routing"
+        },
+        {
+          "sha": "f484060458a03bca0c472a87e9bcdf2874d211f7",
+          "msg": "fix: reduce GitHub shared token pressure"
+        },
+        {
+          "sha": "f95b1e4096b6df236e0c2e7989e01f49d18c5920",
+          "msg": "fix: improve mobile dashboard layout"
+        },
+        {
+          "sha": "539612e2622bd65b2b79d56791da33e4d4a49f45",
+          "msg": "fix: render PNG social previews"
+        },
+        {
+          "sha": "9ee08a468c0da70008e84e8b7926460a61327528",
+          "msg": "fix: embed social card avatars"
+        },
+        {
+          "sha": "42953bba50b065021a2289d10608b0dda6c630e4",
+          "msg": "fix: reduce GitHub Hot shared token hydration"
+        },
+        {
+          "sha": "f15edc2e1edae465ee11945434249031c5b2a126",
+          "msg": "perf: split dashboard graphql hydration"
+        },
+        {
+          "sha": "28d659f806e1c52a1ca53274d4deb4b4e425450b",
+          "msg": "perf: reduce dashboard github access"
+        },
+        {
+          "sha": "55d13969cbb14cdb61155d8a97df066c826869e7",
+          "msg": "style: place dashboard status before refresh"
+        },
+        {
+          "sha": "38a285a50bb326dbbcf54254ec01ce8b18e1c7e3",
+          "msg": "chore: update dependencies"
+        },
+        {
+          "sha": "9e8b007476055ffa508606360bd3b3cb9d9cfa65",
+          "msg": "feat: add manual dashboard refresh\n\n* feat: add manual dashboard refresh\n\n* style: improve mobile dashboard layout"
+        },
+        {
+          "sha": "d7805e73ed0e83bb212fcf37683eca417e35795c",
+          "msg": "feat: replace favicon with release-tag silhouette\n\nGeneric </> mark didn't read as ReleaseBar at 16px. New mark is\na bold green release-tag silhouette on the dark brand background,\nwith a dark eyelet "
+        },
+        {
+          "sha": "a0c22f7c44430aa84ff4587ce743e5ff4dcaeb86",
+          "msg": "feat: record browser dashboard timings"
+        },
+        {
+          "sha": "03dfe7a8cd8ad10bd20cf3debf88667a827c14c7",
+          "msg": "refactor: drop legacy audit fallback"
+        },
+        {
+          "sha": "eb4aef0da5e33707881731c94d299662445c7969",
+          "msg": "feat: log dashboard sync phases"
+        },
+        {
+          "sha": "7b16943abf80f48a8722045eac7b4a66880eb15f",
+          "msg": "docs: document refresh scheduler"
+        },
+        {
+          "sha": "f1c237fda48f880a73f7c9caa03e167644e2abad",
+          "msg": "fix: hardcode admin settings link"
+        },
+        {
+          "sha": "3cbaf0ee565f98889e016691c7604d2df8bc130c",
+          "msg": "feat: add refresh scheduler admin"
+        },
+        {
+          "sha": "c0c7c88c9acbd34ced1bff878ba7c5cf3108806f",
+          "msg": "fix: stream dashboard count-only updates"
+        },
+        {
+          "sha": "28d5199b8ca24f023af02b7f853a25dc40458d77",
+          "msg": "perf: prioritize dashboard repo counts"
+        },
+        {
+          "sha": "27c8ace0d109bf5181334556e65649b2257d8bb1",
+          "msg": "fix: loosen repository evidence spacing"
+        },
+        {
+          "sha": "046bf9811024aa57ae381b865487cf4fa210b5df",
+          "msg": "fix: quiet table external link markers"
+        },
+        {
+          "sha": "c6ef5aaa71d98290543a437f24aead5e21f261e6",
+          "msg": "fix: align trust overview action"
+        },
+        {
+          "sha": "694a81a318d43110085d04166edc7c019398c468",
+          "msg": "fix: stabilize owner dashboard layout"
+        },
+        {
+          "sha": "95f19956d819597ec3012b8f07325700c42d2144",
+          "msg": "fix: compact sort direction labels"
+        },
+        {
+          "sha": "096fd2dc0b35cabf1128c90a835b4933aea1d6e9",
+          "msg": "fix: show repo links while loading"
+        },
+        {
+          "sha": "e02bc5b1a70b04282d171c503a660173b62c3e07",
+          "msg": "feat: improve account and trust navigation\n\nAdds a logged-in My Dashboard shortcut in the account menu and command palette.\nSimplifies owner trust navigation by using the snapshot as the drill-in surf"
+        },
+        {
+          "sha": "df7b1096decc5be98648515354c8e7b4f6b82f3c",
+          "msg": "feat: add stargazer trust analysis\n\n## Summary\n- add cached trust profiles and repository audience analysis for recent stargazers\n- keep unsynced public dashboards metadata-only so shared quota does n"
+        },
+        {
+          "sha": "6cd1123f1448370b2b9a10925eddc976186e9c1f",
+          "msg": "perf: hydrate pages from cached payloads"
+        },
+        {
+          "sha": "e0add3d83b98b11384437e6eb8b1d7bb8a09b745",
+          "msg": "fix: clarify repo activity summary meta"
+        }
+      ]
+    }
+  ]
+}

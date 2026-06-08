@@ -1,0 +1,42 @@
+{
+  "section": 7,
+  "title": "Security audit",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:46:32.679743+00:00",
+  "findings": [
+    {
+      "id": "S07-ENV-GIT",
+      "subject": "Committed .env files",
+      "status": "PASS",
+      "finding": "Tracked env/compose candidates:\n",
+      "evidence": "evidence/full-system-audit/raw/section7-security.json",
+      "recommended_action": "Remove committed secrets if any; keep .env.example only."
+    },
+    {
+      "id": "S07-SESSIONS",
+      "subject": "Secrets in Hermes session logs",
+      "status": "UNKNOWN",
+      "finding": "Pattern counts collected; values not exposed.\nsk- 970\nxoxb- 14\nghp_ 138\nAIza 32\nCF_API_KEY 61\nTELEGRAM_BOT_TOKEN 276\n",
+      "evidence": "evidence/full-system-audit/raw/section7-security.json",
+      "recommended_action": "Run dedicated redaction/rotation review before exporting logs."
+    },
+    {
+      "id": "S07-MANAGEMENT",
+      "subject": "Secret management recommendation",
+      "status": "FAIL",
+      "finding": "Current reality is env/runtime files plus GitHub token; no unified secret manager verified.",
+      "evidence": "evidence/full-system-audit/raw/section7-security.json",
+      "recommended_action": "Recommend Infisical or Vault for shared ops; GitHub Secrets for CI; env-only only for temporary runtime bootstrap."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section7-security.json"
+  ],
+  "recommended_action": "Rotate historical exposed tokens and move to managed secrets before tenant scaling.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 187,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/187",
+    "error": null
+  }
+}

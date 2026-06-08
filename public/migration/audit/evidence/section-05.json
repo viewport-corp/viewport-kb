@@ -1,0 +1,50 @@
+{
+  "section": 5,
+  "title": "Domain + DNS full audit",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:46:24.265181+00:00",
+  "findings": [
+    {
+      "id": "S05-ZONES",
+      "subject": "Cloudflare zones",
+      "status": "PASS",
+      "finding": "Cloudflare API returned 61 zones.",
+      "evidence": "evidence/full-system-audit/raw/section5-cloudflare-dns.json",
+      "recommended_action": "Classify ACTIVE/GHOST/PENDING and remove ghost zones only after approval."
+    },
+    {
+      "id": "S05-VIEWPORT-ROUTES",
+      "subject": "viewport.llc migration routes",
+      "status": "PASS",
+      "finding": "Route tests: {'/migration/': '200 text/html; charset=utf-8', '/migration/plan': '200 text/html; charset=utf-8', '/migration/task': '200 text/html; charset=utf-8', '/migration/audit': '200 text/html; charset=utf-8'}",
+      "evidence": "evidence/full-system-audit/raw/section5-cloudflare-dns.json",
+      "recommended_action": "Keep Worker route as audit/migration publishing surface."
+    },
+    {
+      "id": "S05-GHOST",
+      "subject": "Ghost/no-record zones",
+      "status": "FAIL",
+      "finding": "21 zones have no DNS records by API.",
+      "evidence": "evidence/full-system-audit/raw/section5-cloudflare-dns.json",
+      "recommended_action": "Mark DELETE/KEEP with registrar/business reason in domain registry."
+    },
+    {
+      "id": "S05-BCCL",
+      "subject": "bccl.la NS/registrar",
+      "status": "UNKNOWN",
+      "finding": "Registrar/nameserver flip not fully verified by registrar API in this pass; public DNS lookup captured only.",
+      "evidence": "evidence/full-system-audit/raw/section5-cloudflare-dns.json",
+      "recommended_action": "Query Name.com/registrar API in Section 5 follow-up; answer binary NS flip after authoritative NS evidence."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section5-cloudflare-dns.json"
+  ],
+  "recommended_action": "Finish registrar-level bccl.la verification and create domain-service map for subdomains vs containers.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 185,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/185",
+    "error": null
+  }
+}

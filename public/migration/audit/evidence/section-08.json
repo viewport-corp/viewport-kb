@@ -1,0 +1,50 @@
+{
+  "section": 8,
+  "title": "Old Docker reference audit",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:46:33.154744+00:00",
+  "findings": [
+    {
+      "id": "S08-LLM",
+      "subject": "Old/reference LLM stack",
+      "status": "UNKNOWN",
+      "finding": "LLM-related containers detected=8.",
+      "evidence": "evidence/full-system-audit/raw/section8-old-docker-reference.json",
+      "recommended_action": "Mine configs/model routing read-only before porting; do not touch old Docker."
+    },
+    {
+      "id": "S08-AUTOMATION",
+      "subject": "Automation stack",
+      "status": "UNKNOWN",
+      "finding": "Automation containers detected=6.",
+      "evidence": "evidence/full-system-audit/raw/section8-old-docker-reference.json",
+      "recommended_action": "Export n8n/Coder/OpenHands inventories before deciding revive/archive."
+    },
+    {
+      "id": "S08-DATA",
+      "subject": "Data stack",
+      "status": "UNKNOWN",
+      "finding": "Data containers detected=12.",
+      "evidence": "evidence/full-system-audit/raw/section8-old-docker-reference.json",
+      "recommended_action": "Inventory DB names/sizes with read-only DB credentials; verify client-active status."
+    },
+    {
+      "id": "S08-GHOSTS",
+      "subject": "Ghost services",
+      "status": "FAIL",
+      "finding": "49 containers lack both repo and domain links.",
+      "evidence": "evidence/full-system-audit/raw/section8-old-docker-reference.json",
+      "recommended_action": "Classify REVIVE/ARCHIVE/MINE-FOR-PARTS/RETIRE before any deletion."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section8-old-docker-reference.json"
+  ],
+  "recommended_action": "Treat old Docker as reference; extract configs/data maps only.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 188,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/188",
+    "error": null
+  }
+}

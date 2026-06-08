@@ -1,0 +1,50 @@
+{
+  "section": 6,
+  "title": "Event bus + observability audit",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:46:29.953907+00:00",
+  "findings": [
+    {
+      "id": "S06-N8N",
+      "subject": "n8n",
+      "status": "PASS",
+      "finding": "n8n containers=1; probe=000",
+      "evidence": "evidence/full-system-audit/raw/section6-observability.json",
+      "recommended_action": "Export/list workflows via n8n API credentials or DB read-only."
+    },
+    {
+      "id": "S06-LANGFUSE",
+      "subject": "Langfuse",
+      "status": "PASS",
+      "finding": "Langfuse containers=2; probe=200",
+      "evidence": "evidence/full-system-audit/raw/section6-observability.json",
+      "recommended_action": "Verify trace ingestion keys and agent SDK wiring."
+    },
+    {
+      "id": "S06-PORTAINER",
+      "subject": "Portainer",
+      "status": "PASS",
+      "finding": "Portainer containers=1; probes={'n8n': '000', 'langfuse': '200', 'portainer': '400', 'portainer_http': '200'}",
+      "evidence": "evidence/full-system-audit/raw/section6-observability.json",
+      "recommended_action": "Verify whether Portainer sees both Docker daemons/contexts."
+    },
+    {
+      "id": "S06-UNIFIED-DASH",
+      "subject": "Unified dashboard",
+      "status": "FAIL",
+      "finding": "No verified unified dashboard for agent status + container health + GitHub tasks + domain health exists.",
+      "evidence": "evidence/full-system-audit/raw/section6-observability.json",
+      "recommended_action": "Fastest path: static /migration/audit + scheduled collectors; later Grafana/Prometheus + GitHub/Cloudflare exporters."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section6-observability.json"
+  ],
+  "recommended_action": "Build one read-only dashboard pipeline before adding auto-fix agents.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 186,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/186",
+    "error": null
+  }
+}

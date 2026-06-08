@@ -1,0 +1,115 @@
+timestamp=2026-06-04T22:50:47.684454+00:00
+=== hermes_version ===
+Hermes Agent v0.15.2 (2026.5.29.2)
+Project: /opt/hermes
+Python: 3.13.5
+OpenAI SDK: 2.24.0
+Up to date
+
+=== hermes_status ===
+
+┌─────────────────────────────────────────────────────────┐
+│                 ⚕ Hermes Agent Status                  │
+└─────────────────────────────────────────────────────────┘
+
+◆ Environment
+  Project:      /opt/hermes
+  Python:       3.13.5
+  .env file:    ✓ exists
+  Model:        gpt-5.5
+  Provider:     OpenAI Codex
+
+◆ API Keys
+  OpenRouter    ✓ [REDACTED]...1234
+  OpenAI        ✗ (not set)
+  Google / Gemini  ✓ AIza...jQWE
+  DeepSeek      ✗ (not set)
+  xAI / Grok    ✗ (not set)
+  NVIDIA NIM    ✓ nvap...-1IW
+  Z.AI / GLM    ✗ (not set)
+  Kimi          ✗ (not set)
+  StepFun Step Plan  ✗ (not set)
+  MiniMax       ✗ (not set)
+  MiniMax-CN    ✗ (not set)
+  Firecrawl     ✓ fc-3...f539
+  Tavily        ✓ tvly...olPb
+  Browser Use   ✗ (not set)
+  Browserbase   ✗ (not set)
+  FAL           ✗ (not set)
+  ElevenLabs    ✓ sk_b...57dd
+  GitHub        ✓ gith...PjR8
+  Anthropic     ✓ [REDACTED]...MAAA
+
+◆ Auth Providers
+  Nous Portal   ✓ logged in
+    Portal URL: https://portal.nousresearch.com
+    Inference:  https://inference-api.nousresearch.com/v1
+    Access exp: 2026-06-04 23:02:00 UTC
+    Key exp:    2026-06-04 23:02:00 UTC
+    Refresh:    yes
+  OpenAI Codex  ✓ logged in
+    Auth file:  /opt/data/auth.json
+    Refreshed:  2026-05-27 20:56:37 UTC
+  Qwen OAuth    ✗ not logged in (run: qwen auth qwen-oauth)
+    Auth file:  /opt/data/home/.qwen/oauth_creds.json
+    Error:      Qwen CLI credentials not found. Run 'qwen auth qwen-oauth' first.
+  MiniMax OAuth  ✗ not logged in (run: hermes auth add minimax-oauth)
+  xAI OAuth     ✗ not logged in (run: hermes auth add xai-oauth)
+    Auth file:  /opt/data/auth.json
+    Error:      No xAI OAuth credentials stored. Select xAI Grok OAuth (SuperGrok / Premium+) in `hermes model`.
+
+◆ Nous Tool Gateway
+  Your Nous Portal account has no usable paid credits, so managed web, image, TTS, browser, and Modal tools is unavailable. Add credits or update billing at https://portal.nousresearch.com/billing. If you recently bought credits, run `hermes model` to refresh Hermes.
+
+◆ API-Key Providers
+  Z.AI / GLM       ✗ not configured (run: hermes model)
+  Kimi / Moonshot  ✗ not configured (run: hermes model)
+  StepFun Step Plan ✗ not configured (run: hermes model)
+  MiniMax          ✗ not configured (run: hermes model)
+  MiniMax (China)  ✗ not configured (run: hermes model)
+
+◆ Terminal Backend
+  Backend:      local
+  Sudo:         ✗ disabled
+
+◆ Messaging Platforms
+  Telegram      ✓ configured (home: 6596211381)
+  Discord       ✗ not configured
+  WhatsApp      ✗ not configured
+  Signal        ✗ not configured
+  Slack         ✗ not configured
+  Email         ✗ not configured
+  SMS           ✗ not configured
+  DingTalk      ✗ not configured
+  Feishu        ✗ not configured
+  WeCom         ✗ not configured
+  WeCom Callback  ✗ not configured
+  Weixin        ✗ not configured
+  BlueBubbles   ✗ not configured
+  QQBot         ✗ not configured
+  Yuanbao       ✗ not configured
+
+◆ Gateway Service
+  Status:       ✓ running
+  Manager:      s6 (container supervisor)
+  PID(s):       3219
+
+◆ Scheduled Jobs
+  Jobs:         0 active, 7 total
+
+◆ Sessions
+  Active:       14 session(s)
+
+────────────────────────────────────────────────────────────
+  Run 'hermes doctor' for detailed diagnostics
+  Run 'hermes setup' to configure
+
+
+=== vps ===
+vmi3130827
+NAME        DESCRIPTION                               DOCKER ENDPOINT               ERROR
+default *   Current DOCKER_HOST based configuration   unix:///var/run/docker.sock   
+29.3.0
+65
+srv_viewport_migration=yes
+opt_data_migration=no

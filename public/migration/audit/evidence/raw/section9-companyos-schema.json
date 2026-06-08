@@ -1,0 +1,35 @@
+{
+  "schemas": {
+    "ta[REDACTED].schema.yaml": [
+      "./viewport-company-os/tasks/ta[REDACTED].schema.yaml"
+    ],
+    "ta[REDACTED].schema.yaml": [
+      "./viewport-company-os/tasks/ta[REDACTED].schema.yaml"
+    ],
+    "runtime-contract.schema.json": [
+      "./migration-control-plane/runtime-contract.schema.json"
+    ],
+    "evidence-bundle.schema.json": [
+      "./migration-control-plane/evidence-bundle.schema.json"
+    ],
+    "agent-authority-matrix.yaml": [
+      "./migration-control-plane/agent-authority-matrix.yaml"
+    ],
+    "runtime-seats.schema.yaml": [
+      "./viewport-company-os/agents/runtime-seats.schema.yaml"
+    ],
+    "service-catalog.yaml": [
+      "./migration-control-plane/service-catalog.yaml"
+    ],
+    "entity-registry.yaml": [
+      "./migration-control-plane/entity-registry.yaml"
+    ],
+    "domain-registry.yaml": [
+      "./migration-control-plane/domain-registry.yaml"
+    ],
+    "secrets-exposure-register.yaml": [
+      "./migration-control-plane/secrets-exposure-register.yaml"
+    ]
+  },
+  "enforcement_refs": "scripts/audit_sections4_12.py:128:    names=['ta[REDACTED].schema.yaml','ta[REDACTED].schema.yaml','runtime-contract.schema.json','evidence-bundle.schema.json','agent-authority-matrix.yaml','runtime-seats.schema.yaml','service-catalog.yaml','entity-registry.yaml','domain-registry.yaml','secrets-exposure-register.yaml']\nscripts/audit_sections4_12.py:132:    enforcement=run(\"grep -R \\\"agent-authority-matrix\\|runtime-contract.schema\\|ta[REDACTED].schema\\|evidence-bundle.schema\\\" -n .github scripts viewport-company-os migration-control-plane 2>/dev/null | head -200\",60)\nmigration-control-plane/viewport-billion-dollar-ai-company-operating-system-20260529.md:487:5. `tasks/ta[REDACTED].schema.yaml`\nmigration-control-plane/viewport-universal-industry-operating-system-gap-20260529.md:561:tasks/ta[REDACTED].schema.yaml\nmigration-control-plane/viewport-trillion-dollar-ai-company-build-plan-20260528.md:142:viewport-company-os/tasks/ta[REDACTED].schema.yaml\nmigration-control-plane/viewport-trillion-dollar-ai-company-build-plan-20260528.md:384:viewport-company-os/runtime/runtime-contract.schema.yaml\nmigration-control-plane/evidence/viewport-migration-control-plane-worker-update-2026-05-25.json:14:      \"python3 -m json.tool migration-control-plane/runtime-contract.schema.json\",\nmigration-control-plane/evidence/viewport-migration-control-plane-worker-update-2026-05-25.json:15:      \"python3 -m json.tool migration-control-plane/evidence-bundle.schema.json\",\n"
+}

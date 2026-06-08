@@ -1,0 +1,42 @@
+{
+  "section": 9,
+  "title": "CompanyOS schema audit",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:46:36.088676+00:00",
+  "findings": [
+    {
+      "id": "S09-SCHEMAS",
+      "subject": "Schema files",
+      "status": "PASS",
+      "finding": "Found 10/10 schema files; missing=[].",
+      "evidence": "evidence/full-system-audit/raw/section9-companyos-schema.json",
+      "recommended_action": "Create missing schemas and validate them in CI."
+    },
+    {
+      "id": "S09-ENFORCEMENT",
+      "subject": "Runtime schema enforcement",
+      "status": "FAIL",
+      "finding": "Schemas are reference/partial unless enforcement refs prove runtime/CI gates; no API-level authority gateway verified.",
+      "evidence": "evidence/full-system-audit/raw/section9-companyos-schema.json",
+      "recommended_action": "Add CI validators and runtime policy gateway before granting agent powers."
+    },
+    {
+      "id": "S09-ARCH-GAPS",
+      "subject": "Architecture gap yes/no",
+      "status": "FAIL",
+      "finding": "No verified yes for authority gateway, tenant isolation, per-tenant Odoo DB, GitHub App auth, event triggers, Neo4j brain, or sub-1s task query.",
+      "evidence": "evidence/full-system-audit/raw/section9-companyos-schema.json",
+      "recommended_action": "Build these as explicit CompanyOS readiness gates."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section9-companyos-schema.json"
+  ],
+  "recommended_action": "Move schemas from docs to CI/runtime enforcement gates.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 189,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/189",
+    "error": null
+  }
+}

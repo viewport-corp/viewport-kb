@@ -1,0 +1,57 @@
+{
+  "section": 11,
+  "title": "30-day history export + attach",
+  "verdict": "UNKNOWN",
+  "completed_at": "2026-06-04T23:46:51.831726+00:00",
+  "findings": [
+    {
+      "id": "S11-HERMES",
+      "subject": "Hermes 30-day sessions",
+      "status": "PASS",
+      "finding": "Exported 5 weekly Hermes markdown files.",
+      "evidence": "evidence/full-system-audit/raw/section11-history-exports.json",
+      "recommended_action": "Use these as redacted context exports; rotate secrets if pattern scan indicates exposure."
+    },
+    {
+      "id": "S11-GITHUB",
+      "subject": "GitHub 30-day activity",
+      "status": "PASS",
+      "finding": "Exported GitHub issue/PR/commit summary for 9 repos.",
+      "evidence": "evidence/full-system-audit/history/github-30d.json",
+      "recommended_action": "Link detailed GitHub API exports into audit history."
+    },
+    {
+      "id": "S11-TELEGRAM",
+      "subject": "Telegram native exports",
+      "status": "UNKNOWN",
+      "finding": "ACCESS BLOCKED: no direct Telegram full-chat export API/tool for named bot chats in this session. Hermes session DB covers gateway conversations available to Hermes.",
+      "evidence": "evidence/full-system-audit/raw/section11-history-exports.json",
+      "recommended_action": "Use Telegram client export or gateway DB if available; attach to history later."
+    },
+    {
+      "id": "S11-TOP10",
+      "subject": "Top 10 planned/failed/completed",
+      "status": "UNKNOWN",
+      "finding": "Automated topic extraction not completed; exports exist for downstream analysis.",
+      "evidence": "evidence/full-system-audit/raw/section11-history-exports.json",
+      "recommended_action": "Run summarizer over exported files after all evidence is complete."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section11-history-exports.json",
+    "evidence/full-system-audit/history/hermes-week-2026-18.md",
+    "evidence/full-system-audit/history/hermes-week-2026-19.md",
+    "evidence/full-system-audit/history/hermes-week-2026-20.md",
+    "evidence/full-system-audit/history/hermes-week-2026-21.md",
+    "evidence/full-system-audit/history/hermes-week-2026-22.md",
+    "evidence/full-system-audit/history/github-30d.json",
+    "evidence/full-system-audit/history/openclaw-30d-summary.json"
+  ],
+  "recommended_action": "Complete native Telegram export and top-10 cross-source extraction.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 191,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/191",
+    "error": null
+  }
+}

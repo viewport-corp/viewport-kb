@@ -1,0 +1,12 @@
+{
+  "exports": [
+    "evidence/full-system-audit/history/hermes-week-2026-18.md",
+    "evidence/full-system-audit/history/hermes-week-2026-19.md",
+    "evidence/full-system-audit/history/hermes-week-2026-20.md",
+    "evidence/full-system-audit/history/hermes-week-2026-21.md",
+    "evidence/full-system-audit/history/hermes-week-2026-22.md",
+    "evidence/full-system-audit/history/github-30d.json",
+    "evidence/full-system-audit/history/openclaw-30d-summary.json"
+  ],
+  "telegram_export_status": "ACCESS BLOCKED: Telegram platform export API/history for TheViewportBot/Hermes_Viewport_Bot is not available from current toolset; Hermes session DB exported instead."
+}

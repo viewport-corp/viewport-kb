@@ -1,0 +1,50 @@
+{
+  "section": 4,
+  "title": "Knowledge base / brain audit",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:44:36.499004+00:00",
+  "findings": [
+    {
+      "id": "S04-OBSIDIAN",
+      "subject": "Obsidian vault",
+      "status": "PASS",
+      "finding": "Obsidian vault candidates found=2. First=/srv/viewport/runtime/hermes/workspace/mac-platformx-deploy-audit/source",
+      "evidence": "evidence/full-system-audit/raw/section4-brain.json",
+      "recommended_action": "If no canonical vault exists, create /srv/viewport/knowledge/obsidian-vault and Git-sync markdown brain."
+    },
+    {
+      "id": "S04-NEO4J",
+      "subject": "Neo4j",
+      "status": "PASS",
+      "finding": "Neo4j containers found=1; HTTP probe=0.",
+      "evidence": "evidence/full-system-audit/raw/section4-brain.json",
+      "recommended_action": "Use Neo4j for relationship graph only after agent read/write integration exists."
+    },
+    {
+      "id": "S04-QDRANT",
+      "subject": "Qdrant",
+      "status": "PASS",
+      "finding": "Qdrant containers found=1; collections probe code=0.",
+      "evidence": "evidence/full-system-audit/raw/section4-brain.json",
+      "recommended_action": "Index durable markdown/evidence docs into Qdrant only with source-path metadata."
+    },
+    {
+      "id": "S04-BRAIN-REALITY",
+      "subject": "Current brain reality",
+      "status": "FAIL",
+      "finding": "Hermes, old OpenClaw, and fresh OpenClaw use different stores; no unified brain guarantee exists.",
+      "evidence": "evidence/full-system-audit/raw/section4-brain.json",
+      "recommended_action": "Recommendation: Git-backed Obsidian/markdown as human source + Qdrant semantic index + Neo4j relationship layer later."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section4-brain.json"
+  ],
+  "recommended_action": "Create canonical Git-backed markdown/Obsidian vault first; add Qdrant/Neo4j as derived indexes, not primary truth.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 184,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/184",
+    "error": null
+  }
+}

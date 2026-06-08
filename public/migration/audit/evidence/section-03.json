@@ -1,0 +1,68 @@
+{
+  "section": 3,
+  "title": "Agent fleet full audit",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:34:46.953857+00:00",
+  "findings": [
+    {
+      "id": "S03-OLD-COUNTS",
+      "subject": "Old OpenClaw count reconciliation",
+      "status": "FAIL",
+      "finding": "Old active config seats=24; old root workspace folders=25; legacy full cron backup=50; current cron=47. Prior 26 count is not the active old config.",
+      "evidence": "evidence/full-system-audit/raw/section3-agent-fleet.json",
+      "recommended_action": "Promote only reconciled active seats to CompanyOS; keep orphan/backups reference-only."
+    },
+    {
+      "id": "S03-FRESH",
+      "subject": "Fresh OpenClaw configured/running",
+      "status": "PASS",
+      "finding": "Fresh config agents=26; workspace agent folders=25; cron count=1; running OpenClaw containers=3.",
+      "evidence": "evidence/full-system-audit/raw/section3-agent-fleet.json",
+      "recommended_action": "Verify which configured seats are actually executable before assigning production work."
+    },
+    {
+      "id": "S03-LEGACY-CRONS",
+      "subject": "Legacy cron jobs",
+      "status": "FAIL",
+      "finding": "Legacy full cron backup has 50 jobs; active current file has 47. Process-killer matches=0; session/lock deleter matches=0.",
+      "evidence": "evidence/full-system-audit/raw/section3-agent-fleet.json",
+      "recommended_action": "Do not bulk-port old crons. Port only reviewed observe-only jobs through CompanyOS watcher factory."
+    },
+    {
+      "id": "S03-FRESH-CRON",
+      "subject": "Fresh OpenClaw cron",
+      "status": "PASS",
+      "finding": "Fresh cron count=1; job=TradeX MT5 runner blocker check; enabled=False.",
+      "evidence": "evidence/full-system-audit/raw/section3-agent-fleet.json",
+      "recommended_action": "Keep disabled unless the referenced TradeX blocker workflow is intentionally reactivated."
+    },
+    {
+      "id": "S03-MEMORY",
+      "subject": "OpenClaw memory stores",
+      "status": "UNKNOWN",
+      "finding": "Old memory is markdown workspace files; fresh memory/state includes sqlite files: main.sqlite, openclaw.sqlite, runs.sqlite, registry.sqlite.",
+      "evidence": "evidence/full-system-audit/raw/section3-agent-fleet.json",
+      "recommended_action": "Section 4 must decide shared brain strategy and persistence guarantees."
+    },
+    {
+      "id": "S03-HERMES",
+      "subject": "Hermes tools/skills/session store",
+      "status": "UNKNOWN",
+      "finding": "Hermes version/status collected. Toolsets enabled=22, disabled=4. Session DB path=/opt/data/state.db; last-30-day sessions=(488, 1778235461.1853318, 1780613230.07398, 29009, 14014); unused tools/skills need registry-vs-usage diff.",
+      "evidence": "evidence/full-system-audit/raw/section3-hermes-local.json",
+      "recommended_action": "Disable obvious noise candidates after full Section 3/4 review: homeassistant/spotify/yuanbao/moa/video/image_gen if not needed in operator loop."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section3-agent-fleet.json",
+    "evidence/full-system-audit/raw/section3-agent-fleet.raw.txt",
+    "evidence/full-system-audit/raw/section3-hermes-local.json",
+    "evidence/full-system-audit/sections/section-03.json"
+  ],
+  "recommended_action": "Rebuild agent fleet through CompanyOS registry: migrate useful seats/crons as reviewed templates, keep old OpenClaw reference-only, and disable unused Hermes tool noise after usage diff.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 183,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/183"
+  }
+}

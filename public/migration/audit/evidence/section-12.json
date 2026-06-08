@@ -1,0 +1,53 @@
+{
+  "section": 12,
+  "title": "Best alternatives research",
+  "verdict": "PASS",
+  "completed_at": "2026-06-04T23:46:51.893159+00:00",
+  "findings": [
+    {
+      "id": "S12-MEMORY",
+      "subject": "Agent memory/shared brain recommendation",
+      "status": "PASS",
+      "finding": "Git-backed Obsidian/markdown as primary human/source brain; Qdrant as derived semantic index; Neo4j as derived relationship graph after schemas stabilize",
+      "evidence": "evidence/full-system-audit/raw/section12-best-alternatives.json",
+      "recommended_action": "Implement source/derived-index split."
+    },
+    {
+      "id": "S12-ORCH",
+      "subject": "Agent orchestration recommendation",
+      "status": "PASS",
+      "finding": "Custom Hermes routing + GitHub Issues/Actions control plane; n8n for external event glue; LangGraph only for app-specific deterministic agent flows",
+      "evidence": "evidence/full-system-audit/raw/section12-best-alternatives.json",
+      "recommended_action": "Keep GitHub as truth; use n8n only for triggers/integrations."
+    },
+    {
+      "id": "S12-KB",
+      "subject": "Persistent KB recommendation",
+      "status": "PASS",
+      "finding": "Obsidian/markdown + Git + Qdrant RAG; avoid Notion as source-of-truth lock-in for CompanyOS",
+      "evidence": "evidence/full-system-audit/raw/section12-best-alternatives.json",
+      "recommended_action": "Create canonical vault and indexing pipeline."
+    },
+    {
+      "id": "S12-SECRETS",
+      "subject": "Secret management recommendation",
+      "status": "PASS",
+      "finding": "Infisical or Vault for organization/runtime secrets; GitHub Secrets for CI; env-only only bootstrap",
+      "evidence": "evidence/full-system-audit/raw/section12-best-alternatives.json",
+      "recommended_action": "Start with Infisical/Vault decision and migration runbook."
+    },
+    {
+      "id": "S12-OBS",
+      "subject": "Unified observability recommendation",
+      "status": "PASS",
+      "finding": "Grafana + Prometheus/Loki/Tempo for infra; Langfuse for LLM traces; /migration/audit as founder-facing report",
+      "evidence": "evidence/full-system-audit/raw/section12-best-alternatives.json",
+      "recommended_action": "Deploy Grafana stack only after source collectors are stable."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section12-best-alternatives.json"
+  ],
+  "recommended_action": "Adopt recommendations as CompanyOS architecture decisions with install issues.",
+  "audit_find_issue": null
+}

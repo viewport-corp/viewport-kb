@@ -1,0 +1,75 @@
+{
+  "section": 2,
+  "title": "VPS full runtime inventory",
+  "verdict": "FAIL",
+  "completed_at": "2026-06-04T23:18:25.961618+00:00",
+  "findings": [
+    {
+      "id": "S02-DOCKER",
+      "subject": "Docker daemon/context inventory",
+      "status": "PASS",
+      "finding": "Collected 72 containers across 1 available Docker contexts.",
+      "evidence": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+      "recommended_action": "Review per-container classifications and migrate only with approval."
+    },
+    {
+      "id": "S02-DOCKER-VIEWPORT",
+      "subject": "docker-viewport context",
+      "status": "FAIL",
+      "finding": "docker-viewport context is unavailable.",
+      "evidence": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+      "recommended_action": "If unavailable, document actual daemon split and repair context before migration work."
+    },
+    {
+      "id": "S02-UNHEALTHY",
+      "subject": "Unhealthy containers",
+      "status": "FAIL",
+      "finding": "3 unhealthy containers: saathi-app-1, origin-backend, platformx-nextcloud",
+      "evidence": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+      "recommended_action": "Create/triage service-specific issues before migration/deletion."
+    },
+    {
+      "id": "S02-NO-REPO",
+      "subject": "Containers with no linked repo",
+      "status": "FAIL",
+      "finding": "56 containers have no repo label/link detected.",
+      "evidence": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+      "recommended_action": "Map each container to RuntimeContract/repo or classify archive/reference."
+    },
+    {
+      "id": "S02-NO-DOMAIN",
+      "subject": "Containers with no linked domain",
+      "status": "FAIL",
+      "finding": "50 containers have no domain label/link detected.",
+      "evidence": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+      "recommended_action": "Map domain/subdomain ownership or mark internal/no-domain intentionally."
+    },
+    {
+      "id": "S02-MOUNT",
+      "subject": "/srv/viewport/migration mounted at /opt/data/migration",
+      "status": "FAIL",
+      "finding": "/srv/viewport/migration exists=True; /opt/data/migration exists=False",
+      "evidence": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+      "recommended_action": "If required, add explicit bind mount through approved runtime config; do not hot-edit now."
+    },
+    {
+      "id": "S02-DISK",
+      "subject": "Disk usage df -h",
+      "status": "PASS",
+      "finding": "df -h collected; top disk usage collected separately.",
+      "evidence": "evidence/full-system-audit/raw/section2-vps-runtime.json",
+      "recommended_action": "Section 8/security cleanup decisions require approval before deletion."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section2-vps-runtime.json",
+    "evidence/full-system-audit/raw/section2-vps-runtime.raw.txt",
+    "evidence/full-system-audit/sections/section-02.json"
+  ],
+  "recommended_action": "Create/complete RuntimeContracts for every container and triage unhealthy/no-repo/no-domain services before migration.",
+  "audit_find_issue": {
+    "status": 201,
+    "number": 182,
+    "url": "https://github.com/viewport-corp/viewport-ops/issues/182"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "section": 0,
+  "title": "Build the audit page",
+  "verdict": "PASS",
+  "completed_at": "2026-06-04T22:50:47.684454+00:00",
+  "header": {
+    "audit_timestamp": "2026-06-04T22:50:47.684454+00:00",
+    "hermes_version_raw": "Hermes Agent v0.15.2 (2026.5.29.2)\nProject: /opt/hermes\nPython: 3.13.5\nOpenAI SDK: 2.24.0\nUp to date",
+    "vps_hostname": "vmi3130827",
+    "docker_daemons_active": "legacy/default reachable; docker-viewport context requires Section 2 verification"
+  },
+  "findings": [
+    {
+      "id": "S00-PAGE",
+      "subject": "/migration/audit scaffold",
+      "status": "PASS",
+      "finding": "Auto-generated audit page scaffold exists and is generated from section JSON evidence files.",
+      "evidence": "scripts/full_system_audit.py; public/migration/audit/index.html",
+      "recommended_action": "Run sections 1-12 collectors in order."
+    },
+    {
+      "id": "S00-HERMES",
+      "subject": "Hermes version/status",
+      "status": "PASS",
+      "finding": "Hermes Agent v0.15.2 (2026.5.29.2)",
+      "evidence": "evidence/full-system-audit/raw/section0-preflight.txt",
+      "recommended_action": "Section 3 must expand Hermes tools/skills/session audit."
+    },
+    {
+      "id": "S00-VPS",
+      "subject": "VPS preflight",
+      "status": "PASS",
+      "finding": "VPS preflight collected. Host candidate: vmi3130827; Docker: legacy/default reachable; docker-viewport context requires Section 2 verification",
+      "evidence": "evidence/full-system-audit/raw/section0-preflight.txt",
+      "recommended_action": "Section 2 must inventory both Docker daemon/context surfaces read-only."
+    }
+  ],
+  "evidence_paths": [
+    "evidence/full-system-audit/raw/section0-preflight.txt",
+    "scripts/full_system_audit.py",
+    "public/migration/audit/index.html"
+  ],
+  "recommended_action": "Continue Section 1 GitHub full inventory."
+}
