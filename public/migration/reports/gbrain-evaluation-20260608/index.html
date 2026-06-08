@@ -1,0 +1,141 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>GBrain Evaluation for Viewport</title>
+<style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#07111f;color:#e5edf8;line-height:1.62;margin:0}main{max-width:1180px;margin:auto;padding:32px 20px 80px}a{color:#7dd3fc}code,pre{background:#101827;border:1px solid #334155;border-radius:8px}code{padding:1px 5px}pre{padding:14px;overflow:auto;white-space:pre-wrap;max-height:520px}h1{font-size:36px;color:white}h2{margin-top:34px;padding-top:22px;border-top:1px solid #243244;color:#bfdbfe}.warn{background:#3f2209;border:1px solid #f59e0b;color:#fde68a;border-radius:10px;padding:14px}.ok{background:#063c2b;border:1px solid #22c55e;color:#bbf7d0;border-radius:10px;padding:14px}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #334155;padding:8px;vertical-align:top}</style></head><body><main>
+<p><a href='/migration/'>Migration home</a> · <a href='/migration/reports/viewport-closed-loop-v01-20260608/'>Closed-loop report</a></p>
+<h1>GBrain Evaluation for Viewport — Safe Spike</h1>
+<p>Generated 2026-06-08T15:51:57.428990+00:00</p>
+<div class='ok'><b>Status:</b> safe isolated spike completed. This is not production deployment yet.</div>
+<section><h2>Executive verdict</h2>
+<ul>
+<li><b>Verdict:</b> GBrain safe spike is installed and working for keyword/page retrieval against public Viewport migration docs.</li>
+<li><b>Install:</b> gbrain 0.42.36.0, Bun 1.3.14, isolated HOME under <code>/srv/viewport/experiments/gbrain-viewport-spike-20260608/home</code>.</li>
+<li><b>Data imported:</b> 64 public-safe migration documents, 2,872,213 generated markdown bytes, 19 first-spike truncations.</li>
+<li><b>Brain stats:</b> 64 pages, 807 chunks, 0 embeddings, 0 graph links.</li>
+<li><b>Search proof:</b> query for <code>closed operating loop evidence memory writeback</code> returned the closed-loop report and Claude full-loop design.</li>
+<li><b>Blocker:</b> synthesis/semantic embeddings are not fully exercised because isolated GBrain has no API keys configured. <code>gbrain think</code> gathered pages but skipped synthesis with <code>NO_ANTHROPIC_API_KEY</code>.</li>
+<li><b>Safety:</b> no production Hermes/OpenClaw mutation; no raw private Telegram/session/secrets import; only public migration/KB files.</li>
+</ul>
+</section>
+<section><h2>Boundary / no-touch rules honored</h2><ul><li>No production Hermes/OpenClaw restart or mutation.</li><li>No Docker/service/DNS mutation in this GBrain step.</li><li>No raw Telegram/session DB/private logs imported.</li><li>No secrets printed or committed.</li><li>Public-safe docs only: viewport-kb/public/migration generated markdown.</li></ul></section>
+<section><h2>What worked</h2><ul><li>GBrain installed successfully.</li><li>PGLite local brain initialized in isolated HOME.</li><li>64 public-safe docs imported.</li><li>Keyword search returned correct closed-loop report pages.</li><li>Doctor fast score after import: 95/100 with warnings.</li></ul></section>
+<section><h2>What did not work yet</h2><div class="warn"><b>Semantic/synthesis not fully proven.</b> Isolated GBrain has no embedding/chat credentials configured. It can search keyword/page chunks now, but <code>think</code> skipped synthesis and embeddings are 0. Next stage requires explicit approval for API-key wiring and cost limits.</div></section>
+<section><h2>Recommended next stage</h2><ol><li>Configure a scoped API key path for the isolated spike only; keep conservative mode first.</li><li>Re-run <code>gbrain embed --stale</code>, <code>gbrain query</code>, and <code>gbrain think</code>.</li><li>Connect Claude Code/Codex through local MCP to this brain, still isolated.</li><li>Only after that decide whether to promote to private Postgres/Supabase Viewport brain server.</li></ol></section>
+<section><h2>Verification output: search/query/list/doctor</h2><pre>==stats==
+Pages:     64
+Chunks:    807
+Embedded:  0
+Links:     0
+Tags:      0
+Timeline:  0
+
+By type:
+  concept: 64
+==search: closed operating loop==
+[0.9995] reports-viewport-closed-loop-v01-20260608 -- # reports-viewport-closed-loop-v01-20260608
+
+Source: https://viewport.llc/migration/reports/viewport
+[0.9993] reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html -- # reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html
+
+Source: https://view
+[0.9849] reports-claude-surgical-origin-audit-v2-20260608t103241z-addendum-automation-voice-correction-html -- One closed loop proves the mechanism. But Viewport&#x27;s goal is not one closed loop — it is automated c
+==search: gbrain central brain==
+No results.
+==query: current blocker==
+[1.0000] reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-brief-html -- # reports-viewport-closed-loop-v01-20260608-CLAUDE-VIEWPORT-LOOP-BRIEF-html
+
+Source: https://viewpor
+[0.9992] reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html -- ---
+Risk 6: Scope creep before first loop closes
+Likelihood: High. The 30-40 day session evidence sh
+[0.9992] reports-claude-surgical-origin-audit-v2-20260608t103241z-addendum-automation-voice-correction-html -- The infrastructure vision was being documented in detail while the minimum viable prerequisites for 
+==list==
+audit-comms	concept	2026-06-08	audit-comms
+audit-evidence-history-github-30d-json	concept	2026-06-08	audit-evidence-history-github-30d-json
+audit-evidence-history-hermes-week-2026-18-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-18-md
+audit-evidence-history-hermes-week-2026-19-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-19-md
+audit-evidence-history-hermes-week-2026-20-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-20-md
+audit-evidence-history-hermes-week-2026-21-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-21-md
+audit-evidence-history-hermes-week-2026-22-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-22-md
+audit-evidence-history-openclaw-30d-summary-json	concept	2026-06-08	audit-evidence-history-openclaw-30d-summary-json
+audit-evidence-raw-section0-preflight-txt	concept	2026-06-08	audit-evidence-raw-section0-preflight-txt
+audit-evidence-raw-section1-github-inventory-json	concept	2026-06-08	audit-evidence-raw-section1-github-inventory-json
+audit-evidence-raw-section10-plan-reality-json	concept	2026-06-08	audit-evidence-raw-section10-plan-reality-json
+audit-evidence-raw-section11-history-exports-json	concept	2026-06-08	audit-evidence-raw-section11-history-exports-json
+audit-evidence-raw-section12-best-alternatives-json	concept	2026-06-08	audit-evidence-raw-section12-best-alternatives-json
+audit-evidence-raw-section2-vps-runtime-json	concept	2026-06-08	audit-evidence-raw-section2-vps-runtime-json
+audit-evidence-raw-section2-vps-runtime-raw-txt	concept	2026-06-08	audit-evidence-raw-section2-vps-runtime-raw-txt
+audit-evidence-raw-section3-agent-fleet-json	concept	2026-06-08	audit-evidence-raw-section3-agent-fleet-json
+audit-evidence-raw-section3-agent-fleet-raw-txt	concept	2026-06-08	audit-evidence-raw-section3-agent-fleet-raw-txt
+audit-evidence-raw-section3-hermes-local-json	concept	2026-06-08	audit-evidence-raw-section3-hermes-local-json
+audit-evidence-raw-section4-brain-json	concept	2026-06-08	audit-evidence-raw-section4-brain-json
+audit-evidence-raw-section5-cloudflare-dns-json	concept	2026-06-08	audit-evidence-raw-section5-cloudflare-dns-json
+audit-evidence-raw-section6-observability-json	concept	2026-06-08	audit-evidence-raw-section6-observability-json
+audit-evidence-raw-section7-security-json	concept	2026-06-08	audit-evidence-raw-section7-security-json
+audit-evidence-raw-section8-old-docker-reference-json	concept	2026-06-08	audit-evidence-raw-section8-old-docker-reference-json
+audit-evidence-raw-section9-companyos-schema-json	concept	2026-06-08	audit-evidence-raw-section9-companyos-schema-json
+audit-evidence-redaction-report-json	concept	2026-06-08	audit-evidence-redaction-report-json
+audit-evidence-section-00-json	concept	2026-06-08	audit-evidence-section-00-json
+audit-evidence-section-01-json	concept	2026-06-08	audit-evidence-section-01-json
+audit-evidence-section-02-json	concept	2026-06-08	audit-evidence-section-02-json
+audit-evidence-section-03-json	concept	2026-06-08	audit-evidence-section-03-json
+audit-evidence-section-04-json	concept	2026-06-08	audit-evidence-section-04-json
+audit-evidence-section-05-json	concept	2026-06-08	audit-evidence-section-05-json
+audit-evidence-section-06-json	concept	2026-06-08	audit-evidence-section-06-json
+audit-evidence-section-07-json	concept	2026-06-08	audit-evidence-section-07-json
+audit-evidence-section-08-json	concept	2026-06-08	audit-evidence-section-08-json
+audit-evidence-section-09-json	concept	2026-06-08	audit-evidence-section-09-json
+audit-evidence-section-10-json	concept	2026-06-08	audit-evidence-section-10-json
+audit-evidence-section-11-json	concept	2026-06-08	audit-evidence-section-11-json
+audit-evidence-section-12-json	concept	2026-06-08	audit-evidence-section-12-json
+audit-history-github-30d-json	concept	2026-06-08	audit-history-github-30d-json
+audit-history-hermes-week-2026-18-md	concept	2026-06-08	audit-history-hermes-week-2026-18-md
+audit-history-hermes-week-2026-19-md	concept	2026-06-08	audit-history-hermes-week-2026-19-md
+audit-history-hermes-week-2026-20-md	concept	2026-06-08	audit-history-hermes-week-2026-20-md
+audit-history-hermes-week-2026-21-md	concept	2026-06-08	audit-history-hermes-week-2026-21-md
+audit-history-hermes-week-2026-22-md	concept	2026-06-08	audit-history-hermes-week-2026-22-md
+audit-history-openclaw-30d-summary-json	concept	2026-06-08	audit-history-openclaw-30d-summary-json
+audit-history	concept	2026-06-08	audit-history
+audit	concept	2026-06-08	audit
+migration-index	concept	2026-06-08	migration-index
+odoo	concept	2026-06-08	odoo
+plan	concept	2026-06-08	plan
+==doctor fast==
+
+GBrain Health Check
+===================
+
+Top issues (ranked by cause):
+  [WARN] connection → Skipping DB checks (--fast mode, URL present from config-file-path)
+
+  [OK] resolver_health: 51 skills, all reachable
+  [OK] skill_conformance: 51/51 skills pass
+  [OK] skill_brain_first: 51 skill(s) compliant or exempt
+  [OK] nightly_quality_probe_health: disabled (opt-in). Enable with: gbrain config set autopilot.nightly_quality_probe.enabled true
+  [OK] progressive_batch_audit_health: No progressive-batch operations in the last 7 days
+  [OK] conversation_parser_probe_health: Skipped (nightly probe is opt-in; enable with `gbrain config set autopilot.conversation_parser_probe.enabled true`)
+  [OK] home_dir_in_worktree: gbrain home is outside any enclosing git worktree.
+  [WARN] connection: Skipping DB checks (--fast mode, URL present from config-file-path)
+
+Brain checks:  100/100  (category penalty)
+Skill checks:  100/100
+Ops checks:    95/100
+Meta checks:   100/100</pre></section>
+<section><h2>Verification output: think</h2><pre># What is Viewport missing for a closed operating loop?
+
+(no LLM available — set ANTHROPIC_API_KEY or pass `client`)
+
+## Gaps
+- no LLM available; gather succeeded but synthesis skipped
+
+---
+Model: anthropic:claude-opus-4-7 | Pages: 3 | Takes: 0 | Graph: 0 | Citations: 0
+Warnings: NO_ANTHROPIC_API_KEY
+</pre></section>
+<section><h2>Imported public-safe corpus</h2><table><thead><tr><th>Slug</th><th>Source URL</th><th>Bytes</th><th>Truncated</th></tr></thead><tbody><tr><td>migration-index</td><td><a href='https://viewport.llc/migration/'>https://viewport.llc/migration/</a></td><td>120289</td><td>True</td></tr><tr><td>status-json</td><td><a href='https://viewport.llc/migration/status.json'>https://viewport.llc/migration/status.json</a></td><td>12798</td><td>False</td></tr><tr><td>plan</td><td><a href='https://viewport.llc/migration/plan'>https://viewport.llc/migration/plan</a></td><td>38436</td><td>False</td></tr><tr><td>slack</td><td><a href='https://viewport.llc/migration/slack'>https://viewport.llc/migration/slack</a></td><td>10803</td><td>False</td></tr><tr><td>task</td><td><a href='https://viewport.llc/migration/task'>https://viewport.llc/migration/task</a></td><td>78170</td><td>False</td></tr><tr><td>odoo</td><td><a href='https://viewport.llc/migration/odoo'>https://viewport.llc/migration/odoo</a></td><td>50138</td><td>False</td></tr><tr><td>status</td><td><a href='https://viewport.llc/migration/status'>https://viewport.llc/migration/status</a></td><td>6900</td><td>False</td></tr><tr><td>audit</td><td><a href='https://viewport.llc/migration/audit'>https://viewport.llc/migration/audit</a></td><td>120285</td><td>True</td></tr><tr><td>public-slack</td><td><a href='https://viewport.llc/migration/public/slack'>https://viewport.llc/migration/public/slack</a></td><td>1987</td><td>False</td></tr><tr><td>public-odoo</td><td><a href='https://viewport.llc/migration/public/odoo'>https://viewport.llc/migration/public/odoo</a></td><td>1990</td><td>False</td></tr><tr><td>reports-claude-surgical-origin-audit-v2-20260608T103241Z</td><td><a href='https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z'>https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z</a></td><td>2196</td><td>False</td></tr><tr><td>reports-claude-surgical-origin-audit-v2-20260608T103241Z-claude-surgical-answer-rerun-html</td><td><a href='https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/claude-surgical-answer-rerun.html'>https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/claude-surgical-answer-rerun.html</a></td><td>47934</td><td>False</td></tr><tr><td>reports-claude-surgical-origin-audit-v2-20260608T103241Z-ADDENDUM-automation-voice-correction-html</td><td><a href='https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/ADDENDUM-automation-voice-correction.html'>https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/ADDENDUM-automation-voice-correction.html</a></td><td>14770</td><td>False</td></tr><tr><td>reports-claude-surgical-origin-audit-v2-20260608T103241Z-session-evidence-for-claude-html</td><td><a href='https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/session-evidence-for-claude.html'>https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/session-evidence-for-claude.html</a></td><td>16840</td><td>False</td></tr><tr><td>reports-claude-surgical-origin-audit-v2-20260608T103241Z-CLAUDE-QUESTION-html</td><td><a href='https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/CLAUDE-QUESTION.html'>https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/CLAUDE-QUESTION.html</a></td><td>7161</td><td>False</td></tr><tr><td>reports-viewport-closed-loop-v01-20260608</td><td><a href='https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608'>https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608</a></td><td>1388</td><td>False</td></tr><tr><td>reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html</td><td><a href='https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608/claude-viewport-loop-v01-full.html'>https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608/claude-viewport-loop-v01-full.html</a></td><td>43187</td><td>False</td></tr><tr><td>reports-viewport-closed-loop-v01-20260608-CLAUDE-VIEWPORT-LOOP-BRIEF-html</td><td><a href='https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608/CLAUDE-VIEWPORT-LOOP-BRIEF.html'>https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608/CLAUDE-VIEWPORT-LOOP-BRIEF.html</a></td><td>3468</td><td>False</td></tr><tr><td>audit-history-hermes-week-2026-21-md</td><td><a href='https://viewport.llc/migration/audit/history/hermes-week-2026-21.md'>https://viewport.llc/migration/audit/history/hermes-week-2026-21.md</a></td><td>120429</td><td>True</td></tr><tr><td>audit-history</td><td><a href='https://viewport.llc/migration/audit/history'>https://viewport.llc/migration/audit/history</a></td><td>120325</td><td>True</td></tr><tr><td>audit-history-github-30d-json</td><td><a href='https://viewport.llc/migration/audit/history/github-30d.json'>https://viewport.llc/migration/audit/history/github-30d.json</a></td><td>70223</td><td>False</td></tr><tr><td>audit-history-hermes-week-2026-20-md</td><td><a href='https://viewport.llc/migration/audit/history/hermes-week-2026-20.md'>https://viewport.llc/migration/audit/history/hermes-week-2026-20.md</a></td><td>120429</td><td>True</td></tr><tr><td>audit-history-openclaw-30d-summary-json</td><td><a href='https://viewport.llc/migration/audit/history/openclaw-30d-summary.json'>https://viewport.llc/migration/audit/history/openclaw-30d-summary.json</a></td><td>427</td><td>False</td></tr><tr><td>audit-history-hermes-week-2026-18-md</td><td><a href='https://viewport.llc/migration/audit/history/hermes-week-2026-18.md'>https://viewport.llc/migration/audit/history/hermes-week-2026-18.md</a></td><td>120429</td><td>True</td></tr><tr><td>audit-history-hermes-week-2026-22-md</td><td><a href='https://viewport.llc/migration/audit/history/hermes-week-2026-22.md'>https://viewport.llc/migration/audit/history/hermes-week-2026-22.md</a></td><td>120429</td><td>True</td></tr><tr><td>audit-history-hermes-week-2026-19-md</td><td><a href='https://viewport.llc/migration/audit/history/hermes-week-2026-19.md'>https://viewport.llc/migration/audit/history/hermes-week-2026-19.md</a></td><td>120429</td><td>True</td></tr><tr><td>audit-evidence-section-12-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-12.json'>https://viewport.llc/migration/audit/evidence/section-12.json</a></td><td>2837</td><td>False</td></tr><tr><td>audit-evidence-section-10-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-10.json'>https://viewport.llc/migration/audit/evidence/section-10.json</a></td><td>2017</td><td>False</td></tr><tr><td>audit-evidence-section-05-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-05.json'>https://viewport.llc/migration/audit/evidence/section-05.json</a></td><td>2510</td><td>False</td></tr><tr><td>audit-evidence-section-06-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-06.json'>https://viewport.llc/migration/audit/evidence/section-06.json</a></td><td>2295</td><td>False</td></tr><tr><td>audit-evidence-section-03-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-03.json'>https://viewport.llc/migration/audit/evidence/section-03.json</a></td><td>3950</td><td>False</td></tr><tr><td>audit-evidence-section-02-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-02.json'>https://viewport.llc/migration/audit/evidence/section-02.json</a></td><td>3605</td><td>False</td></tr><tr><td>audit-evidence-section-09-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-09.json'>https://viewport.llc/migration/audit/evidence/section-09.json</a></td><td>2004</td><td>False</td></tr><tr><td>audit-evidence-section-08-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-08.json'>https://viewport.llc/migration/audit/evidence/section-08.json</a></td><td>2223</td><td>False</td></tr><tr><td>audit-evidence-section-07-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-07.json'>https://viewport.llc/migration/audit/evidence/section-07.json</a></td><td>2024</td><td>False</td></tr><tr><td>audit-evidence-redaction-report-json</td><td><a href='https://viewport.llc/migration/audit/evidence/redaction-report.json'>https://viewport.llc/migration/audit/evidence/redaction-report.json</a></td><td>11018</td><td>False</td></tr><tr><td>audit-evidence-section-04-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-04.json'>https://viewport.llc/migration/audit/evidence/section-04.json</a></td><td>2430</td><td>False</td></tr><tr><td>audit-evidence-section-01-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-01.json'>https://viewport.llc/migration/audit/evidence/section-01.json</a></td><td>3754</td><td>False</td></tr><tr><td>audit-evidence-section-00-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-00.json'>https://viewport.llc/migration/audit/evidence/section-00.json</a></td><td>2193</td><td>False</td></tr><tr><td>audit-evidence-section-11-json</td><td><a href='https://viewport.llc/migration/audit/evidence/section-11.json'>https://viewport.llc/migration/audit/evidence/section-11.json</a></td><td>2875</td><td>False</td></tr><tr><td>audit-comms</td><td><a href='https://viewport.llc/migration/audit/comms'>https://viewport.llc/migration/audit/comms</a></td><td>2059</td><td>False</td></tr><tr><td>audit-evidence-history-hermes-week-2026-21-md</td><td><a href='https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-21.md'>https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-21.md</a></td><td>120474</td><td>True</td></tr><tr><td>audit-evidence-history-github-30d-json</td><td><a href='https://viewport.llc/migration/audit/evidence/history/github-30d.json'>https://viewport.llc/migration/audit/evidence/history/github-30d.json</a></td><td>70276</td><td>False</td></tr><tr><td>audit-evidence-history-hermes-week-2026-20-md</td><td><a href='https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-20.md'>https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-20.md</a></td><td>120474</td><td>True</td></tr><tr><td>audit-evidence-history-openclaw-30d-summary-json</td><td><a href='https://viewport.llc/migration/audit/evidence/history/openclaw-30d-summary.json'>https://viewport.llc/migration/audit/evidence/history/openclaw-30d-summary.json</a></td><td>472</td><td>False</td></tr><tr><td>audit-evidence-history-hermes-week-2026-18-md</td><td><a href='https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-18.md'>https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-18.md</a></td><td>120474</td><td>True</td></tr><tr><td>audit-evidence-history-hermes-week-2026-22-md</td><td><a href='https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-22.md'>https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-22.md</a></td><td>120474</td><td>True</td></tr><tr><td>audit-evidence-history-hermes-week-2026-19-md</td><td><a href='https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-19.md'>https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-19.md</a></td><td>120474</td><td>True</td></tr><tr><td>audit-evidence-raw-section2-vps-runtime-raw-txt</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section2-vps-runtime.raw.txt'>https://viewport.llc/migration/audit/evidence/raw/section2-vps-runtime.raw.txt</a></td><td>120484</td><td>True</td></tr><tr><td>audit-evidence-raw-section0-preflight-txt</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section0-preflight.txt'>https://viewport.llc/migration/audit/evidence/raw/section0-preflight.txt</a></td><td>4107</td><td>False</td></tr><tr><td>audit-evidence-raw-section3-hermes-local-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section3-hermes-local.json'>https://viewport.llc/migration/audit/evidence/raw/section3-hermes-local.json</a></td><td>16906</td><td>False</td></tr><tr><td>audit-evidence-raw-section1-github-inventory-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section1-github-inventory.json'>https://viewport.llc/migration/audit/evidence/raw/section1-github-inventory.json</a></td><td>12217</td><td>False</td></tr><tr><td>audit-evidence-raw-section3-agent-fleet-raw-txt</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section3-agent-fleet.raw.txt'>https://viewport.llc/migration/audit/evidence/raw/section3-agent-fleet.raw.txt</a></td><td>120484</td><td>True</td></tr><tr><td>audit-evidence-raw-section8-old-docker-reference-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section8-old-docker-reference.json'>https://viewport.llc/migration/audit/evidence/raw/section8-old-docker-reference.json</a></td><td>120514</td><td>True</td></tr><tr><td>audit-evidence-raw-section12-best-alternatives-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section12-best-alternatives.json'>https://viewport.llc/migration/audit/evidence/raw/section12-best-alternatives.json</a></td><td>1384</td><td>False</td></tr><tr><td>audit-evidence-raw-section7-security-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section7-security.json'>https://viewport.llc/migration/audit/evidence/raw/section7-security.json</a></td><td>1450</td><td>False</td></tr><tr><td>audit-evidence-raw-section4-brain-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section4-brain.json'>https://viewport.llc/migration/audit/evidence/raw/section4-brain.json</a></td><td>8266</td><td>False</td></tr><tr><td>audit-evidence-raw-section6-observability-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section6-observability.json'>https://viewport.llc/migration/audit/evidence/raw/section6-observability.json</a></td><td>7305</td><td>False</td></tr><tr><td>audit-evidence-raw-section10-plan-reality-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section10-plan-reality.json'>https://viewport.llc/migration/audit/evidence/raw/section10-plan-reality.json</a></td><td>947</td><td>False</td></tr><tr><td>audit-evidence-raw-section11-history-exports-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section11-history-exports.json'>https://viewport.llc/migration/audit/evidence/raw/section11-history-exports.json</a></td><td>1088</td><td>False</td></tr><tr><td>audit-evidence-raw-section2-vps-runtime-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section2-vps-runtime.json'>https://viewport.llc/migration/audit/evidence/raw/section2-vps-runtime.json</a></td><td>120469</td><td>True</td></tr><tr><td>audit-evidence-raw-section3-agent-fleet-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section3-agent-fleet.json'>https://viewport.llc/migration/audit/evidence/raw/section3-agent-fleet.json</a></td><td>120469</td><td>True</td></tr><tr><td>audit-evidence-raw-section5-cloudflare-dns-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section5-cloudflare-dns.json'>https://viewport.llc/migration/audit/evidence/raw/section5-cloudflare-dns.json</a></td><td>120484</td><td>True</td></tr><tr><td>audit-evidence-raw-section9-companyos-schema-json</td><td><a href='https://viewport.llc/migration/audit/evidence/raw/section9-companyos-schema.json'>https://viewport.llc/migration/audit/evidence/raw/section9-companyos-schema.json</a></td><td>2867</td><td>False</td></tr></tbody></table></section>
+<section><h2>Evidence files on VPS</h2><pre>/srv/viewport/experiments/gbrain-viewport-spike-20260608/setup-postinstall.log
+/srv/viewport/experiments/gbrain-viewport-spike-20260608/gbrain-init-doctor.log
+/srv/viewport/experiments/gbrain-viewport-spike-20260608/gbrain-import.log
+/srv/viewport/experiments/gbrain-viewport-spike-20260608/gbrain-stats-after-import.log
+/srv/viewport/experiments/gbrain-viewport-spike-20260608/gbrain-verification.log
+/srv/viewport/experiments/gbrain-viewport-spike-20260608/gbrain-think-test.log
+/srv/viewport/experiments/gbrain-viewport-spike-20260608/gbrain-links.log</pre></section>
+</main></body></html>

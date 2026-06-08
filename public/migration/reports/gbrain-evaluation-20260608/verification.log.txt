@@ -1,0 +1,102 @@
+==stats==
+Pages:     64
+Chunks:    807
+Embedded:  0
+Links:     0
+Tags:      0
+Timeline:  0
+
+By type:
+  concept: 64
+==search: closed operating loop==
+[0.9995] reports-viewport-closed-loop-v01-20260608 -- # reports-viewport-closed-loop-v01-20260608
+
+Source: https://viewport.llc/migration/reports/viewport
+[0.9993] reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html -- # reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html
+
+Source: https://view
+[0.9849] reports-claude-surgical-origin-audit-v2-20260608t103241z-addendum-automation-voice-correction-html -- One closed loop proves the mechanism. But Viewport's goal is not one closed loop — it is automated c
+==search: gbrain central brain==
+No results.
+==query: current blocker==
+[1.0000] reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-brief-html -- # reports-viewport-closed-loop-v01-20260608-CLAUDE-VIEWPORT-LOOP-BRIEF-html
+
+Source: https://viewpor
+[0.9992] reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html -- ---
+Risk 6: Scope creep before first loop closes
+Likelihood: High. The 30-40 day session evidence sh
+[0.9992] reports-claude-surgical-origin-audit-v2-20260608t103241z-addendum-automation-voice-correction-html -- The infrastructure vision was being documented in detail while the minimum viable prerequisites for 
+==list==
+audit-comms	concept	2026-06-08	audit-comms
+audit-evidence-history-github-30d-json	concept	2026-06-08	audit-evidence-history-github-30d-json
+audit-evidence-history-hermes-week-2026-18-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-18-md
+audit-evidence-history-hermes-week-2026-19-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-19-md
+audit-evidence-history-hermes-week-2026-20-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-20-md
+audit-evidence-history-hermes-week-2026-21-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-21-md
+audit-evidence-history-hermes-week-2026-22-md	concept	2026-06-08	audit-evidence-history-hermes-week-2026-22-md
+audit-evidence-history-openclaw-30d-summary-json	concept	2026-06-08	audit-evidence-history-openclaw-30d-summary-json
+audit-evidence-raw-section0-preflight-txt	concept	2026-06-08	audit-evidence-raw-section0-preflight-txt
+audit-evidence-raw-section1-github-inventory-json	concept	2026-06-08	audit-evidence-raw-section1-github-inventory-json
+audit-evidence-raw-section10-plan-reality-json	concept	2026-06-08	audit-evidence-raw-section10-plan-reality-json
+audit-evidence-raw-section11-history-exports-json	concept	2026-06-08	audit-evidence-raw-section11-history-exports-json
+audit-evidence-raw-section12-best-alternatives-json	concept	2026-06-08	audit-evidence-raw-section12-best-alternatives-json
+audit-evidence-raw-section2-vps-runtime-json	concept	2026-06-08	audit-evidence-raw-section2-vps-runtime-json
+audit-evidence-raw-section2-vps-runtime-raw-txt	concept	2026-06-08	audit-evidence-raw-section2-vps-runtime-raw-txt
+audit-evidence-raw-section3-agent-fleet-json	concept	2026-06-08	audit-evidence-raw-section3-agent-fleet-json
+audit-evidence-raw-section3-agent-fleet-raw-txt	concept	2026-06-08	audit-evidence-raw-section3-agent-fleet-raw-txt
+audit-evidence-raw-section3-hermes-local-json	concept	2026-06-08	audit-evidence-raw-section3-hermes-local-json
+audit-evidence-raw-section4-brain-json	concept	2026-06-08	audit-evidence-raw-section4-brain-json
+audit-evidence-raw-section5-cloudflare-dns-json	concept	2026-06-08	audit-evidence-raw-section5-cloudflare-dns-json
+audit-evidence-raw-section6-observability-json	concept	2026-06-08	audit-evidence-raw-section6-observability-json
+audit-evidence-raw-section7-security-json	concept	2026-06-08	audit-evidence-raw-section7-security-json
+audit-evidence-raw-section8-old-docker-reference-json	concept	2026-06-08	audit-evidence-raw-section8-old-docker-reference-json
+audit-evidence-raw-section9-companyos-schema-json	concept	2026-06-08	audit-evidence-raw-section9-companyos-schema-json
+audit-evidence-redaction-report-json	concept	2026-06-08	audit-evidence-redaction-report-json
+audit-evidence-section-00-json	concept	2026-06-08	audit-evidence-section-00-json
+audit-evidence-section-01-json	concept	2026-06-08	audit-evidence-section-01-json
+audit-evidence-section-02-json	concept	2026-06-08	audit-evidence-section-02-json
+audit-evidence-section-03-json	concept	2026-06-08	audit-evidence-section-03-json
+audit-evidence-section-04-json	concept	2026-06-08	audit-evidence-section-04-json
+audit-evidence-section-05-json	concept	2026-06-08	audit-evidence-section-05-json
+audit-evidence-section-06-json	concept	2026-06-08	audit-evidence-section-06-json
+audit-evidence-section-07-json	concept	2026-06-08	audit-evidence-section-07-json
+audit-evidence-section-08-json	concept	2026-06-08	audit-evidence-section-08-json
+audit-evidence-section-09-json	concept	2026-06-08	audit-evidence-section-09-json
+audit-evidence-section-10-json	concept	2026-06-08	audit-evidence-section-10-json
+audit-evidence-section-11-json	concept	2026-06-08	audit-evidence-section-11-json
+audit-evidence-section-12-json	concept	2026-06-08	audit-evidence-section-12-json
+audit-history-github-30d-json	concept	2026-06-08	audit-history-github-30d-json
+audit-history-hermes-week-2026-18-md	concept	2026-06-08	audit-history-hermes-week-2026-18-md
+audit-history-hermes-week-2026-19-md	concept	2026-06-08	audit-history-hermes-week-2026-19-md
+audit-history-hermes-week-2026-20-md	concept	2026-06-08	audit-history-hermes-week-2026-20-md
+audit-history-hermes-week-2026-21-md	concept	2026-06-08	audit-history-hermes-week-2026-21-md
+audit-history-hermes-week-2026-22-md	concept	2026-06-08	audit-history-hermes-week-2026-22-md
+audit-history-openclaw-30d-summary-json	concept	2026-06-08	audit-history-openclaw-30d-summary-json
+audit-history	concept	2026-06-08	audit-history
+audit	concept	2026-06-08	audit
+migration-index	concept	2026-06-08	migration-index
+odoo	concept	2026-06-08	odoo
+plan	concept	2026-06-08	plan
+==doctor fast==
+
+GBrain Health Check
+===================
+
+Top issues (ranked by cause):
+  [WARN] connection → Skipping DB checks (--fast mode, URL present from config-file-path)
+
+  [OK] resolver_health: 51 skills, all reachable
+  [OK] skill_conformance: 51/51 skills pass
+  [OK] skill_brain_first: 51 skill(s) compliant or exempt
+  [OK] nightly_quality_probe_health: disabled (opt-in). Enable with: gbrain config set autopilot.nightly_quality_probe.enabled true
+  [OK] progressive_batch_audit_health: No progressive-batch operations in the last 7 days
+  [OK] conversation_parser_probe_health: Skipped (nightly probe is opt-in; enable with `gbrain config set autopilot.conversation_parser_probe.enabled true`)
+  [OK] home_dir_in_worktree: gbrain home is outside any enclosing git worktree.
+  [WARN] connection: Skipping DB checks (--fast mode, URL present from config-file-path)
+
+Brain checks:  100/100  (category penalty)
+Skill checks:  100/100
+Ops checks:    95/100
+Meta checks:   100/100
+
+Overall health score: 95/100. All checks OK (some warnings).

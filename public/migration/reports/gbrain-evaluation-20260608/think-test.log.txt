@@ -1,0 +1,10 @@
+# What is Viewport missing for a closed operating loop?
+
+(no LLM available — set ANTHROPIC_API_KEY or pass `client`)
+
+## Gaps
+- no LLM available; gather succeeded but synthesis skipped
+
+---
+Model: anthropic:claude-opus-4-7 | Pages: 3 | Takes: 0 | Graph: 0 | Citations: 0
+Warnings: NO_ANTHROPIC_API_KEY

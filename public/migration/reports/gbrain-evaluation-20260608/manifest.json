@@ -1,0 +1,450 @@
+[
+  {
+    "slug": "migration-index",
+    "source_path": "index.html",
+    "url": "https://viewport.llc/migration/",
+    "bytes": 120289,
+    "truncated": true
+  },
+  {
+    "slug": "status-json",
+    "source_path": "status.json",
+    "url": "https://viewport.llc/migration/status.json",
+    "bytes": 12798,
+    "truncated": false
+  },
+  {
+    "slug": "plan",
+    "source_path": "plan/index.html",
+    "url": "https://viewport.llc/migration/plan",
+    "bytes": 38436,
+    "truncated": false
+  },
+  {
+    "slug": "slack",
+    "source_path": "slack/index.html",
+    "url": "https://viewport.llc/migration/slack",
+    "bytes": 10803,
+    "truncated": false
+  },
+  {
+    "slug": "task",
+    "source_path": "task/index.html",
+    "url": "https://viewport.llc/migration/task",
+    "bytes": 78170,
+    "truncated": false
+  },
+  {
+    "slug": "odoo",
+    "source_path": "odoo/index.html",
+    "url": "https://viewport.llc/migration/odoo",
+    "bytes": 50138,
+    "truncated": false
+  },
+  {
+    "slug": "status",
+    "source_path": "status/index.html",
+    "url": "https://viewport.llc/migration/status",
+    "bytes": 6900,
+    "truncated": false
+  },
+  {
+    "slug": "audit",
+    "source_path": "audit/index.html",
+    "url": "https://viewport.llc/migration/audit",
+    "bytes": 120285,
+    "truncated": true
+  },
+  {
+    "slug": "public-slack",
+    "source_path": "public/slack/index.html",
+    "url": "https://viewport.llc/migration/public/slack",
+    "bytes": 1987,
+    "truncated": false
+  },
+  {
+    "slug": "public-odoo",
+    "source_path": "public/odoo/index.html",
+    "url": "https://viewport.llc/migration/public/odoo",
+    "bytes": 1990,
+    "truncated": false
+  },
+  {
+    "slug": "reports-claude-surgical-origin-audit-v2-20260608T103241Z",
+    "source_path": "reports/claude-surgical-origin-audit-v2-20260608T103241Z/index.html",
+    "url": "https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z",
+    "bytes": 2196,
+    "truncated": false
+  },
+  {
+    "slug": "reports-claude-surgical-origin-audit-v2-20260608T103241Z-claude-surgical-answer-rerun-html",
+    "source_path": "reports/claude-surgical-origin-audit-v2-20260608T103241Z/claude-surgical-answer-rerun.html",
+    "url": "https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/claude-surgical-answer-rerun.html",
+    "bytes": 47934,
+    "truncated": false
+  },
+  {
+    "slug": "reports-claude-surgical-origin-audit-v2-20260608T103241Z-ADDENDUM-automation-voice-correction-html",
+    "source_path": "reports/claude-surgical-origin-audit-v2-20260608T103241Z/ADDENDUM-automation-voice-correction.html",
+    "url": "https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/ADDENDUM-automation-voice-correction.html",
+    "bytes": 14770,
+    "truncated": false
+  },
+  {
+    "slug": "reports-claude-surgical-origin-audit-v2-20260608T103241Z-session-evidence-for-claude-html",
+    "source_path": "reports/claude-surgical-origin-audit-v2-20260608T103241Z/session-evidence-for-claude.html",
+    "url": "https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/session-evidence-for-claude.html",
+    "bytes": 16840,
+    "truncated": false
+  },
+  {
+    "slug": "reports-claude-surgical-origin-audit-v2-20260608T103241Z-CLAUDE-QUESTION-html",
+    "source_path": "reports/claude-surgical-origin-audit-v2-20260608T103241Z/CLAUDE-QUESTION.html",
+    "url": "https://viewport.llc/migration/reports/claude-surgical-origin-audit-v2-20260608T103241Z/CLAUDE-QUESTION.html",
+    "bytes": 7161,
+    "truncated": false
+  },
+  {
+    "slug": "reports-viewport-closed-loop-v01-20260608",
+    "source_path": "reports/viewport-closed-loop-v01-20260608/index.html",
+    "url": "https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608",
+    "bytes": 1388,
+    "truncated": false
+  },
+  {
+    "slug": "reports-viewport-closed-loop-v01-20260608-claude-viewport-loop-v01-full-html",
+    "source_path": "reports/viewport-closed-loop-v01-20260608/claude-viewport-loop-v01-full.html",
+    "url": "https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608/claude-viewport-loop-v01-full.html",
+    "bytes": 43187,
+    "truncated": false
+  },
+  {
+    "slug": "reports-viewport-closed-loop-v01-20260608-CLAUDE-VIEWPORT-LOOP-BRIEF-html",
+    "source_path": "reports/viewport-closed-loop-v01-20260608/CLAUDE-VIEWPORT-LOOP-BRIEF.html",
+    "url": "https://viewport.llc/migration/reports/viewport-closed-loop-v01-20260608/CLAUDE-VIEWPORT-LOOP-BRIEF.html",
+    "bytes": 3468,
+    "truncated": false
+  },
+  {
+    "slug": "audit-history-hermes-week-2026-21-md",
+    "source_path": "audit/history/hermes-week-2026-21.md",
+    "url": "https://viewport.llc/migration/audit/history/hermes-week-2026-21.md",
+    "bytes": 120429,
+    "truncated": true
+  },
+  {
+    "slug": "audit-history",
+    "source_path": "audit/history/index.html",
+    "url": "https://viewport.llc/migration/audit/history",
+    "bytes": 120325,
+    "truncated": true
+  },
+  {
+    "slug": "audit-history-github-30d-json",
+    "source_path": "audit/history/github-30d.json",
+    "url": "https://viewport.llc/migration/audit/history/github-30d.json",
+    "bytes": 70223,
+    "truncated": false
+  },
+  {
+    "slug": "audit-history-hermes-week-2026-20-md",
+    "source_path": "audit/history/hermes-week-2026-20.md",
+    "url": "https://viewport.llc/migration/audit/history/hermes-week-2026-20.md",
+    "bytes": 120429,
+    "truncated": true
+  },
+  {
+    "slug": "audit-history-openclaw-30d-summary-json",
+    "source_path": "audit/history/openclaw-30d-summary.json",
+    "url": "https://viewport.llc/migration/audit/history/openclaw-30d-summary.json",
+    "bytes": 427,
+    "truncated": false
+  },
+  {
+    "slug": "audit-history-hermes-week-2026-18-md",
+    "source_path": "audit/history/hermes-week-2026-18.md",
+    "url": "https://viewport.llc/migration/audit/history/hermes-week-2026-18.md",
+    "bytes": 120429,
+    "truncated": true
+  },
+  {
+    "slug": "audit-history-hermes-week-2026-22-md",
+    "source_path": "audit/history/hermes-week-2026-22.md",
+    "url": "https://viewport.llc/migration/audit/history/hermes-week-2026-22.md",
+    "bytes": 120429,
+    "truncated": true
+  },
+  {
+    "slug": "audit-history-hermes-week-2026-19-md",
+    "source_path": "audit/history/hermes-week-2026-19.md",
+    "url": "https://viewport.llc/migration/audit/history/hermes-week-2026-19.md",
+    "bytes": 120429,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-section-12-json",
+    "source_path": "audit/evidence/section-12.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-12.json",
+    "bytes": 2837,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-10-json",
+    "source_path": "audit/evidence/section-10.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-10.json",
+    "bytes": 2017,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-05-json",
+    "source_path": "audit/evidence/section-05.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-05.json",
+    "bytes": 2510,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-06-json",
+    "source_path": "audit/evidence/section-06.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-06.json",
+    "bytes": 2295,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-03-json",
+    "source_path": "audit/evidence/section-03.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-03.json",
+    "bytes": 3950,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-02-json",
+    "source_path": "audit/evidence/section-02.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-02.json",
+    "bytes": 3605,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-09-json",
+    "source_path": "audit/evidence/section-09.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-09.json",
+    "bytes": 2004,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-08-json",
+    "source_path": "audit/evidence/section-08.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-08.json",
+    "bytes": 2223,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-07-json",
+    "source_path": "audit/evidence/section-07.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-07.json",
+    "bytes": 2024,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-redaction-report-json",
+    "source_path": "audit/evidence/redaction-report.json",
+    "url": "https://viewport.llc/migration/audit/evidence/redaction-report.json",
+    "bytes": 11018,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-04-json",
+    "source_path": "audit/evidence/section-04.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-04.json",
+    "bytes": 2430,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-01-json",
+    "source_path": "audit/evidence/section-01.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-01.json",
+    "bytes": 3754,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-00-json",
+    "source_path": "audit/evidence/section-00.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-00.json",
+    "bytes": 2193,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-section-11-json",
+    "source_path": "audit/evidence/section-11.json",
+    "url": "https://viewport.llc/migration/audit/evidence/section-11.json",
+    "bytes": 2875,
+    "truncated": false
+  },
+  {
+    "slug": "audit-comms",
+    "source_path": "audit/comms/index.html",
+    "url": "https://viewport.llc/migration/audit/comms",
+    "bytes": 2059,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-history-hermes-week-2026-21-md",
+    "source_path": "audit/evidence/history/hermes-week-2026-21.md",
+    "url": "https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-21.md",
+    "bytes": 120474,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-history-github-30d-json",
+    "source_path": "audit/evidence/history/github-30d.json",
+    "url": "https://viewport.llc/migration/audit/evidence/history/github-30d.json",
+    "bytes": 70276,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-history-hermes-week-2026-20-md",
+    "source_path": "audit/evidence/history/hermes-week-2026-20.md",
+    "url": "https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-20.md",
+    "bytes": 120474,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-history-openclaw-30d-summary-json",
+    "source_path": "audit/evidence/history/openclaw-30d-summary.json",
+    "url": "https://viewport.llc/migration/audit/evidence/history/openclaw-30d-summary.json",
+    "bytes": 472,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-history-hermes-week-2026-18-md",
+    "source_path": "audit/evidence/history/hermes-week-2026-18.md",
+    "url": "https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-18.md",
+    "bytes": 120474,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-history-hermes-week-2026-22-md",
+    "source_path": "audit/evidence/history/hermes-week-2026-22.md",
+    "url": "https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-22.md",
+    "bytes": 120474,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-history-hermes-week-2026-19-md",
+    "source_path": "audit/evidence/history/hermes-week-2026-19.md",
+    "url": "https://viewport.llc/migration/audit/evidence/history/hermes-week-2026-19.md",
+    "bytes": 120474,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-raw-section2-vps-runtime-raw-txt",
+    "source_path": "audit/evidence/raw/section2-vps-runtime.raw.txt",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section2-vps-runtime.raw.txt",
+    "bytes": 120484,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-raw-section0-preflight-txt",
+    "source_path": "audit/evidence/raw/section0-preflight.txt",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section0-preflight.txt",
+    "bytes": 4107,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section3-hermes-local-json",
+    "source_path": "audit/evidence/raw/section3-hermes-local.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section3-hermes-local.json",
+    "bytes": 16906,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section1-github-inventory-json",
+    "source_path": "audit/evidence/raw/section1-github-inventory.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section1-github-inventory.json",
+    "bytes": 12217,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section3-agent-fleet-raw-txt",
+    "source_path": "audit/evidence/raw/section3-agent-fleet.raw.txt",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section3-agent-fleet.raw.txt",
+    "bytes": 120484,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-raw-section8-old-docker-reference-json",
+    "source_path": "audit/evidence/raw/section8-old-docker-reference.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section8-old-docker-reference.json",
+    "bytes": 120514,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-raw-section12-best-alternatives-json",
+    "source_path": "audit/evidence/raw/section12-best-alternatives.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section12-best-alternatives.json",
+    "bytes": 1384,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section7-security-json",
+    "source_path": "audit/evidence/raw/section7-security.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section7-security.json",
+    "bytes": 1450,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section4-brain-json",
+    "source_path": "audit/evidence/raw/section4-brain.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section4-brain.json",
+    "bytes": 8266,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section6-observability-json",
+    "source_path": "audit/evidence/raw/section6-observability.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section6-observability.json",
+    "bytes": 7305,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section10-plan-reality-json",
+    "source_path": "audit/evidence/raw/section10-plan-reality.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section10-plan-reality.json",
+    "bytes": 947,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section11-history-exports-json",
+    "source_path": "audit/evidence/raw/section11-history-exports.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section11-history-exports.json",
+    "bytes": 1088,
+    "truncated": false
+  },
+  {
+    "slug": "audit-evidence-raw-section2-vps-runtime-json",
+    "source_path": "audit/evidence/raw/section2-vps-runtime.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section2-vps-runtime.json",
+    "bytes": 120469,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-raw-section3-agent-fleet-json",
+    "source_path": "audit/evidence/raw/section3-agent-fleet.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section3-agent-fleet.json",
+    "bytes": 120469,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-raw-section5-cloudflare-dns-json",
+    "source_path": "audit/evidence/raw/section5-cloudflare-dns.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section5-cloudflare-dns.json",
+    "bytes": 120484,
+    "truncated": true
+  },
+  {
+    "slug": "audit-evidence-raw-section9-companyos-schema-json",
+    "source_path": "audit/evidence/raw/section9-companyos-schema.json",
+    "url": "https://viewport.llc/migration/audit/evidence/raw/section9-companyos-schema.json",
+    "bytes": 2867,
+    "truncated": false
+  }
+]
