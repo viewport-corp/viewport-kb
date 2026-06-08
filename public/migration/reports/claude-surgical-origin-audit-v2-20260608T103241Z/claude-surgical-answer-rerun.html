@@ -1,0 +1,775 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Full Claude Surgical Answer</title><style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#0b0f17;color:#e8eefc;line-height:1.62;margin:0}main{max-width:1100px;margin:auto;padding:32px 20px 80px}a{color:#7dd3fc}pre{background:#111827;border:1px solid #334155;border-radius:10px;padding:14px;overflow:auto;white-space:pre-wrap}code{background:#111827;border:1px solid #263244;border-radius:5px;padding:1px 5px}h1,h2,h3{line-height:1.2}h1{font-size:32px;color:#fff}h2{border-top:1px solid #243244;margin-top:34px;padding-top:24px;color:#bfdbfe}h3{color:#c4b5fd}blockquote{border-left:4px solid #38bdf8;padding-left:16px;color:#cbd5e1}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #334155;padding:8px;vertical-align:top}nav{background:#111827;border-bottom:1px solid #334155;padding:12px 20px;position:sticky;top:0}nav a{margin-right:14px}.warn{background:#451a1a;border:1px solid #ef4444;color:#fecaca;border-radius:10px;padding:14px;margin:16px 0}.meta{color:#94a3b8;font-size:14px}</style></head><body><nav><a href="./">Read me</a><a href="./claude-surgical-answer-rerun.html">Full report</a><a href="./ADDENDUM-automation-voice-correction.html">Addendum</a><a href="./session-evidence-for-claude.html">Session evidence</a><a href="./CLAUDE-QUESTION.html">Prompt</a></nav><main><div class="meta">Generated public-safe HTML: 2026-06-08T11:31:38.281926Z</div><p>I now have all the evidence needed. Writing the full report.</p>
+
+<p>---</p>
+
+<h1>VIEWPORT 0→100 SURGICAL ARCHITECTURE AUDIT</h1>
+<p><strong>Date:</strong> 2026-06-08 | <strong>Auditor:</strong> Claude Sonnet 4.6 | <strong>Classification:</strong> Command Infrastructure Rescue  </p>
+<p><strong>Sources:</strong> All migration pages, viewport-ops repo, viewport-kb repo, status.json, audit sections 1–12, COUNCIL-MEMORY.md, STATE.md, tracker.json, weekly digest 2026-06-08</p>
+
+<p>---</p>
+
+<h2>EXECUTIVE VERDICT BEFORE READING FURTHER</h2>
+
+<p>The architecture is <strong>directionally correct and fundamentally sound.</strong> The execution is <strong>months behind because zero durable loops have ever closed.</strong> The council never started Round 1. The PAT has never been revoked. The source branch has never been pushed to remote. Status pages report completion on things that only exist as local files. Sam has been building an operating system on top of a runtime that has no control plane beneath it.</p>
+
+<p><strong>Nothing must be added. One blocker must be removed.</strong></p>
+
+<p>---</p>
+
+<h2>1. ARCHITECTURE VERDICT FROM ZERO</h2>
+
+<h3>What is RIGHT</h3>
+
+<p><strong>Evidence source:</strong> migration.text:57–93, AGENTS.md (council) full text, status.json system_health block</p>
+
+<table>
+<tr><td>Component</td><td>Verdict</td><td>Reason</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>GitHub as control plane</td><td>Correct</td><td>Source-of-truth separation from runtime is the right pattern for an AI company OS. Every competing pattern (chat-as-truth, VPS-as-truth, Mac-as-truth) has already failed in this codebase.</td></tr>
+<tr><td>VPS as disposable runtime</td><td>Correct</td><td>The 72-container inventory proves exactly why this must be true: nothing on the VPS is rebuildable today because there are no RuntimeContracts. The lesson is proven, not hypothetical.</td></tr>
+<tr><td>Hermes as operator shell</td><td>Correct</td><td>A single operator harness that reads tasks from GitHub, writes evidence back, and routes to specialists is sound. This is how production AI companies run.</td></tr>
+<tr><td>Claude/Codex/OpenClaw as bounded workers</td><td>Correct</td><td>Agents with scoped authority, verifiers, evidence requirements, and approval gates is the right pattern. The OpenClaw 26-seat roster is a reasonable department structure for a company of this complexity.</td></tr>
+<tr><td>GitHub Issues as task ledger</td><td>Correct</td><td>Issues → branches → PRs → evidence → close is the right atomic loop. It is already implemented as AGENTS.md doctrine.</td></tr>
+<tr><td>Odoo + Slack as business workflow rails</td><td>Correct</td><td>Separation of business record (Odoo) from command surface (Slack) from source of truth (GitHub) is correct layering.</td></tr>
+<tr><td>Approval gates for DNS/secrets/destructive ops</td><td>Correct</td><td>The risk gates in AGENTS.md are appropriate and well-designed.</td></tr>
+<tr><td>Agent roles with readiness levels (R0–R5)</td><td>Correct</td><td>Staged authority levels prevent runaway agents. The roster design is solid.</td></tr>
+</table>
+
+<h3>What is WRONG or INCOMPLETE</h3>
+
+<p><strong>Evidence source:</strong> audit S09-ARCH-GAPS, S04-BRAIN-REALITY, STATE.md, migration_status.json blocked list</p>
+
+<table>
+<tr><td>Component</td><td>Problem</td><td>Evidence</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong>No authority gateway exists</strong></td><td>Schemas reference authority levels but there is no enforced runtime policy gateway. Any agent with tool access can still act beyond its declared scope.</td><td><code>S09-ARCH-GAPS: No verified yes for authority gateway</code></td></tr>
+<tr><td><strong>No shared brain</strong></td><td>Hermes uses <code>state.db</code>. Old OpenClaw uses markdown workspaces. Fresh OpenClaw uses SQLite files. None of these are connected.</td><td><code>S04-BRAIN-REALITY: Hermes, old OpenClaw, and fresh OpenClaw use different stores; no unified brain guarantee</code></td></tr>
+<tr><td><strong>No tenant isolation</strong></td><td>MLG, MLH, BCCL, Saathi, origin containers share networks and volumes without verified isolation.</td><td><code>S09-ARCH-GAPS: No verified yes for tenant isolation</code></td></tr>
+<tr><td><strong>No event loop / watcher</strong></td><td>Legacy OpenClaw had 50 crons. Fresh OpenClaw has 1 cron (disabled). Zero watchers are running to detect drift.</td><td><code>S03-FRESH-CRON: Fresh cron count=1; job=TradeX MT5 runner blocker check; enabled=False</code></td></tr>
+<tr><td><strong>Mac as hidden dependency</strong></td><td>The Worker deploy source lives on Mac. The VPS mirror is not the source. GitHub cannot be built from VPS without Mac intervention.</td><td><code>migration.text:311–312: current Hermes does not have /opt/data/migration mounted…deploy source is on Mac</code></td></tr>
+<tr><td><strong>Broad PAT, unknown expiry</strong></td><td>The current GitHub token has <code>admin:enterprise, admin:org, repo, workflow, delete_repo</code> and similar scopes. Expiry is UNKNOWN. The leaked PAT has never been revoked.</td><td><code>S01-PAT: expiration header: UNKNOWN; STATE.md: pat_revoked: false</code></td></tr>
+<tr><td><strong>Too many proxy layers</strong></td><td>Dokploy Traefik, Coolify, Nginx Proxy Manager, and Cloudflare Worker all serve different domains with no master ownership matrix.</td><td><code>S02-DOCKER: docker-viewport context unavailable; audit confirms Dokploy Traefik + Coolify + NPM coexist</code></td></tr>
+</table>
+
+<p><strong>Summary verdict:</strong> The architecture concept is a 9/10. The execution infrastructure is a 1/10. The gap is not a design problem — it is a control-plane bootstrap problem.</p>
+
+<p>---</p>
+
+<h2>2. WHY EXECUTION FAILED FOR MONTHS</h2>
+
+<p><strong>Root causes only. Not symptoms.</strong></p>
+
+<h3>Root Cause 1: The Council Never Started</h3>
+
+<p><strong>Evidence:</strong> <code>STATE.md: active_round: 000, pat_revoked: false, next_agent: claude-opus-4.7</code></p>
+
+<p>The council was bootstrapped on 2026-05-10. The bootstrap created the folder, wrote STATE.md, and stopped at Step B6: the PAT revocation check. <code>pat_revoked: false</code> was found, a BLOCK round was required, and no one answered it. Round 001 was never written. The council has been stuck at Round 000 for 29 days.</p>
+
+<p>This means: <strong>no council critique, no verification pass, no PASS verdict on any architecture decision has ever happened.</strong> All the planning on migration pages was done outside the council loop, without the verification layer that was designed to catch exactly this kind of drift.</p>
+
+<h3>Root Cause 2: No Closure Loop</h3>
+
+<p><strong>Evidence:</strong> <code>task_board: total 139, now 58, done 1</code> (status.json)</p>
+
+<p>139 tasks exist. 1 is marked done. The &quot;P0 foundation complete&quot; claim in status.json is misleading: <code>p0_foundation_completion.status = &quot;completed_safe_foundation&quot;</code> but the <code>still_not_done</code> list contains every critical item (Hermes mount, runtime fixes, secret rotations, production writes, agent powers). Files were created locally and called done without being pushed, verified, or linked to a closed GitHub issue.</p>
+
+<p>The closure loop requires: GitHub issue → branch → artifact → evidence → PR → merge → issue closed. That full loop has closed <strong>zero times</strong> in this system.</p>
+
+<h3>Root Cause 3: No Durable Task Ledger</h3>
+
+<p><strong>Evidence:</strong> <code>viewport-kb/INDEX.md: Total notes: 4</code>, weekly digest 2026-06-08: same Neo4j request opened twice (#193, #194)</p>
+
+<p>Sam has no single place to see &quot;what is the one open task right now, who owns it, what is its evidence.&quot; The migration task board exists but is a static HTML page generated from local files. It is not a live ledger. GitHub issues are the correct ledger but they are not being used as the loop-closing mechanism. The same task (Neo4j brain setup) was opened twice in the same week because there was no canonical open issue to find.</p>
+
+<h3>Root Cause 4: Context Drift Across Sessions</h3>
+
+<p><strong>Evidence:</strong> <code>S11-HERMES: Exported 5 weekly Hermes markdown files. Hermes: 488 sessions in 30 days, 1,778,235,461 to 1,780,613,230 timestamps, 29,009 total messages, 14,014 assistant messages</code></p>
+
+<p>Hermes has had 488 sessions in 30 days. Each session starts fresh unless the agent reads STATE.md and prior rounds. The migration page documents say &quot;Hermes verified that the deploy source is on Mac&quot; — this is from a session that ended and was never carried forward. The next session started fresh and re-derived the same conclusions. Each session rediscovers the same blockers, writes new reports, and ends without closing the loop.</p>
+
+<h3>Root Cause 5: Too Many Surfaces, None Authoritative</h3>
+
+<p><strong>Evidence:</strong> migration.text:141 &quot;Plans, decisions, fixes, secrets, Docker state, bot state, and agent memory were scattered across Telegram, Mac files, VPS folders, old Docker, OpenClaw sessions, and partial GitHub work&quot;</p>
+
+<p>The current surface count for &quot;where things are&quot;:</p>
+<p>• Mac: Worker deploy source, local branches, evidence files</p>
+<p>• VPS <code>/srv/viewport/migration</code>: evidence/handoff layer</p>
+<p>• VPS <code>/opt/platformx</code>: live service configs</p>
+<p>• VPS Hermes <code>state.db</code>: session memory (with 970 sk- pattern hits)</p>
+<p>• GitHub <code>viewport-ops</code> <code>council/bootstrap-20260510</code>: 6 commits ahead of remote, not pushed</p>
+<p>• Cloudflare Worker: serves the migration pages from GitHub artifacts</p>
+<p>• Telegram: the actual command surface where decisions are made</p>
+<p>• viewport-kb: 4 notes</p>
+<p>• Migration pages: HTML generated from scattered sources</p>
+
+<p><strong>No single surface is authoritative.</strong> Each surface says different things. Agents reading any one surface get an incomplete picture.</p>
+
+<h3>Root Cause 6: Secret Exposure Not Resolved</h3>
+
+<p><strong>Evidence:</strong> <code>S07-SESSIONS: sk- 970, xoxb- 14, ghp_ 138, AIza 32, CF_API_KEY 61, TELEGRAM_BOT_TOKEN 276 in /opt/data/state.db</code>; <code>secrets_register.redaction_counts: openai_sk 179, github_pat 2, cf_key 5, google_key 13, password_value 29, secret_value 99, telegram_env 6</code></p>
+
+<p>The secrets exposure register exists but <code>automation_gate: No expanded production autonomy until categories are scoped/rotated/stored safely</code> has never been unblocked. This is a hard gate on agent autonomy. Until secrets are rotated and access is scoped, no agent should be granted production permissions — and that means the whole system stays locked.</p>
+
+<h3>Root Cause 7: Weak Handoffs</h3>
+
+<p><strong>Evidence:</strong> <code>Migration/council/handoff/template.md</code> exists but <code>tracker.json</code> has never been appended to after bootstrap. Rounds directory exists but no round files beyond bootstrap were ever committed.</p>
+
+<p>The handoff protocol requires every round to write the next agent, evidence, and verdict into <code>tracker.json</code>. This never happened. Every new agent session that starts is a cold start with no verified prior state.</p>
+
+<p>---</p>
+
+<h2>3. WHY OPENCLAW AND HERMES ARE NOT WORKING AS ONE SYSTEM</h2>
+
+<p><strong>Evidence sources:</strong> S03-HERMES, S03-FRESH, S04-BRAIN-REALITY, audit sections 3–4, migration_audit section S03-OLD-COUNTS</p>
+
+<h3>The Three OpenClaw Problem</h3>
+
+<p>There are currently <strong>three OpenClaw entities</strong> with no bridge:</p>
+
+<table>
+<tr><td>Entity</td><td>Location</td><td>State</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>Old OpenClaw (backup)</td><td><code>/home/openclaw/.openclaw.bak.delivery/</code></td><td>24 config seats, 50 cron jobs, markdown workspaces — historical reference</td></tr>
+<tr><td>Fresh OpenClaw (running)</td><td><code>viewport-openclaw-fresh-openclaw-cli-1</code> (healthy, 4 days up)</td><td>26 configured agents, 1 disabled cron, SQLite memory</td></tr>
+<tr><td>Hermes</td><td>Hermes container + Hermes-BCCL container</td><td><code>v0.15.2</code>, 22 toolsets enabled, state.db, different memory format</td></tr>
+</table>
+
+<p>These three share no memory, no task queue, no event log, and no authority schema. Fresh OpenClaw has 25 workspace agent folders. Hermes has its own session database. There is no message bus between them.</p>
+
+<h3>Missing Protocol Layer</h3>
+
+<p><strong>Evidence:</strong> <code>migration_task.text:402–406: &quot;Define Hermes/OpenClaw coordination protocol and fallback inbox... coordination protocol incomplete&quot;</code></p>
+
+<p>What is specifically absent:</p>
+<p>• <strong>No shared task queue:</strong> No queue that both Hermes and OpenClaw read from. Hermes gets tasks from Telegram. OpenClaw would need to pull from GitHub issues. These are different intake channels with no bridge.</p>
+<p>• <strong>No lease system enforced:</strong> <code>task-lease.schema.yaml</code> exists in the repo but <code>S09-ENFORCEMENT: Schemas are reference/partial unless enforcement refs prove runtime/CI gates; no API-level authority gateway verified</code></p>
+<p>• <strong>No memory writeback:</strong> Hermes writes to <code>state.db</code>. OpenClaw writes to SQLite + markdown. Neither writes to a shared canonical store.</p>
+<p>• <strong>No verifier in the loop:</strong> The architecture requires Worker→Reviewer→Verifier before deploying. The verifier role is defined in schemas but not running as an active agent seat.</p>
+
+<h3>Auth and Runtime Isolation</h3>
+
+<p><strong>Evidence:</strong> <code>S02-MOUNT: /srv/viewport/migration exists=True; /opt/data/migration exists=False</code></p>
+
+<p>Hermes cannot read the migration evidence because the bind mount was never applied (requires gateway restart, which requires Sam approval, which was never given). Hermes is operating with no access to the canonical evidence layer it was designed to read. This means every Hermes session is working from session memory only.</p>
+
+<p><strong>The issue is not architecture. The issue is:</strong></p>
+<p>1. Missing mount (one approved restart away)</p>
+<p>2. Missing shared queue (no implementation exists)</p>
+<p>3. Missing memory writeback schema (schema exists, no writer exists)</p>
+<p>4. Missing coordination handoff (template exists, never used)</p>
+
+<p>---</p>
+
+<h2>4. WHY AGENTS ARE NOT CENTRALIZED</h2>
+
+<p><strong>Evidence sources:</strong> S09-ARCH-GAPS, migration_task.text agent centralization tasks, agent-seats/seats.yaml, centralized-agent-registry.yaml path in status.json</p>
+
+<p>The <code>p0_foundation_completion</code> in status.json lists <code>viewport-company-os/agents/centralized-agent-registry.yaml</code> as an artifact. This file was created locally on the branch that is 6 commits ahead of remote and never pushed. It is a file in a local Git tree that no agent can read.</p>
+
+<p><strong>What is specifically missing for centralization:</strong></p>
+
+<table>
+<tr><td>Missing Component</td><td>Evidence</td><td>Impact</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong>Shared task queue</strong></td><td>No queue container, no queue schema enforced at runtime</td><td>Agents cannot pick up work without Sam directing each one</td></tr>
+<tr><td><strong>Task lease system</strong></td><td>Schema exists, enforcement not implemented</td><td>Multiple agents can silently do the same task</td></tr>
+<tr><td><strong>Event log</strong></td><td>tracker.json exists but no agent writes to it</td><td>No history of what ran, what completed, what failed</td></tr>
+<tr><td><strong>Memory writeback</strong></td><td>No agent writes completed-task summaries to a shared store</td><td>Each session starts from zero</td></tr>
+<tr><td><strong>GitHub issue mapping</strong></td><td>Issues exist but no agent has write permissions confirmed (PAT unrevoked, scope unknown)</td><td>Cannot close loops via GitHub</td></tr>
+<tr><td><strong>Slack/Odoo routing</strong></td><td>Partial foundation exists per audit but <code>production slash commands, modals, workflows not complete</code></td><td>Cannot route agent output to business workflows</td></tr>
+<tr><td><strong>Runtime contracts</strong></td><td><code>runtimecontracts_first_pass.status: draft_read_only_no_mutation</code></td><td>No agent is permitted to touch any container</td></tr>
+</table>
+
+<p>The 26 fresh OpenClaw agents exist as workspace folders. They have no active crons, no task intake, no memory writeback, and no reporting path. They are seats without workers.</p>
+
+<p>---</p>
+
+<h2>5. WHY SAM LOSES TRACK</h2>
+
+<p><strong>Evidence sources:</strong> weekly digest 2026-06-08 (#193 and #194 identical), migration.text:169–170, COUNCIL-MEMORY.md, viewport-kb INDEX.md</p>
+
+<h3>The Structural Absence</h3>
+
+<p>Sam loses track because <strong>there is no system that closes loops on his behalf.</strong> Specifically:</p>
+
+<p><strong>1. No daily status digest delivered to Sam&#x27;s inbox.</strong> The legacy OpenClaw had a Morning Briefing cron (<code>0 1 * * *</code>) that would have caught this. Fresh OpenClaw has 0 running crons. Nothing tells Sam &quot;here is what is open, what is blocked, what closed yesterday.&quot;</p>
+
+<p><strong>2. No single canonical issue that is THE active task.</strong> The task board has 139 tasks. When Sam opens a new conversation, there is no authoritative answer to &quot;what is the one thing we are working on right now.&quot; The <code>references/2026-06-05-what-are-we-working-on.md</code> file in viewport-kb captures a Telegram message about this exact question and finds no URL to link to.</p>
+
+<p><strong>3. Telegram messages become void.</strong> Telegram is the command surface. When a decision is made in Telegram, it exists only in Telegram. If it is not converted to a GitHub issue within the session, it is lost. The anti-amnesia workflow exists (capture → KB → GitHub) but only captured 4 notes and no decisions before this week.</p>
+
+<p><strong>4. Reports look like completions.</strong> The migration pages are well-designed, comprehensive, and authoritative-looking. They give the impression of significant progress. This creates a false sense of closure. When Sam reads &quot;P0 foundation complete,&quot; the natural inference is that something is done. But done means 1 of 139 tasks per the task board.</p>
+
+<p><strong>5. Re-entry cost is too high.</strong> To get oriented after a gap, Sam would need to: read the migration page (&gt;3MB HTML), check GitHub issues (scattered), check Hermes session state (requires SSH access), read COUNCIL-MEMORY.md (4 lines of current state), and cross-check the task board. This is a 30-minute reorientation exercise. When the cost is that high, re-orientation gets skipped and the loop reopens.</p>
+
+<p><strong>The system that should exist but doesn&#x27;t:</strong> A daily 10-line Telegram message from Hermes: &quot;Open: #N. Blocked: #M reason. Closed yesterday: none. Next action: X. Nothing needs your decision today.&quot; This single watcher would prevent most re-openings.</p>
+
+<p>---</p>
+
+<h2>6. WHAT MUST STOP FOR 7 DAYS</h2>
+
+<p>No exceptions. Any violation resets the clock.</p>
+
+<table>
+<tr><td>Stop</td><td>Reason</td><td>Evidence</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong>No new domains or subdomains</strong></td><td>61 Cloudflare zones, 21 ghost zones, bccl.la NS flip still unresolved. The domain portfolio is already larger than the team can operate.</td><td>S05-GHOST, S05-BCCL</td></tr>
+<tr><td><strong>No new Docker containers or services</strong></td><td>72 containers, 56 without repo links, 50 without domain links, 3 unhealthy. Adding to an uncontrolled fleet makes reconciliation harder.</td><td>S02-DOCKER, S02-NO-REPO</td></tr>
+<tr><td><strong>No new architecture diagrams or planning documents</strong></td><td>The migration plan already has 139 tasks and a trillion-scale ambition. More plans do not fix zero closed loops.</td><td>task_board.done: 1</td></tr>
+<tr><td><strong>No new migration page sections or public pages</strong></td><td>The pages are comprehensive and accurate. More content increases the reorientation cost for Sam.</td><td>migration.text length</td></tr>
+<tr><td><strong>No new agent seats or OpenClaw configurations</strong></td><td>26 fresh agents, 24 old agents, none executing autonomously. Adding seats without a working queue accomplishes nothing.</td><td>S03-FRESH</td></tr>
+<tr><td><strong>No new Slack channels or Odoo apps</strong></td><td>Partial foundation exists. Building more surface without closing the existing loops creates more drift.</td><td>migration_slack.text &quot;PARTIAL FOUNDATION&quot;</td></tr>
+<tr><td><strong>No VPS mutations without RuntimeContracts</strong></td><td>72 containers, all unmapped. Runtime mutation without contracts can break live services.</td><td>status.json blocked list</td></tr>
+<tr><td><strong>No Telegram-only decisions</strong></td><td>Any decision made in Telegram that does not become a GitHub issue within the same session is lost.</td><td>COUNCIL-MEMORY.md</td></tr>
+<tr><td><strong>No new external tools or platforms</strong></td><td>Qdrant, Neo4j, Langfuse, n8n, OpenHands, Coder, Portainer, Coolify, Dokploy are all running and unintegrated.</td><td>S08-LLM, S08-AUTOMATION</td></tr>
+<tr><td><strong>No broad PAT usage on new work</strong></td><td>PAT scope is <code>admin:enterprise</code> with unknown expiry and unrevoked leaked predecessor.</td><td>S01-PAT</td></tr>
+</table>
+
+<p>---</p>
+
+<h2>7. SMALLEST SYSTEM THAT GETS SAM WORKING AGAIN</h2>
+
+<p><strong>v0.1 definition — 3 components, nothing else.</strong></p>
+
+<h3>Component 1: One Live GitHub Issue (The Active Task Ledger)</h3>
+
+<p>A single GitHub issue in <code>viewport-corp/viewport-ops</code> labeled <code>state:active</code> that is <strong>the one thing being worked on right now.</strong> Not 139 tasks. One issue. It has:</p>
+<p>• Current task title</p>
+<p>• Owner (agent or human)</p>
+<p>• Current blocker (if any)</p>
+<p>• Evidence links</p>
+<p>• Acceptance criteria</p>
+<p>• Next action in plain English</p>
+
+<p>Sam can check this issue from any device in 30 seconds.</p>
+
+<h3>Component 2: Hermes Connected to GitHub</h3>
+
+<p>Hermes must be able to:</p>
+<p>• Read the active issue</p>
+<p>• Comment on it with status updates</p>
+<p>• Close it when evidence is attached</p>
+
+<p>This requires: (a) rotating the leaked PAT and creating a scoped PAT with <code>repo</code> scope only, (b) confirming <code>gh</code> CLI is authenticated on the VPS, (c) allowing Hermes to use it.</p>
+
+<h3>Component 3: One Daily Telegram Status Update</h3>
+
+<p>A single cron job that runs at 09:00 Asia/Vientiane and sends a 10-line Telegram message: active issue title, current status, yesterday&#x27;s action, next action, any blocker. This is what killed Sam&#x27;s context-loss problem in old OpenClaw (Morning Briefing cron) and needs to be restored.</p>
+
+<p><strong>That&#x27;s v0.1.</strong> One issue. One connection. One daily message. Everything else is Phase 2.</p>
+
+<p>---</p>
+
+<h2>8. WHAT MUST BE BUILT FIRST</h2>
+
+<p><strong>One deliverable. Not twenty.</strong></p>
+
+<h3>Fix GitHub Auth (PAT Revoke + Scoped Replace)</h3>
+
+<p><strong>Why this is first:</strong></p>
+<p>• <code>STATE.md: pat_revoked: false</code> — this is the gate that blocks Round 1 of the council</p>
+<p>• <code>S01-PAT: PAT expiry UNKNOWN, scope admin:enterprise</code> — this is a security incident waiting to happen</p>
+<p>• <code>gh CLI missing / GitHub MCP get_file_contents: Not Found</code> — the viewport-ops branch with 6 commits cannot be pushed</p>
+<p>• Every downstream task (pushing the foundation artifacts, creating GitHub issues, closing loops) requires this</p>
+
+<p><strong>Exact deliverable:</strong></p>
+<p>1. Sam revokes the old leaked PAT on GitHub</p>
+<p>2. Sam creates a new PAT with scope <code>repo, read:org</code> only, expires in 90 days</p>
+<p>3. Sam adds the PAT to Hermes environment as <code>GITHUB_TOKEN_VIEWPORT_OPS</code></p>
+<p>4. Hermes confirms <code>gh repo view viewport-corp/viewport-ops</code> returns 200</p>
+<p>5. Hermes pushes the current <code>council/bootstrap-20260510</code> branch with a single commit</p>
+<p>6. Sam sets <code>pat_revoked: true</code> in STATE.md</p>
+
+<p><strong>Files to touch:</strong></p>
+<p>• <code>Migration/council/STATE.md</code> (set <code>pat_revoked: true</code>)</p>
+<p>• VPS <code>.env</code> or Hermes secret store (new PAT value — name only in commits)</p>
+<p>• Push <code>council/bootstrap-20260510</code> to remote</p>
+
+<p><strong>Owner:</strong> Sam (must do PAT steps) + Hermes (must confirm and push)</p>
+<p><strong>Time:</strong> 1 hour</p>
+<p><strong>Proof:</strong> <code>git log --oneline origin/council/bootstrap-20260510</code> shows commits match local</p>
+
+<p>---</p>
+
+<h2>9. VIEWPORT.LLC/MIGRATION REALITY ANALYSIS</h2>
+
+<h3>What the Pages Claim</h3>
+
+<p><strong>Evidence sources:</strong> all public-pages files, status.json, redaction-report.json</p>
+
+<p>The migration pages are a sophisticated, multi-section public-safe operating report. They claim:</p>
+<p>• P0 foundation is complete (GitHubOps foundation, RuntimeContracts read-only pass, agent registry, enforcement gates, Slack/Odoo policy, watcher loop)</p>
+<p>• 139 tasks tracked on the board</p>
+<p>• Cloudflare integration working</p>
+<p>• Odoo/Slack partial foundation validated (15/15 validation passes)</p>
+<p>• 61 Cloudflare zones mapped</p>
+<p>• 72 containers inventoried</p>
+<p>• 36 redacted public evidence files</p>
+<p>• Hermes v0.15.2 ONLINE</p>
+
+<h3>What is Actually Verified vs. Claimed</h3>
+
+<table>
+<tr><td>Claim</td><td>Reality</td><td>Status</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>P0 foundation complete</td><td>Artifacts exist on a local branch that is 6 commits ahead of remote and has never been merged</td><td><strong>UNVERIFIED CLAIM</strong></td></tr>
+<tr><td>Hermes ONLINE</td><td>Container is running, version confirmed, but <code>/opt/data/migration</code> not mounted, gateway restart blocked</td><td><strong>PARTIALLY TRUE</strong></td></tr>
+<tr><td>GitHub write OK</td><td>Issue #177 was created and closed in test — write works</td><td><strong>VERIFIED</strong></td></tr>
+<tr><td>72 containers inventoried</td><td>Confirmed by read-only docker ps</td><td><strong>VERIFIED</strong></td></tr>
+<tr><td>61 Cloudflare zones</td><td>API returned 61</td><td><strong>VERIFIED</strong></td></tr>
+<tr><td>Odoo/Slack 15/15 validation</td><td>Validator script passes 15 checks</td><td><strong>VERIFIED</strong> (limited scope)</td></tr>
+<tr><td>RuntimeContracts first pass</td><td><code>runtimecontracts_first_pass.status: draft_read_only_no_mutation; mutation_allowed: false</code> — draft only, no enforcement</td><td><strong>DRAFT ONLY</strong></td></tr>
+<tr><td>Agent registry 48 entries</td><td>Listed as artifact in p0_foundation_completion but file lives on unpushed branch</td><td><strong>UNVERIFIED</strong></td></tr>
+<tr><td>GSD-RalphLoop active</td><td><code>status: active_repo_only</code> — file exists, not enforced operationally</td><td><strong>REPO ONLY</strong></td></tr>
+<tr><td>Watcher/autonomy</td><td><code>still_not_done: granting agents production powers</code></td><td><strong>NOT DONE</strong></td></tr>
+</table>
+
+<h3>What the Pages Are vs. What They Should Be</h3>
+
+<p>The migration pages are <strong>excellent forensic documentation</strong> and <strong>credible architectural plans.</strong> They are being used as a command interface, which is a problem: command interfaces need live data, not generated-once HTML. The status.json endpoint is the right pattern (live data, machine-readable), but it is updated manually by Hermes and its accuracy depends on Hermes reading fresh evidence each time.</p>
+
+<p><strong>The pages are not a command system.</strong> They are a reading surface. The command system is GitHub Issues + Hermes + Telegram.</p>
+
+<h3>Gaps the Pages Reveal</h3>
+
+<p>1. <code>/migration/status</code> shows 1 done out of 139 — the command system hasn&#x27;t started executing</p>
+<p>2. <code>blocked: gateway restart blocked by smart approval</code> — Telegram intake hook cannot activate without Sam answering a gated question that was never answered</p>
+<p>3. <code>not_done_claim: Website/status reporting is not the migration</code> — the pages explicitly acknowledge this</p>
+<p>4. <code>current_blockers: hermes-migration-mount, runtime-mutation, secret-trust</code> — all three remain unresolved per status.json</p>
+
+<p>---</p>
+
+<h2>10. 7-DAY RECOVERY PLAN</h2>
+
+<p>Each day has one deliverable, one proof, one no-touch boundary, and one failure condition.</p>
+
+<p>---</p>
+
+<h3>Day 1 — Monday, 2026-06-09: UNBLOCK GITHUB AUTH</h3>
+
+<p><strong>Deliverable:</strong> GitHub PAT rotated, Hermes authenticated, council branch pushed to remote</p>
+
+<p><strong>Actions:</strong></p>
+<p>1. Sam revokes the old leaked PAT at github.com/settings/tokens</p>
+<p>2. Sam creates <code>VIEWPORT_OPS_HERMES_PAT</code> with scope <code>repo, read:org</code>, expiry 90 days</p>
+<p>3. Sam updates Hermes environment with new token (value stays in .env, name only in commits)</p>
+<p>4. Hermes runs: <code>gh repo view viewport-corp/viewport-ops</code> → must return 200</p>
+<p>5. Hermes pushes <code>council/bootstrap-20260510</code> branch</p>
+<p>6. Sam edits <code>Migration/council/STATE.md</code>: set <code>pat_revoked: true</code></p>
+<p>7. Hermes commits STATE.md change and pushes</p>
+
+<p><strong>Proof:</strong> <code>git log --oneline origin/council/bootstrap-20260510</code> shows 6 new commits; GitHub UI shows branch with recent push; STATE.md on GitHub shows <code>pat_revoked: true</code></p>
+
+<p><strong>No-touch boundary:</strong> Do not restart Hermes gateway. Do not touch any container. Do not change any DNS record.</p>
+
+<p><strong>Failure condition:</strong> If PAT creation fails due to org permissions, Sam escalates and writes reason in STATE.md. Day 1 does not proceed to Day 2 until push is confirmed.</p>
+
+<p>---</p>
+
+<h3>Day 2 — Tuesday, 2026-06-10: CREATE THE ONE ACTIVE ISSUE</h3>
+
+<p><strong>Deliverable:</strong> Single GitHub issue <code>#ACTIVE</code> labeled <code>state:active</code> in <code>viewport-corp/viewport-ops</code> that is the canonical task ledger entry point</p>
+
+<p><strong>Actions:</strong></p>
+<p>1. Hermes creates the issue using the task-packet template from <code>.github/ISSUE_TEMPLATE/02-task-packet.yml</code></p>
+<p>2. Issue title: <code>[ACTIVE] Viewport v0.1 Command System — complete daily status loop</code></p>
+<p>3. Body: Links to this audit report, lists 3 blockers (Hermes mount, secret rotation, watcher), lists 3 acceptance criteria</p>
+<p>4. Label: <code>state:active, priority:p0, tenant:viewport</code></p>
+<p>5. Hermes posts the issue URL to Telegram: &quot;Active task: {URL}&quot;</p>
+<p>6. Sam confirms the issue is the correct one</p>
+
+<p><strong>Proof:</strong> Issue URL exists on GitHub, is publicly visible, Hermes can comment on it</p>
+
+<p><strong>No-touch boundary:</strong> No new issues beyond this one. No task board updates. No migration page edits.</p>
+
+<p><strong>Failure condition:</strong> If Hermes cannot create issues via GitHub API, diagnose auth scope — do not proceed to Day 3 until write is confirmed.</p>
+
+<p>---</p>
+
+<h3>Day 3 — Wednesday, 2026-06-11: HERMES MIGRATION MOUNT</h3>
+
+<p><strong>Deliverable:</strong> Hermes container has <code>/opt/data/migration</code> mounted to <code>/srv/viewport/migration</code> — confirmed readable</p>
+
+<p><strong>Actions:</strong></p>
+<p>1. Sam approves Hermes gateway restart (plain-English block presented Day 2 evening)</p>
+<p>2. Hermes adds bind mount to docker-compose or Dokploy config: <code>/srv/viewport/migration:/opt/data/migration:ro</code></p>
+<p>3. Hermes restarts in approved window (outside business hours for any MLG/MLH-linked processes)</p>
+<p>4. Hermes confirms: <code>ls /opt/data/migration</code> returns migration files</p>
+<p>5. Hermes posts proof to the active GitHub issue as a comment</p>
+
+<p><strong>Proof:</strong> Hermes session shows <code>START_HERE.md</code> readable at <code>/opt/data/migration/START_HERE.md</code></p>
+
+<p><strong>No-touch boundary:</strong> Do not change any other container. Do not touch Hermes agent config or tool permissions.</p>
+
+<p><strong>Failure condition:</strong> If restart breaks Telegram intake, roll back to prior config. Do not leave Hermes restarted without Telegram connectivity.</p>
+
+<p>---</p>
+
+<h3>Day 4 — Thursday, 2026-06-12: SECRET ROTATION (CRITICAL CATEGORIES)</h3>
+
+<p><strong>Deliverable:</strong> OpenAI API keys and GitHub PATs rotated; Hermes session DB cleared of raw credential patterns</p>
+
+<p><strong>Actions:</strong></p>
+<p>1. Sam rotates OpenAI API key used by Hermes (priority: 179 occurrences in evidence)</p>
+<p>2. Sam rotates any GitHub PATs found in session logs (2 occurrences in evidence)</p>
+<p>3. Sam creates new keys, updates Hermes <code>.env</code> (values never in GitHub)</p>
+<p>4. Hermes confirms API calls succeed with new keys</p>
+<p>5. Hermes posts rotation completion (key names only, no values) to the active GitHub issue</p>
+
+<p><strong>Proof:</strong> New key names listed in GitHub issue comment. <code>automation_gate</code> condition satisfied. Hermes API calls return 200 with new credentials.</p>
+
+<p><strong>No-touch boundary:</strong> Do not attempt to rotate Cloudflare keys or Telegram tokens on Day 4. Do not edit any live container configs beyond <code>.env</code> values.</p>
+
+<p><strong>Failure condition:</strong> If rotation breaks any live service (Odoo, MLH portal, Hermes), restore old key and file incident issue. Do not leave services broken to enforce rotation.</p>
+
+<p>---</p>
+
+<h3>Day 5 — Friday, 2026-06-13: ACTIVATE ONE WATCHER (MORNING BRIEF)</h3>
+
+<p><strong>Deliverable:</strong> One OpenClaw cron job running: Morning Brief, 09:00 Asia/Vientiane, posts 10-line status to Telegram</p>
+
+<p><strong>Actions:</strong></p>
+<p>1. Hermes writes a new cron job file to <code>/srv/viewport/runtime/openclaw-fresh/config/cron/jobs.json</code></p>
+<p>2. Job name: <code>morning-brief-v1</code></p>
+<p>3. Schedule: <code>0 2 * * *</code> (UTC, = 09:00 Asia/Vientiane)</p>
+<p>4. Action: read active GitHub issue via API, read Hermes last-session summary, format 10-line status, post to Telegram</p>
+<p>5. Hermes confirms cron is registered and fires a test run</p>
+<p>6. Sam confirms receipt of Telegram message</p>
+
+<p><strong>Proof:</strong> Telegram shows the morning brief message. GitHub issue comment shows &quot;watcher activated.&quot;</p>
+
+<p><strong>No-touch boundary:</strong> Do not activate any other crons. Do not restart OpenClaw gateway. Do not change any other watcher configuration.</p>
+
+<p><strong>Failure condition:</strong> If Telegram delivery fails, diagnose token issue. Do not proceed to Day 6 without confirmed Telegram delivery.</p>
+
+<p>---</p>
+
+<h3>Day 6 — Saturday, 2026-06-14: CLOSE THE FIRST LOOP</h3>
+
+<p><strong>Deliverable:</strong> One complete GitHub issue loop: issue created → branch → artifact committed → evidence attached → issue closed</p>
+
+<p><strong>Actions:</strong></p>
+<p>1. Pick the smallest possible task from the NOW column of the task board that is already half-done</p>
+<p>2. Recommended: <code>Create canonical task-board source and sync validator</code> (evidence of the HTML/JSON/self-audit drift already exists)</p>
+<p>3. Hermes creates branch <code>fix/task-board-source-validator</code></p>
+<p>4. Hermes commits the canonical JSON source + simple CI validator</p>
+<p>5. Hermes opens PR with evidence attached</p>
+<p>6. Sam reviews (must take &lt;15 minutes)</p>
+<p>7. Sam merges, issue closes</p>
+
+<p><strong>Proof:</strong> GitHub shows 1 closed issue with PR link, commit SHA, and evidence. Task board shows 2 done (not 1).</p>
+
+<p><strong>No-touch boundary:</strong> Do not pick a task that requires VPS mutation. Do not pick a task that requires new dependencies. Do not pick a task that requires Sam to write code.</p>
+
+<p><strong>Failure condition:</strong> If no task can be fully closed without VPS mutation, pick a documentation/schema task instead. The goal is one closed loop, not the most impactful task.</p>
+
+<p>---</p>
+
+<h3>Day 7 — Sunday, 2026-06-15: VERIFY AND HANDWRITE ROUND 1</h3>
+
+<p><strong>Deliverable:</strong> Council Round 001 is written, committed, pushed, and the council loop is live</p>
+
+<p><strong>Actions:</strong></p>
+<p>1. Hermes reads current STATE.md (should now show <code>pat_revoked: true</code>)</p>
+<p>2. Hermes writes <code>Migration/council/rounds/001-claude-round1-verification.md</code></p>
+<p>3. Content: current verified state (GitHub auth: verified, Hermes mount: verified, one loop closed, watcher active), verdict, blocking questions for Sam</p>
+<p>4. Hermes commits and pushes round file + updated STATE.md + tracker.json event</p>
+<p>5. Sam reads round and replies with <code>OK proceed P1</code> or correction</p>
+<p>6. Sam writes reply in STATE.md <code>sam_answers</code></p>
+
+<p><strong>Proof:</strong> Round file visible on GitHub. tracker.json has new entry. STATE.md shows <code>active_round: 001</code>.</p>
+
+<p><strong>No-touch boundary:</strong> Do not write round 002 until Sam responds. Do not start P1 architecture work. The round exists only in the council folder.</p>
+
+<p><strong>Failure condition:</strong> If council folder files are corrupt or missing, restore from the local branch on VPS and push. Do not recreate from scratch.</p>
+
+<p>---</p>
+
+<h2>11. FIRST 10 GITHUB TASK PACKETS</h2>
+
+<p>These are ready-to-create GitHub issues. Each is scoped to close in one session.</p>
+
+<p>---</p>
+
+<p><strong>TP-01: Revoke leaked PAT and create scoped replacement</strong></p>
+<p>• <strong>Goal:</strong> Eliminate the <code>pat_revoked: false</code> block that has stopped the council since 2026-05-10</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>Migration/council/STATE.md</code></p>
+<p>• <strong>Owner/agent:</strong> Sam (human action required for GitHub token management)</p>
+<p>• <strong>Allowed tools:</strong> GitHub UI, Hermes terminal</p>
+<p>• <strong>Forbidden actions:</strong> Do not delete the old token before creating and confirming the new one; do not commit token values</p>
+<p>• <strong>Acceptance criteria:</strong> <code>STATE.md</code> shows <code>pat_revoked: true</code>; new PAT pushes to remote successfully; old PAT shows as revoked in GitHub settings</p>
+<p>• <strong>Evidence:</strong> <code>git log --oneline origin/council/bootstrap-20260510</code> shows all commits; screenshot of revoked token (value redacted)</p>
+
+<p>---</p>
+
+<p><strong>TP-02: Push viewport-ops council branch to remote</strong></p>
+<p>• <strong>Goal:</strong> Make the 6-commit-ahead local branch the remote truth</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, branch <code>council/bootstrap-20260510</code></p>
+<p>• <strong>Owner/agent:</strong> Hermes</p>
+<p>• <strong>Allowed tools:</strong> git, gh CLI</p>
+<p>• <strong>Forbidden actions:</strong> Do not push to main; do not force-push if conflicts exist — file a BLOCK instead</p>
+<p>• <strong>Acceptance criteria:</strong> <code>git log --oneline origin/council/bootstrap-20260510</code> matches local; GitHub UI shows recent commits</p>
+<p>• <strong>Evidence:</strong> Git log output attached as issue comment</p>
+
+<p>---</p>
+
+<p><strong>TP-03: Hermes migration evidence mount</strong></p>
+<p>• <strong>Goal:</strong> Mount <code>/srv/viewport/migration</code> to <code>/opt/data/migration:ro</code> in Hermes container</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>viewport-company-os/plans/hermes-migration-evidence-mount-approval-packet.yaml</code></p>
+<p>• <strong>Owner/agent:</strong> Hermes (with Sam restart approval)</p>
+<p>• <strong>Allowed tools:</strong> Docker/Dokploy config edit, Hermes restart</p>
+<p>• <strong>Forbidden actions:</strong> Do not change any other container; do not mount as read-write; do not change Hermes agent configs</p>
+<p>• <strong>Acceptance criteria:</strong> <code>ls /opt/data/migration</code> returns migration files from inside Hermes container; Telegram intake still functional after restart</p>
+<p>• <strong>Evidence:</strong> Hermes session output showing mount read success</p>
+
+<p>---</p>
+
+<p><strong>TP-04: Rotate OpenAI API keys (Hermes session db critical)</strong></p>
+<p>• <strong>Goal:</strong> Eliminate the 179 OpenAI sk- credential pattern hits in Hermes session DB; rotate active keys</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>viewport-company-os/security/secrets-exposure-register.yaml</code></p>
+<p>• <strong>Owner/agent:</strong> Sam (human rotation) + Hermes (verify new key works)</p>
+<p>• <strong>Allowed tools:</strong> OpenAI dashboard, Hermes terminal, <code>.env</code> edit</p>
+<p>• <strong>Forbidden actions:</strong> Do not commit any key values; do not bulk-export session DB; do not rotate CF/Telegram keys on same day</p>
+<p>• <strong>Acceptance criteria:</strong> New OpenAI key confirmed working by Hermes API call; secrets register updated with rotation date; <code>automation_gate</code> condition satisfied</p>
+<p>• <strong>Evidence:</strong> API call success log (no key value), register YAML updated</p>
+
+<p>---</p>
+
+<p><strong>TP-05: Activate morning brief watcher</strong></p>
+<p>• <strong>Goal:</strong> One daily Telegram message from Hermes with open issue count, active task, next action</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>agent-seats/cron-watchdogs.yaml</code>, OpenClaw cron config</p>
+<p>• <strong>Owner/agent:</strong> Hermes</p>
+<p>• <strong>Allowed tools:</strong> OpenClaw cron config write, Telegram send API</p>
+<p>• <strong>Forbidden actions:</strong> Do not activate any other crons; do not change OpenClaw agent workspaces; do not send to external channels</p>
+<p>• <strong>Acceptance criteria:</strong> Sam receives morning brief message in Telegram at 09:00 Asia/Vientiane; message contains active GitHub issue URL</p>
+<p>• <strong>Evidence:</strong> Telegram message screenshot (redacted if personal info visible)</p>
+
+<p>---</p>
+
+<p><strong>TP-06: Create canonical task JSON source and CI validator</strong></p>
+<p>• <strong>Goal:</strong> Single JSON file is the source of truth for the task board; HTML, self-audit, and deploy evidence are generated from it; CI fails on count drift</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>scripts/generate_migration_tasks_page.py</code>, <code>public/migration/task/</code></p>
+<p>• <strong>Owner/agent:</strong> Hermes/Claude Code</p>
+<p>• <strong>Allowed tools:</strong> File edit, git, Python</p>
+<p>• <strong>Forbidden actions:</strong> Do not change task content; do not add new tasks; do not push directly to main</p>
+<p>• <strong>Acceptance criteria:</strong> <code>scripts/validate_task_source.py</code> passes locally; HTML count matches JSON count; CI action fails if they diverge</p>
+<p>• <strong>Evidence:</strong> CI pass log, validator output</p>
+
+<p>---</p>
+
+<p><strong>TP-07: Map 10 highest-risk containers to RuntimeContract stubs</strong></p>
+<p>• <strong>Goal:</strong> Give the 3 unhealthy containers and 7 highest-risk running containers a minimal RuntimeContract (owner, domain, repo/source, backup status)</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>viewport-company-os/runtime/p0-3-runtimecontracts-complete-pass.yaml</code></p>
+<p>• <strong>Owner/agent:</strong> Hermes (read-only VPS inspection only)</p>
+<p>• <strong>Allowed tools:</strong> Docker inspect (read-only), YAML write</p>
+<p>• <strong>Forbidden actions:</strong> Do not restart, stop, or modify any container; do not attempt backup creation</p>
+<p>• <strong>Acceptance criteria:</strong> <code>saathi-app-1</code>, <code>origin-backend</code>, <code>platformx-nextcloud</code>, and 7 others have contract stubs with owner/domain/source fields filled; mutation_allowed remains false</p>
+<p>• <strong>Evidence:</strong> YAML file committed with 10 contract rows, all mutation_allowed: false</p>
+
+<p>---</p>
+
+<p><strong>TP-08: Create PAT scope + GitHub App migration plan</strong></p>
+<p>• <strong>Goal:</strong> Document the path from broad PAT to scoped GitHub App auth for Hermes automation</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>company-os/agent-instructions/</code></p>
+<p>• <strong>Owner/agent:</strong> Hermes/Claude Code</p>
+<p>• <strong>Allowed tools:</strong> GitHub docs, YAML write, git</p>
+<p>• <strong>Forbidden actions:</strong> Do not create any GitHub App yet; do not change any current tokens; plan only</p>
+<p>• <strong>Acceptance criteria:</strong> Document describes: current PAT scope, minimum required scope, GitHub App creation steps, migration steps, rollback</p>
+<p>• <strong>Evidence:</strong> File committed at named path, no secrets in document</p>
+
+<p>---</p>
+
+<p><strong>TP-09: Write council Round 001</strong></p>
+<p>• <strong>Goal:</strong> First verifiable council round completing Phase P0 (harness sanity)</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>Migration/council/rounds/001-claude-round1-verification.md</code></p>
+<p>• <strong>Owner/agent:</strong> Claude Code (this session)</p>
+<p>• <strong>Allowed tools:</strong> File write, git, STATE.md update, tracker.json append</p>
+<p>• <strong>Forbidden actions:</strong> Do not proceed to Round 002 without Sam answer; do not write implementation artifacts outside council folder</p>
+<p>• <strong>Acceptance criteria:</strong> Round file follows Section 15 format; STATE.md shows <code>active_round: 001</code>; tracker.json has new event appended; pushed to remote</p>
+<p>• <strong>Evidence:</strong> Git commit SHA, GitHub file URL</p>
+
+<p>---</p>
+
+<p><strong>TP-10: Hermes/OpenClaw coordination protocol v0</strong></p>
+<p>• <strong>Goal:</strong> Document the minimal coordination protocol: how Hermes routes tasks to OpenClaw, how OpenClaw reports back, what fallback inbox exists</p>
+<p>• <strong>Repo/path:</strong> <code>viewport-corp/viewport-ops</code>, <code>company-os/agent-operating-model/</code></p>
+<p>• <strong>Owner/agent:</strong> Hermes/Claude Code</p>
+<p>• <strong>Allowed tools:</strong> File write, git</p>
+<p>• <strong>Forbidden actions:</strong> Do not implement the protocol; do not modify OpenClaw config; design document only</p>
+<p>• <strong>Acceptance criteria:</strong> Document covers intake channel (GitHub issue comment), routing mechanism (issue label → agent seat), reporting mechanism (issue comment + STATE.md), fallback (Sam Telegram alert if no response in N hours)</p>
+<p>• <strong>Evidence:</strong> File committed, no runtime changes made</p>
+
+<p>---</p>
+
+<h2>12. PERMANENT COUNCIL-MEMORY PROTOCOL</h2>
+
+<p><strong>Evidence basis:</strong> S04-BRAIN-REALITY, S12-MEMORY, S12-KB, current state of COUNCIL-MEMORY.md</p>
+
+<h3>Where Every Agent Run Writes Memory</h3>
+
+<table>
+<tr><td>Agent</td><td>Memory Location</td><td>Format</td><td>Sync to GitHub</td></tr>
+<tr><td>---</td><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>Hermes (session)</td><td><code>/opt/data/state.db</code></td><td>SQLite session records</td><td>Weekly export: redacted JSONL → GitHub <code>evidence/history/hermes-week-YYYY-WW.md</code></td></tr>
+<tr><td>Hermes (decision)</td><td><code>Migration/council/STATE.md</code> + <code>tracker.json</code></td><td>YAML + JSON append-only</td><td>Every round: commit + push</td></tr>
+<tr><td>OpenClaw agent (workspace)</td><td><code>/srv/viewport/runtime/openclaw-fresh/workspace/agents/&lt;role&gt;/</code></td><td>Markdown</td><td>On task completion: commit summary to viewport-kb</td></tr>
+<tr><td>Claude Code (this session)</td><td><code>COUNCIL-MEMORY.md</code> in audit run directory</td><td>Markdown</td><td>On session end: push to viewport-kb <code>decisions/</code></td></tr>
+<tr><td>Council rounds</td><td><code>Migration/council/rounds/NNN-*.md</code></td><td>Markdown append-only</td><td>Every round: commit + push (never edit after write)</td></tr>
+<tr><td>Active task evidence</td><td><code>viewport-company-os/evidence/</code></td><td>YAML/JSON</td><td>On task completion with PR merge</td></tr>
+</table>
+
+<h3>Schema for Every Memory Write</h3>
+
+<pre>
+---
+ts_utc: &lt;ISO 8601&gt;
+agent: &lt;hermes|claude-code|codex|openclaw-&lt;role&gt;&gt;
+session_id: &lt;unique identifier, not secret&gt;
+task_ref: &lt;GitHub issue URL or council round path&gt;
+scope: &lt;verified_reality|target_plan|historical_context|unverified_claim|blocker|recommendation&gt;
+sources_read:
+  - &lt;file path or URL with access date&gt;
+no_touch_boundaries:
+  - &lt;explicit list&gt;
+findings:
+  - &lt;finding text&gt;
+blockers:
+  - &lt;blocker text&gt;
+next_task_packet: &lt;GitHub issue URL or &quot;pending&quot;&gt;
+redaction_status: &lt;clean|contains_patterns_not_exported&gt;
+secrets_in_output: false  # must be false before any write
+</pre>
+
+<h3>How Memory Syncs to GitHub</h3>
+
+<p><strong>What syncs:</strong> Redacted decision summaries, round files, evidence YAML, task completion records  </p>
+<p><strong>What never syncs:</strong> Raw session exports, API keys, tokens, passwords, customer data, OAuth sessions  </p>
+<p><strong>Sync trigger:</strong> Every council round commit + push; every task completion PR merge; weekly Hermes export cron</p>
+
+<p><strong>Anti-amnesia rule:</strong> Before any agent session starts, it reads in this order:</p>
+<p>1. <code>Migration/council/STATE.md</code> (current phase, active round, Sam answers)</p>
+<p>2. Active GitHub issue body and last 5 comments</p>
+<p>3. Most recent <code>tracker.json</code> entries (last 10)</p>
+<p>4. Most recent weekly Hermes export (for pattern context)</p>
+
+<p>Only after reading all four sources does the agent begin work. If any source is inaccessible, it writes a BLOCK round explaining what is missing before proceeding.</p>
+
+<p><strong>Conflict resolution:</strong> If session memory contradicts GitHub truth, GitHub wins. Agent writes a correction round noting the discrepancy.</p>
+
+<p>---</p>
+
+<h2>13. HERMES FAILURES — BLUNT ASSESSMENT</h2>
+
+<p><strong>Evidence sources:</strong> STATE.md, COUNCIL-MEMORY.md, migration pages, status.json, audit section S03-HERMES, S11-HERMES, tracker.json (empty beyond bootstrap)</p>
+
+<h3>Failure 1: Never Completed the PAT Check</h3>
+
+<p>The Council bootstrap procedure in AGENTS.md Section 6, Step B6 requires: &quot;Read STATE.md. If <code>pat_revoked: false</code>, write <code>rounds/000-claude-block-pat.md</code> with verdict BLOCK and STOP.&quot;</p>
+
+<p>STATE.md shows <code>pat_revoked: false</code> as of today, 2026-06-08. Either:</p>
+<p>• Hermes wrote the BLOCK round and no one answered (no round file exists in the cloned repo)</p>
+<p>• Hermes skipped the PAT check and moved on to other work</p>
+
+<p>Either outcome is a failure. The council cannot advance until this is resolved. 29 days of architectural work happened outside a verified harness because this check was skipped or went unanswered.</p>
+
+<h3>Failure 2: Reporting Completion Without Evidence</h3>
+
+<p>The status.json reports <code>p0_foundation_completion.status: completed_safe_foundation</code> and lists 6 artifact files. These artifacts are in a local Git branch that is 6 commits ahead of remote and has never been pushed. <code>GitHub MCP get_file_contents</code> returned <code>Not Found</code> for these paths. <strong>The foundation is not complete because the artifacts are not in GitHub.</strong></p>
+
+<p>Completing P0 means the artifacts are in GitHub truth, not on a local VPS filesystem.</p>
+
+<h3>Failure 3: False Mount Claim</h3>
+
+<p>The audit audit finding <code>S02-MOUNT: /srv/viewport/migration exists=True; /opt/data/migration exists=False</code> means Hermes currently has no access to the migration evidence it was designed to read. Yet Hermes continues to operate and report on migration status. Every session that reports migration status without reading the migration evidence is reporting from session memory alone.</p>
+
+<h3>Failure 4: Too Many Tools Enabled</h3>
+
+<p><strong>Evidence:</strong> <code>S03-HERMES: Toolsets enabled=22, disabled=4; unused tools/skills need registry-vs-usage diff</code></p>
+
+<p>The audit finding recommends: &quot;Disable obvious noise candidates: homeassistant/spotify/yuanbao/moa/video/image_gen if not needed in operator loop.&quot; An operator shell for a company migration does not need home automation or music streaming tools. Enabled-but-unused tools increase attack surface and context noise in every session.</p>
+
+<h3>Failure 5: Asking Weak Prompts Without State Context</h3>
+
+<p>The COUNCIL-MEMORY.md current verified state shows Hermes confirming basic facts like &quot;Claude Code CLI updated and authenticated&quot; and &quot;viewport-kb is publicly cloneable.&quot; These are reasonable confirmations. But the 488 sessions in 30 days represent an enormous amount of work that never closed the fundamental blockers. Sessions appear to have been doing forensic documentation and page generation rather than closing the control-plane bootstrap loop.</p>
+
+<h3>Failure 6: Session DB Contains Unmanaged Credential Patterns</h3>
+
+<p><strong>Evidence:</strong> S07-SESSIONS: sk- 970, ghp_ 138, TELEGRAM_BOT_TOKEN 276 in <code>/opt/data/state.db</code></p>
+
+<p>The session DB is the core operating memory of Hermes. It contains over 1,400 credential-adjacent patterns. This is not an audit finding to be deferred — it is a live security risk that blocks every subsequent step. Hermes has been executing with a compromised memory store for the duration of its operation.</p>
+
+<h3>Failure 7: Not Establishing Source-of-Truth Before Acting</h3>
+
+<p>The migration page explicitly states: &quot;Before claiming complete day-one understanding, Hermes must access the raw Telegram exports/private evidence or receive a verified private import.&quot; Hermes has been working from partial public-safe sources and reporting as if it had complete context. The session evidence shows <code>S11-TELEGRAM: ACCESS BLOCKED: no direct Telegram full-chat export API/tool for named bot chats in this session</code> — yet migration summaries reference Telegram history as a primary source.</p>
+
+<p>---</p>
+
+<h2>14. FINAL RECOMMENDATION</h2>
+
+<p><strong>What happens immediately after this audit, before any other project starts.</strong></p>
+
+<h3>The One Action</h3>
+
+<p>Sam revokes the leaked PAT today. Not tomorrow. Today, before any other conversation.</p>
+
+<p>URL: <code>https://github.com/settings/tokens</code> → find the token referenced in STATE.md and migration evidence → Revoke.</p>
+
+<p>Then Sam creates a scoped replacement (<code>repo, read:org</code> only) and tells Hermes the new token name.</p>
+
+<h3>Why This Action and No Other</h3>
+
+<p>Every downstream blocker traces to this one. The council is stuck at Round 000. The foundation artifacts can&#x27;t be pushed. The GitHub source-of-truth can&#x27;t be established. The PAT has unknown expiry and <code>admin:enterprise</code> scope sitting in a session DB that contains 138 <code>ghp_</code> pattern hits. This is not a planning problem. It is one revocation in one browser tab.</p>
+
+<p>After that one action:</p>
+
+<p>1. STATE.md gets <code>pat_revoked: true</code> → council Round 001 unblocks</p>
+<p>2. Hermes pushes the 6-commit branch → foundation artifacts enter GitHub truth</p>
+<p>3. New scoped PAT with no <code>admin:enterprise</code> → security incident risk closes</p>
+<p>4. Hermes can create/comment on GitHub issues → loop-closing mechanism activates</p>
+
+<p><strong>Nothing else. Not a new feature. Not a new diagram. Not a new page. Not a new meeting. One revocation. Then the 7-day plan above.</strong></p>
+
+<h3>The Second Action (Same Day, After PAT Revocation)</h3>
+
+<p>Sam reads this audit and marks the 7 items from the STOP list as confirmed. He writes in Telegram: &quot;PAT revoked. Stops confirmed. Proceeding Day 1.&quot; Hermes reads this as the trigger to begin Day 1 of the recovery plan.</p>
+
+<h3>The Third Action (End of Day 1)</h3>
+
+<p>Create the one active GitHub issue. This becomes Sam&#x27;s single status-check point for the next 7 days. Every morning, he checks this one issue. If it has a Hermes comment from yesterday, things are moving. If it doesn&#x27;t, something broke — and that&#x27;s diagnosable in one look.</p>
+
+<h3>What Changes Permanently After This Week</h3>
+
+<p>Sam no longer starts conversations from zero. He starts every conversation with: &quot;What is the status of the active issue?&quot; If Hermes can answer that question from GitHub in under 10 seconds, the amnesia problem is solved. If Hermes cannot answer, the session starts with diagnosing why the active issue loop broke — not with re-deriving the architecture from Telegram history.</p>
+
+<p><strong>The architecture is right. The foundation is real. The only thing missing is one closed loop that proves it works.</strong></p>
+
+<p>---</p>
+
+<h2>APPENDIX: VERIFIED EVIDENCE CROSS-REFERENCE</h2>
+
+<table>
+<tr><td>Claim in this report</td><td>Primary source</td><td>Verified?</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td>STATE.md: pat_revoked: false</td><td><code>/srv/viewport/council-audit/repos/viewport-ops/Migration/council/STATE.md</code> line 5</td><td>Verified</td></tr>
+<tr><td>Council active_round: 000</td><td>STATE.md line 8</td><td>Verified</td></tr>
+<tr><td>72 containers, 65 running, 3 unhealthy</td><td>status.json <code>vps_runtime_reconciliation.verification</code></td><td>Verified</td></tr>
+<tr><td>56 containers no repo link</td><td>audit S02-NO-REPO</td><td>Verified</td></tr>
+<tr><td>50 containers no domain link</td><td>audit S02-NO-DOMAIN</td><td>Verified</td></tr>
+<tr><td>GitHub audit 2 pass, 10 fail</td><td>status.json <code>system_health.audit</code></td><td>Verified</td></tr>
+<tr><td>Task board 139 total, 1 done</td><td>status.json <code>task_board</code></td><td>Verified</td></tr>
+<tr><td>viewport-kb: 4 notes</td><td><code>repos/viewport-kb/INDEX.md</code></td><td>Verified</td></tr>
+<tr><td>Hermes session DB credential patterns</td><td>audit S07-SESSIONS</td><td>Verified</td></tr>
+<tr><td>/opt/data/migration missing</td><td>audit S02-MOUNT</td><td>Verified</td></tr>
+<tr><td>Fresh OpenClaw: 1 cron, disabled</td><td>audit S03-FRESH-CRON</td><td>Verified</td></tr>
+<tr><td>21 ghost Cloudflare zones</td><td>audit S05-GHOST</td><td>Verified</td></tr>
+<tr><td>No unified brain</td><td>audit S04-BRAIN-REALITY</td><td>Verified</td></tr>
+<tr><td>PAT scope admin:enterprise</td><td>audit S01-PAT</td><td>Verified</td></tr>
+<tr><td>Same Neo4j issue opened twice (#193, #194)</td><td><code>viewport-kb/decisions/2026-06-08-weekly-digest.md</code> lines 21–23</td><td>Verified</td></tr>
+<tr><td>Mac required for Worker deploy source</td><td>migration.text lines 311–354</td><td>Verified</td></tr>
+<tr><td>Deploy source not on VPS</td><td>migration.text line 352</td><td>Verified</td></tr>
+<tr><td>P0 artifacts on unpushed branch</td><td>audit S01-WRITE finding + <code>local branch ahead 6 commits</code></td><td>Verified</td></tr>
+</table>
+
+<p>---</p>
+
+<p>*Audit complete. Sources read: 8 public migration pages, 2 repo trees, STATE.md, tracker.json (empty beyond bootstrap), AGENTS.md council protocol, COUNCIL-MEMORY.md, status.json, redaction-report.json, viewport-kb INDEX and 4 notes, weekly digest 2026-06-08, audit sections 1–12. No files were written. No runtime was touched.*</p></main></body></html>

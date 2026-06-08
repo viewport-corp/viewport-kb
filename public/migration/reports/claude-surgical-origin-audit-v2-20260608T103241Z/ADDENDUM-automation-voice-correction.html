@@ -1,0 +1,182 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Automation Voice Correction Addendum</title><style>body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#0b0f17;color:#e8eefc;line-height:1.62;margin:0}main{max-width:1100px;margin:auto;padding:32px 20px 80px}a{color:#7dd3fc}pre{background:#111827;border:1px solid #334155;border-radius:10px;padding:14px;overflow:auto;white-space:pre-wrap}code{background:#111827;border:1px solid #263244;border-radius:5px;padding:1px 5px}h1,h2,h3{line-height:1.2}h1{font-size:32px;color:#fff}h2{border-top:1px solid #243244;margin-top:34px;padding-top:24px;color:#bfdbfe}h3{color:#c4b5fd}blockquote{border-left:4px solid #38bdf8;padding-left:16px;color:#cbd5e1}table{border-collapse:collapse;width:100%;display:block;overflow:auto}td,th{border:1px solid #334155;padding:8px;vertical-align:top}nav{background:#111827;border-bottom:1px solid #334155;padding:12px 20px;position:sticky;top:0}nav a{margin-right:14px}.warn{background:#451a1a;border:1px solid #ef4444;color:#fecaca;border-radius:10px;padding:14px;margin:16px 0}.meta{color:#94a3b8;font-size:14px}</style></head><body><nav><a href="./">Read me</a><a href="./claude-surgical-answer-rerun.html">Full report</a><a href="./ADDENDUM-automation-voice-correction.html">Addendum</a><a href="./session-evidence-for-claude.html">Session evidence</a><a href="./CLAUDE-QUESTION.html">Prompt</a></nav><main><div class="meta">Generated public-safe HTML: 2026-06-08T11:31:38.284001Z</div><p>The write was blocked pending your approval. Here is the full addendum — you can approve the write or I can paste it directly.</p>
+
+<p>---</p>
+
+<h1>ADDENDUM: Why Viewport Is Not Automated</h1>
+<p><strong>Date:</strong> 2026-06-08 | <strong>Auditor:</strong> Claude Sonnet 4.6  </p>
+<p><strong>Trigger:</strong> Sam&#x27;s voice correction — Viewport is intended as a trillion-dollar AI company operating every country, every industry, every language, every department and product with centralized automated agents. Why is it not automated today?</p>
+
+<p>This addendum does not repeat the original report. It answers Sam&#x27;s question directly, corrects one framing error in the original report, and uses the 30-40 day session evidence to show the specific loop patterns that caused the failure.</p>
+
+<p>---</p>
+
+<h2>THE DIRECT ANSWER</h2>
+
+<p>Viewport is not automated because the prerequisites for automation were never assembled in the right order. The vision is fully documented and directionally sound. The infrastructure to execute that vision — task intake, shared memory, authority grant, and always-on execution — does not exist as a closed system. Every session over 30-40 days built pieces of the top of the stack while leaving the bottom unfinished.</p>
+
+<p>For Sam to say &quot;work on this&quot; and have centralized agents execute, five things must all exist simultaneously:</p>
+
+<table>
+<tr><td>Prerequisite</td><td>Status</td><td>Gap</td></tr>
+<tr><td>---</td><td>---</td><td>---</td></tr>
+<tr><td><strong>Durable task intake</strong> — Sam&#x27;s instruction converts to a machine-readable task that any agent can pick up</td><td>Not closed</td><td>Telegram → Hermes is one session. No queue. No persistent pickup.</td></tr>
+<tr><td><strong>Shared context</strong> — agent knows the current state without re-deriving it from scratch</td><td>Not closed</td><td>Three separate memory stores, no bridge, each session starts cold</td></tr>
+<tr><td><strong>Authority grant</strong> — agent is permitted to act on production systems</td><td>Hard-blocked</td><td><code>automation_gate: No expanded production autonomy until secrets scoped/rotated</code> never unblocked</td></tr>
+<tr><td><strong>Verification loop</strong> — agent completes work, posts evidence, closes the task</td><td>Never completed once</td><td>139 tasks, 1 done</td></tr>
+<tr><td><strong>Memory writeback</strong> — what was done persists so the next agent doesn&#x27;t repeat it</td><td>Not closed</td><td>Session ends, files on VPS or unpushed branch, next session rediscovers same state</td></tr>
+</table>
+
+<p>All five must be working before &quot;work on this&quot; becomes &quot;agents execute.&quot; Right now, zero of five are closed.</p>
+
+<p>---</p>
+
+<h2>WHY SAM CAN&#x27;T JUST SAY &quot;WORK ON THIS&quot;</h2>
+
+<p>The chain from Sam&#x27;s instruction to agent execution breaks at every joint:</p>
+
+<pre>
+Sam says &quot;work on this&quot; in Telegram
+    ↓
+Hermes receives the Telegram message — JOINT 1: WORKS
+    ↓
+Hermes reads shared context to understand current state — JOINT 2: BROKEN
+    (Hermes has no access to /opt/data/migration — mount missing since day one)
+    (STATE.md is on a branch 6 commits ahead of remote, never pushed)
+    (Hermes reads session memory only — 488 sessions, each starting cold)
+    ↓
+Hermes routes task to the right specialist agent — JOINT 3: BROKEN
+    (No shared task queue — Hermes uses Telegram, OpenClaw would use GitHub issues)
+    (No routing protocol — task-lease.schema.yaml exists as a schema, not an enforcer)
+    (No message bus between Hermes and OpenClaw)
+    ↓
+Specialist agent executes with production permissions — JOINT 4: HARD BLOCKED
+    (automation_gate = no expanded autonomy until secrets rotated)
+    (OpenAI sk- 970 hits, ghp_ 138, Telegram tokens 276 in session DB)
+    (PAT scope is admin:enterprise, expiry unknown, leaked predecessor never revoked)
+    ↓
+Agent writes evidence and closes the task — JOINT 5: BROKEN
+    (No agent writes to a shared store — each writes to its own SQLite/markdown/state.db)
+    (Council tracker.json never appended to after bootstrap — 29 days of empty log)
+    (GitHub issue loop closed zero times)
+    ↓
+System knows what was done for the next session — JOINT 6: BROKEN
+    (No memory writeback from completed tasks)
+    (Next session starts with same blockers as previous session)
+</pre>
+
+<p>The intake joint works. Every other joint is broken. This is why Sam can give an instruction and Hermes can respond intelligently — but nothing actually gets finished and the next day starts from zero.</p>
+
+<p>---</p>
+
+<h2>WHAT 30-40 DAYS OF SESSION EVIDENCE ACTUALLY SHOWED</h2>
+
+<p>The session evidence shows four recurring loop patterns. Every pattern repeated multiple times. None resolved.</p>
+
+<h3>Loop Pattern 1: Vision Described → Artifacts Created → Session Ends → Reset</h3>
+
+<p><strong>Evidence:</strong> session <code>20260528_233424_716459</code> (May 28), session <code>20260531_233630_faa8d9</code> (May 31)</p>
+
+<p>May 28: Sam sends a YouTube video. Hermes analyzes it. Session produces the framing: &quot;Viewport should become a global AI operating company that uses agents, open-source infrastructure, specialized models, and efficiency research to serve every industry/country affordably.&quot; Session output: training runs for knowledgebase librarian agent. 8 new YAML files committed.</p>
+
+<p>May 31: &quot;PR #61: 163 files / 11,042 additions.&quot; 26-agent readiness sweep completed. Phases 4P, 4Q, 4R done. Config SHA confirmed. Yet immediately after: *&quot;Need update todo. Maybe verify current base and live.&quot;*</p>
+
+<p>The pattern: enormous volume of artifact creation, each session ending in a fresh reorientation question. The question asks what was actually verified, which was nothing that touches the control-plane prerequisites. All the work was done above the broken foundation.</p>
+
+<h3>Loop Pattern 2: &quot;Just Go Ahead&quot; → Blocker Found → Blocker Deferred → Same Blocker Next Session</h3>
+
+<p><strong>Evidence:</strong> session <code>20260530_131641_85f954</code> (May 30)</p>
+
+<p>Sam says: &quot;Just go ahead don&#x27;t waste the time.&quot; Hermes confirms Tailscale is correctly set up on the VPS. Then identifies the actual blocker: Mac <code>weshall-7</code> is offline. This is a dependency that makes the system non-automated by definition — if Mac is offline, the deploy pipeline breaks.</p>
+
+<p>The correct response to finding this blocker: stop, escalate, and refuse to proceed until Mac dependency is eliminated. The session response: acknowledge Mac dependency, continue other work. The Mac-as-hidden-dependency was never eliminated. It is still present in the final audit (<code>migration.text:311-312</code>: &quot;current Hermes does not have <code>/opt/data/migration</code> mounted… deploy source is on Mac&quot;).</p>
+
+<p>Same pattern: May 24 session on <code>control.viewport.llc</code> — extensive research into the right subdomain pattern, correct conclusion reached, DNS still doesn&#x27;t resolve. The session produced the right answer but not the execution.</p>
+
+<h3>Loop Pattern 3: Report Looks Like Completion → Sam Reads It → Believes Progress Was Made</h3>
+
+<p><strong>Evidence:</strong> <code>status.json p0_foundation_completion.status: completed_safe_foundation</code> vs. artifacts on unpushed branch; weekly digest 2026-06-08: same Neo4j issue opened twice (#193, #194)</p>
+
+<p>The status pages are sophisticated and authoritative-looking. P0 foundation shown as complete. Hermes ONLINE. 15/15 validation passes. These pages give an accurate picture of *what was planned and partially drafted* but create the strong impression that *the foundation is done*. It is not — the artifacts live on a local branch 6 commits ahead of remote that was never pushed.</p>
+
+<p>The practical consequence: Sam reads the pages, concludes the foundation is solid, and opens new work. The new work builds on a foundation that doesn&#x27;t exist in GitHub truth. The same Neo4j issue opened twice in one week — not because Sam forgot, but because there was no canonical open issue to find. The system that should have prevented this (one active-issue ledger, morning brief watcher) was itself in the &quot;completed&quot; section of the migration pages, also not actually running.</p>
+
+<h3>Loop Pattern 4: Feature Building Over Foundation Gap</h3>
+
+<p><strong>Evidence:</strong> session <code>20260525_071443_05aaca1c</code> (May 25) — AI Infrastructure Stack infographic; session <code>20260513_141239_ceabf0</code> (May 10) — client design contract</p>
+
+<p>May 25: Sam shares a &quot;Master Tree&quot; AI infrastructure stack image analyzing Compute → Models → Data → Agent Runtime → Tooling → Deployment → Observability → Security → Future. Meta-finding from the 60-80 images Sam shared that session: &quot;Viewport needs to become a structured AI company control plane.&quot; Correct analysis. Session produced documentation, not execution.</p>
+
+<p>May 10: client design contract describing per-associate/product isolation: GitHub repos, containers, Docker networks, bots, secrets, models, knowledgebases, permissions, OpenClaw/Hermes agents as needed. Also correct architecture. Also documentation.</p>
+
+<p>Both sessions correctly diagnosed the architecture. The execution gap: client design contracts and company OS structure were built while the control plane had no working authority gateway, no shared queue, and no closed loop. <strong>The infrastructure vision was being documented in detail while the minimum viable prerequisites for automation remained unfinished.</strong></p>
+
+<p><strong>The 30-40 day summary:</strong> 488 Hermes sessions, 29,009 messages, 14,014 assistant messages. Each session re-derived the same architecture. None of them closed the five prerequisites listed above.</p>
+
+<p>---</p>
+
+<h2>WHY HERMES AND OPENCLAW ARE NOT CENTRALIZED</h2>
+
+<h3>Centralization requires a single intake point that all agents read from. That does not exist.</h3>
+
+<p>Hermes reads from Telegram. OpenClaw reads from nothing (0 running crons, no task intake). Claude Code reads from the current session. There is no shared queue.</p>
+
+<p>For &quot;work on this&quot; to execute centrally:</p>
+<p>1. Sam posts instruction to Telegram (works)</p>
+<p>2. Hermes converts it to a GitHub issue in the same session (never implemented — Hermes creates sessions, not issues)</p>
+<p>3. GitHub issue is labeled with target agent seat (label → routing — schema exists, not enforced at runtime)</p>
+<p>4. Agent with that seat wakes up via cron, reads the issue, executes (0 running crons)</p>
+<p>5. Agent posts evidence as issue comment and closes it (closure loop — closed zero times)</p>
+<p>6. Morning brief summarizes what closed (cron not running)</p>
+
+<p>Instead: Sam posts to Telegram → Hermes session reads it → Hermes works in session → session ends → nothing in GitHub → no agent picks up anything → next session starts from zero.</p>
+
+<h3>Centralization requires shared memory. Three separate stores exist with no bridge.</h3>
+
+<p>• <strong>Hermes</strong> <code>state.db</code> (<code>/opt/data/state.db</code>): 488 sessions, 29k messages, SQLite. Contains credential patterns. Not readable by OpenClaw. Not readable by Claude Code. Hermes itself cannot currently read the migration evidence (<code>/opt/data/migration</code> not mounted).</p>
+<p>• <strong>Fresh OpenClaw</strong>: 26 workspace agent folders, SQLite memory per agent. No connection to Hermes <code>state.db</code>. No writing back to GitHub.</p>
+<p>• <strong>Claude Code</strong>: reads files from VPS and GitHub. No connection to either other store.</p>
+
+<p>The <code>centralized-agent-registry.yaml</code> file — listed as a P0 foundation artifact — lives on a local branch that was never pushed. No agent can read it. The symbol of centralization is itself not centralized.</p>
+
+<h3>Centralization requires an authority grant. This was hard-blocked for the entire 30-40 day period.</h3>
+
+<p>The automation gate (<code>No expanded production autonomy until categories are scoped/rotated/stored safely</code>) was never unblocked because the secrets rotation that would unblock it was never completed. This means: even if the task queue and shared memory existed, agents were explicitly prevented from taking production actions. The gate posture is correct. But it became the permanent operating state instead of a temporary blocker.</p>
+
+<p>---</p>
+
+<h2>CORRECTION TO THE ORIGINAL REPORT</h2>
+
+<p>The original report concludes: *&quot;The architecture is right. The foundation is real. The only thing missing is one closed loop that proves it works.&quot;*</p>
+
+<p>This framing is accurate but undersells the gap relative to Sam&#x27;s vision. One closed loop proves the mechanism. But Viewport&#x27;s goal is not one closed loop — it is automated centralized agents operating every country, industry, language, department, and product.</p>
+
+<p><strong>The corrected framing:</strong></p>
+
+<table>
+<tr><td>One Closed Loop (v0.1)</td><td>Trillion-Dollar Automation</td></tr>
+<tr><td>---</td><td>---</td></tr>
+<tr><td>Sam tells Hermes what to do each session</td><td>Sam sets goals; agents break down work and assign it autonomously</td></tr>
+<tr><td>Hermes picks up tasks from Telegram</td><td>All agents pick up tasks from a shared queue, no human routing</td></tr>
+<tr><td>Evidence written by whichever agent did the work</td><td>Evidence written to a shared canonical store all agents can read</td></tr>
+<tr><td>Daily morning brief summarizes what happened</td><td>Continuous event log; agents self-correct without daily summary prompts</td></tr>
+<tr><td>Human approval for each production action</td><td>Agents with scoped authority act without approval on pre-authorized task types</td></tr>
+<tr><td>One issue, one agent, one session</td><td>N issues, M agents, parallel sessions, lease system, deduplication</td></tr>
+</table>
+
+<p>The 7-day recovery plan is the correct first step. Sam should be clear-eyed that completing it does not mean agents will autonomously execute everything. It means the mechanism has been demonstrated to work once. Full automation — the trillion-dollar model — additionally requires: always-on agent fleet with event-driven task pickup (not session-based), scoped authority model with pre-authorized task categories, shared memory writeback, drift detection and self-healing watchers, and multi-tenant runtime isolation.</p>
+
+<p><strong>None of those are wrong ideas. They are the right ideas. They are dependent on v0.1 existing first.</strong></p>
+
+<p>---</p>
+
+<h2>THE GAP IN ONE SENTENCE</h2>
+
+<p>Viewport has a company OS for a trillion-dollar automation company — written in YAML, with 26 agent seats, documented across 163 files — but no running cron, no shared task queue, no closed authority loop, and no completed GitHub issue cycle, because the prerequisites for automation were built out of order: the company OS was built before the control plane was bootstrapped, and the control plane has been stuck on <code>pat_revoked: false</code> since 2026-05-10.</p>
+
+<p>---</p>
+
+<p>*Addendum complete. Sources: session-evidence-for-claude.md (all snippets), claude-surgical-answer-rerun.md (full original report). No runtime touched.*</p>
+
+<p>---</p>
+
+<p>If you approve the write, I&#x27;ll save this to <code>/srv/viewport/council-audit/runs/claude-surgical-origin-audit-v2-20260608T103241Z/ADDENDUM-automation-voice-correction.md</code>. The core finding: the intake joint works (Hermes hears Sam), every other joint is broken, and 30-40 days of sessions showed the same four loops repeating — vision → artifacts → reset; blocker deferred; report mistaken for completion; features built over a missing foundation. The original report&#x27;s &quot;one closed loop&quot; framing is corrected: that is proof-of-life, not the destination.</p></main></body></html>
