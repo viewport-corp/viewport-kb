@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-10T18:43:29.191932+00:00
+Generated: 2026-06-10T18:46:52.637399+00:00
 
-Total notes: 18
+Total notes: 19
 
 ## By date
 
@@ -24,6 +24,7 @@ Total notes: 18
 - [public/migration/audit/history/hermes-week-2026-22.md](public/migration/audit/history/hermes-week-2026-22.md)
 - [references/2026-06-05-capture-and-analyze-shared-reference-link.md](references/2026-06-05-capture-and-analyze-shared-reference-link.md)
 - [references/2026-06-05-what-are-we-working-on.md](references/2026-06-05-what-are-we-working-on.md)
+- [references/2026-06-10-capture-and-analyze-shared-reference-link.md](references/2026-06-10-capture-and-analyze-shared-reference-link.md)
 
 ## By tag
 
