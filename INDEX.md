@@ -1,14 +1,15 @@
 # Viewport KB Index
 
-Generated: 2026-06-10T22:36:01.412232+00:00
+Generated: 2026-06-10T22:56:27.121335+00:00
 
-Total notes: 22
+Total notes: 23
 
 ## By date
 
 - [README.md](README.md)
 - [decisions/2026-06-05-weekly-digest.md](decisions/2026-06-05-weekly-digest.md)
 - [decisions/2026-06-08-weekly-digest.md](decisions/2026-06-08-weekly-digest.md)
+- [decisions/2026-06-10-dont-we-have-the-rules-and-how-to.md](decisions/2026-06-10-dont-we-have-the-rules-and-how-to.md)
 - [decisions/2026-06-10-keep-this-form-idea-for-the-contact-us.md](decisions/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [ideas/2026-06-05-agent-tokens.md](ideas/2026-06-05-agent-tokens.md)
 - [ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md](ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
