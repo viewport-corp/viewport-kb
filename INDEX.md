@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-10T18:46:52.637399+00:00
+Generated: 2026-06-10T18:47:19.233186+00:00
 
-Total notes: 19
+Total notes: 20
 
 ## By date
 
@@ -25,6 +25,7 @@ Total notes: 19
 - [references/2026-06-05-capture-and-analyze-shared-reference-link.md](references/2026-06-05-capture-and-analyze-shared-reference-link.md)
 - [references/2026-06-05-what-are-we-working-on.md](references/2026-06-05-what-are-we-working-on.md)
 - [references/2026-06-10-capture-and-analyze-shared-reference-link.md](references/2026-06-10-capture-and-analyze-shared-reference-link.md)
+- [references/2026-06-10-did-you-analyze-this-video.md](references/2026-06-10-did-you-analyze-this-video.md)
 
 ## By tag
 
