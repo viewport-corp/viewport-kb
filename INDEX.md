@@ -1,14 +1,15 @@
 # Viewport KB Index
 
-Generated: 2026-06-10T18:43:26.606319+00:00
+Generated: 2026-06-10T18:43:29.191932+00:00
 
-Total notes: 17
+Total notes: 18
 
 ## By date
 
 - [README.md](README.md)
 - [decisions/2026-06-05-weekly-digest.md](decisions/2026-06-05-weekly-digest.md)
 - [decisions/2026-06-08-weekly-digest.md](decisions/2026-06-08-weekly-digest.md)
+- [decisions/2026-06-10-keep-this-form-idea-for-the-contact-us.md](decisions/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [ideas/2026-06-05-agent-tokens.md](ideas/2026-06-05-agent-tokens.md)
 - [ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md](ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [public/migration/audit/evidence/history/hermes-week-2026-18.md](public/migration/audit/evidence/history/hermes-week-2026-18.md)
