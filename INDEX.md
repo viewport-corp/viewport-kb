@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-11T11:41:53.877173+00:00
+Generated: 2026-06-11T22:17:28.041863+00:00
 
-Total notes: 26
+Total notes: 27
 
 ## By date
 
@@ -32,6 +32,7 @@ Total notes: 26
 - [references/2026-06-10-hermes-i-need-a-factual-self-audit-answer.md](references/2026-06-10-hermes-i-need-a-factual-self-audit-answer.md)
 - [references/2026-06-11-capture-and-analyze-shared-reference-link.md](references/2026-06-11-capture-and-analyze-shared-reference-link.md)
 - [references/2026-06-11-claude-cli-chat-for-your-refernce-can-you.md](references/2026-06-11-claude-cli-chat-for-your-refernce-can-you.md)
+- [references/2026-06-11-mcp-failure-packet-read-only-no-edits-no.md](references/2026-06-11-mcp-failure-packet-read-only-no-edits-no.md)
 
 ## By tag
 
