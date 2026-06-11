@@ -1,22 +1,22 @@
 ---
 title: Capture and analyze shared reference link
-date: 2026-06-11T06:22:26.167772+00:00
+date: 2026-06-11T11:41:41.200493+00:00
 source: telegram
 type: link
-url: https://hypothes.is/groups/Y4np1V3b
+url: https://github.com/steipete/agent-scripts/blob/main/skills%2Fmaintainer-orchestrator%2FSKILL.md
 status: captured-reference
-tenant: viewport
-department: security
-tags: ["DECISION", "QUESTION", "REFERENCE"]
+tenant: unknown
+department: engineering
+tags: ["REFERENCE"]
 ---
 
 # Capture and analyze shared reference link
 
 ## Summary
 
-Title: Client Portal Contract | Hypothesis
+Title: agent-scripts/skills/maintainer-orchestrator/SKILL.md at main · steipete/agent-scripts · GitHub
 
-Summary: Client Portal Contract | Hypothesis Group invitation You've been invited to join the annotation group: Client Portal Contract Clients can see our company background and profile and they can see the documentation and proceed for the payment Log in to join Client Portal Contract What is Hypothesis? Learn more
+Summary: agent-scripts/skills/maintainer-orchestrator/SKILL.md at main · steipete/agent-scripts · GitHub Skip to content Navigation Menu Toggle navigation Sign in Appearance settings Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry New Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities Code security Secure your code as you build Secret protection Stop leaks before they start EXPLORE Why GitHub Documentation Blog Changelog Marke
 
 ## Why Sam shared this
 
@@ -24,7 +24,7 @@ Likely relevant to current Viewport/CompanyOS work; captured for anti-amnesia re
 
 ## Relevant to
 
-Tenant: viewport; Department: security
+Tenant: unknown; Department: engineering
 
 ## Action potential
 
