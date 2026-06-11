@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-11T22:58:21.264380+00:00
+Generated: 2026-06-11T23:20:54.271945+00:00
 
-Total notes: 28
+Total notes: 29
 
 ## By date
 
@@ -34,6 +34,7 @@ Total notes: 28
 - [references/2026-06-11-claude-cli-chat-for-your-refernce-can-you.md](references/2026-06-11-claude-cli-chat-for-your-refernce-can-you.md)
 - [references/2026-06-11-mcp-failure-packet-read-only-no-edits-no.md](references/2026-06-11-mcp-failure-packet-read-only-no-edits-no.md)
 - [references/2026-06-11-mcp-requirement-matrix-read-only-nothing-edited-restarted.md](references/2026-06-11-mcp-requirement-matrix-read-only-nothing-edited-restarted.md)
+- [references/2026-06-11-pr-11-image-rebuild-readiness-packet-final-1.md](references/2026-06-11-pr-11-image-rebuild-readiness-packet-final-1.md)
 
 ## By tag
 
