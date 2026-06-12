@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-12T01:13:20.210313+00:00
+Generated: 2026-06-12T01:20:30.269768+00:00
 
-Total notes: 32
+Total notes: 33
 
 ## By date
 
@@ -38,6 +38,7 @@ Total notes: 32
 - [references/2026-06-12-build-starting-using-a-clean-worktree-at-the.md](references/2026-06-12-build-starting-using-a-clean-worktree-at-the.md)
 - [references/2026-06-12-he-is-still-working-not-final-yet-build.md](references/2026-06-12-he-is-still-working-not-final-yet-build.md)
 - [references/2026-06-12-uild-healthcheck-packet-nothing-executed-1-exact-build.md](references/2026-06-12-uild-healthcheck-packet-nothing-executed-1-exact-build.md)
+- [references/2026-06-12-why-we-are-building-new-image-we-were.md](references/2026-06-12-why-we-are-building-new-image-we-were.md)
 
 ## By tag
 
