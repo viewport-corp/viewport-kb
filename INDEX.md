@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-12T03:53:22.558765+00:00
+Generated: 2026-06-12T03:53:30.981659+00:00
 
-Total notes: 35
+Total notes: 36
 
 ## By date
 
@@ -12,6 +12,7 @@ Total notes: 35
 - [decisions/2026-06-10-dont-we-have-the-rules-and-how-to.md](decisions/2026-06-10-dont-we-have-the-rules-and-how-to.md)
 - [decisions/2026-06-10-keep-this-form-idea-for-the-contact-us.md](decisions/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [decisions/2026-06-11-supbase-is-acessble-and-working-i-need-to.md](decisions/2026-06-11-supbase-is-acessble-and-working-i-need-to.md)
+- [decisions/2026-06-12-this-is-your-response-you-are-right-i.md](decisions/2026-06-12-this-is-your-response-you-are-right-i.md)
 - [ideas/2026-06-05-agent-tokens.md](ideas/2026-06-05-agent-tokens.md)
 - [ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md](ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [public/migration/audit/evidence/history/hermes-week-2026-18.md](public/migration/audit/evidence/history/hermes-week-2026-18.md)
