@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-12T00:29:57.835069+00:00
+Generated: 2026-06-12T00:54:22.081468+00:00
 
-Total notes: 30
+Total notes: 31
 
 ## By date
 
@@ -35,6 +35,7 @@ Total notes: 30
 - [references/2026-06-11-mcp-failure-packet-read-only-no-edits-no.md](references/2026-06-11-mcp-failure-packet-read-only-no-edits-no.md)
 - [references/2026-06-11-mcp-requirement-matrix-read-only-nothing-edited-restarted.md](references/2026-06-11-mcp-requirement-matrix-read-only-nothing-edited-restarted.md)
 - [references/2026-06-11-pr-11-image-rebuild-readiness-packet-final-1.md](references/2026-06-11-pr-11-image-rebuild-readiness-packet-final-1.md)
+- [references/2026-06-12-build-starting-using-a-clean-worktree-at-the.md](references/2026-06-12-build-starting-using-a-clean-worktree-at-the.md)
 - [references/2026-06-12-uild-healthcheck-packet-nothing-executed-1-exact-build.md](references/2026-06-12-uild-healthcheck-packet-nothing-executed-1-exact-build.md)
 
 ## By tag
