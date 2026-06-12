@@ -1,22 +1,22 @@
 ---
 title: Capture and analyze shared reference link
-date: 2026-06-12T02:05:22.248940+00:00
+date: 2026-06-12T03:45:56.918565+00:00
 source: telegram
 type: link
-url: https://github.com/supabase/supabase.git
+url: https://viewport.llc/migration
 status: captured-reference
 tenant: viewport
 department: engineering
-tags: ["DECISION", "QUESTION", "REFERENCE", "TASK"]
+tags: ["FEEDBACK", "QUESTION", "REFERENCE", "TASK"]
 ---
 
 # Capture and analyze shared reference link
 
 ## Summary
 
-Title: GitHub - supabase/supabase: The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications. · GitHub
+Title: Viewport Migration Command Center
 
-Summary: GitHub - supabase/supabase: The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications. · GitHub Skip to content Navigation Menu Toggle navigation Sign in Appearance settings Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry New Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities Code security Secure your code as you build Secret protection Stop leak
+Summary: Viewport Migration Command Center Viewport · migration ☰ MENU Main Command Center GitHub Plan Tasks Audit Status Slack Odoo Restart suite Restart hub Forensics Transcript Brain Ideas Rebuild Plan Audit Audit History Comms Telegram OpenClaw Chats Hermes Chats Research Claude Research Data status.json System ⌂ Command Center HOME 🔍 Audit 📡 Status LIVE Audit 🔍 Audit 🕐 History 📨 Comms Ops 📋 Plan ✅ Tasks 🔬 Restart Restart 🔬 Restart hub 🧠 Brain 💡 Ideas 🛠️ Rebuild Plan 🔎 Forensics 📜 Transcript ❓ QA Integrations 📊 Odoo 💬 Slack 🐙 GitHub ✏️ Hypothesis TOOL 🧰 Tools Registry Agents 🤖 OpenClaw ⚡ Hermes ONLINE CLI 🧠 Claude Research 💻 Claude Code PRIMARY 💻 Codex CLI 💻 Gemini CLI 💻 Copilot · Cursor · Aider…
 
 ## Why Sam shared this
 
