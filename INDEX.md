@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-13T22:39:49.004840+00:00
+Generated: 2026-06-14T03:26:02.883297+00:00
 
-Total notes: 43
+Total notes: 44
 
 ## By date
 
@@ -49,6 +49,7 @@ Total notes: 43
 - [references/2026-06-12-uild-healthcheck-packet-nothing-executed-1-exact-build.md](references/2026-06-12-uild-healthcheck-packet-nothing-executed-1-exact-build.md)
 - [references/2026-06-12-verification-complete-the-diagnosis-holds-and-it-s.md](references/2026-06-12-verification-complete-the-diagnosis-holds-and-it-s.md)
 - [references/2026-06-12-why-we-are-building-new-image-we-were.md](references/2026-06-12-why-we-are-building-new-image-we-were.md)
+- [references/2026-06-14-capture-and-analyze-shared-reference-link.md](references/2026-06-14-capture-and-analyze-shared-reference-link.md)
 
 ## By tag
 
