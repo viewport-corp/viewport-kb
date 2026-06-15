@@ -9,7 +9,7 @@ tags: [anti-amnesia, weekly-digest, viewport]
 
 # Viewport Weekly Digest - 2026-06-15
 
-📊 VIEWPORT WEEKLY DIGEST - 2026-06-15
+📊 VIEWPORT WEEKLY DIGEST — 2026-06-15
 
 Loaded: 5 recent chat-capture issues, KB index reports 44 notes, last session handoff: 2026-06-05T00:10:54.233966+00:00
 Period scanned: 2026-06-08 00:00 to 2026-06-15 09:14 Asia/Vientiane
@@ -28,7 +28,7 @@ KB GROWTH:
 - Ideas promoted: one contact-form or product-intake idea appears in both idea and decision areas and should be consolidated into a canonical decision if still active.
 - Digest note path: decisions/2026-06-15-weekly-digest.md
 
-REPEATED TOPICS:
+REPEATED TOPICS ⚠️:
 - Hermes, OpenClaw, Claude runtime and model configuration: 39 matching signals. Issue set: #370, #357, #356, #352, #348, #347, #345, #344, plus 31 more.
 - Reference or tool adoption boundary: 38 matching signals. Issue set: #370, #357, #348, #305, #304, #300, #299, #290, plus 30 more.
 - GitHub repo workflow and agent process discipline: 37 matching signals. Issue set: #363, #357, #355, #350, #334, #333, #328, #305, plus 29 more.
