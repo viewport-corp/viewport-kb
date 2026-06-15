@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-14T10:32:11.729448+00:00
+Generated: 2026-06-15T06:52:32.276725+00:00
 
-Total notes: 44
+Total notes: 46
 
 ## By date
 
@@ -16,6 +16,8 @@ Total notes: 44
 - [decisions/2026-06-12-content-of-hermes-master-packet-20260613-md-hermes.md](decisions/2026-06-12-content-of-hermes-master-packet-20260613-md-hermes.md)
 - [decisions/2026-06-12-this-is-your-response-you-are-right-i.md](decisions/2026-06-12-this-is-your-response-you-are-right-i.md)
 - [decisions/2026-06-13-openclaw-answer-can-you-check-are-you-fully.md](decisions/2026-06-13-openclaw-answer-can-you-check-are-you-fully.md)
+- [decisions/2026-06-15-hello-which-model-are-you-using-for-replying.md](decisions/2026-06-15-hello-which-model-are-you-using-for-replying.md)
+- [decisions/2026-06-15-weekly-digest.md](decisions/2026-06-15-weekly-digest.md)
 - [ideas/2026-06-05-agent-tokens.md](ideas/2026-06-05-agent-tokens.md)
 - [ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md](ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [public/migration/audit/evidence/history/hermes-week-2026-18.md](public/migration/audit/evidence/history/hermes-week-2026-18.md)
