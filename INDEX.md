@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-06-15T06:52:32.276725+00:00
+Generated: 2026-06-17T17:08:06.869633+00:00
 
-Total notes: 46
+Total notes: 47
 
 ## By date
 
@@ -52,6 +52,7 @@ Total notes: 46
 - [references/2026-06-12-verification-complete-the-diagnosis-holds-and-it-s.md](references/2026-06-12-verification-complete-the-diagnosis-holds-and-it-s.md)
 - [references/2026-06-12-why-we-are-building-new-image-we-were.md](references/2026-06-12-why-we-are-building-new-image-we-were.md)
 - [references/2026-06-14-capture-and-analyze-shared-reference-link.md](references/2026-06-14-capture-and-analyze-shared-reference-link.md)
+- [references/2026-06-17-capture-and-analyze-shared-reference-link.md](references/2026-06-17-capture-and-analyze-shared-reference-link.md)
 
 ## By tag
 
