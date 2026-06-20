@@ -1,22 +1,22 @@
 ---
 title: Capture and analyze shared reference link
-date: 2026-06-20T04:39:05.690502+00:00
+date: 2026-06-20T10:34:09.635829+00:00
 source: telegram
 type: link
-url: https://x.com/i/status/2067876261901525030
+url: https://api.ipify.org
 status: captured-reference
 tenant: unknown
-department: ops
-tags: ["REFERENCE"]
+department: engineering
+tags: ["QUESTION", "REFERENCE", "TASK"]
 ---
 
 # Capture and analyze shared reference link
 
 ## Summary
 
-Title: https://x.com/i/status/2067876261901525030
+Title: https://api.ipify.org
 
-Summary: 
+Summary: 194.163.153.171
 
 ## Why Sam shared this
 
@@ -24,7 +24,7 @@ Likely relevant to current Viewport/CompanyOS work; captured for anti-amnesia re
 
 ## Relevant to
 
-Tenant: unknown; Department: ops
+Tenant: unknown; Department: engineering
 
 ## Action potential
 
