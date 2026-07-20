@@ -35,6 +35,7 @@ This digest uses public-safe paraphrases from GitHub and KB data only. It does n
 ### Blocked
 
 - #192 — Raw chat-history processing remains blocked because a counts-only scan found credential-like patterns. No matched values are included here.
+- #488 — Digest/title sanitization needs a reviewed permanent fix; the current note has already been contained.
 
 ## KB growth
 
@@ -55,12 +56,13 @@ This digest uses public-safe paraphrases from GitHub and KB data only. It does n
 - #476 — Confirm the recovery task's exact protected-action gates and evidence needed for closure.
 - #487 — Accept evidence-based reliability language rather than an absolute guarantee.
 - #192 — Decide ownership and timing for safe remediation before any raw-history processing.
+- #488 — Assign the permanent intake/digest sanitization fix and acceptance test.
 
 ## Top 3 priorities — Hermes recommendation
 
 1. Close #476 with live, redacted verification and link #485/#487 as context instead of running parallel recovery threads.
 2. Consolidate #484/#486 into one durable approval protocol with exact examples for routine, protected, and production actions.
-3. Keep #192 enforced and assign remediation; do not perform bulk chat-history processing until the security gate is cleared with evidence.
+3. Keep #192 enforced and assign #488; do not process bulk chat history or reuse raw issue titles until both security gates are cleared with evidence.
 
 ## Proof and safety
 
