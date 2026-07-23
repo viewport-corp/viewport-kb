@@ -1,6 +1,6 @@
 ---
 title: Capture and analyze shared reference link
-date: 2026-07-23T19:49:53.922785+00:00
+date: 2026-07-23T19:53:14.143963+00:00
 source: telegram
 type: link
 url: https://www.instagram.com/
