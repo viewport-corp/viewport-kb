@@ -1,22 +1,22 @@
 ---
 title: Capture and analyze shared reference link
-date: 2026-07-24T15:51:47.021005+00:00
+date: 2026-07-24T18:49:23.463675+00:00
 source: telegram
 type: link
-url: https://www.instagram.com/
+url: https://github.com/
 status: captured-reference
 tenant: unknown
-department: ops
-tags: ["REFERENCE"]
+department: engineering
+tags: ["QUESTION", "REFERENCE"]
 ---
 
 # Capture and analyze shared reference link
 
 ## Summary
 
-Title: Instagram
+Title: GitHub · Change is constant. GitHub keeps you ahead. · GitHub
 
-Summary: Instagram {"require":[["HasteSupportData","handle",null,[{"clpData":{"1744178":{"r":1,"s":1},"1836368":{"r":1,"s":1},"1838142":{"r":1,"s":1},"2385":{"r":1,"s":1},"4156":{"r":1,"s":1},"4157":{"r":1,"s":1},"4158":{"r":1,"s":1},"4159":{"r":1,"s":1},"4160":{"r":1,"s":1},"4161":{"r":1,"s":1},"4172":{"r":1,"s":1},"4173":{"r":1,"s":1},"6647":{"r":1,"s":1},"6648":{"r":1,"s":1},"6661":{"r":1,"s":1},"6662":{"r":1,"s":1},"7235":{"r":1,"s":1},"636":{"r":1,"s":1},"819":{"r":1,"s":1},"1791":{"r":1},"3707":{"r":1,"s":1},"4530":{"r":1,"s":1},"5674":{"r":1},"6934":{"r":1,"s":1},"8530":{"r":1,"s":1},"1744247":{"r":1},"1744249":{"r":1},"1857112":{"r":1},"1962341":{"r":1,"s":1},"1745":{"r":1},"2343":{"r":1,"s":
+Summary: GitHub · Change is constant. GitHub keeps you ahead. · GitHub Skip to content Navigation Menu Toggle navigation Sign in Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry New Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Code Quality Enforce quality at merge APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities Code security Secure your code as you build Secret protection Stop leaks before they start EXPLORE Why GitHub Documentation Blog Changelog Marketplace View all 
 
 ## Why Sam shared this
 
@@ -24,7 +24,7 @@ Likely relevant to current Viewport/CompanyOS work; captured for anti-amnesia re
 
 ## Relevant to
 
-Tenant: unknown; Department: ops
+Tenant: unknown; Department: engineering
 
 ## Action potential
 
