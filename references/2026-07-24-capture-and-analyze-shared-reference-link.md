@@ -1,22 +1,22 @@
 ---
 title: Capture and analyze shared reference link
-date: 2026-07-24T18:49:23.463675+00:00
+date: 2026-07-24T20:20:56.278083+00:00
 source: telegram
 type: link
-url: https://github.com/
+url: https://x.com/
 status: captured-reference
 tenant: unknown
-department: engineering
-tags: ["QUESTION", "REFERENCE"]
+department: ops
+tags: ["REFERENCE"]
 ---
 
 # Capture and analyze shared reference link
 
 ## Summary
 
-Title: GitHub · Change is constant. GitHub keeps you ahead. · GitHub
+Title: X. It’s what’s happening / X
 
-Summary: GitHub · Change is constant. GitHub keeps you ahead. · GitHub Skip to content Navigation Menu Toggle navigation Sign in Platform AI CODE CREATION GitHub Copilot Write better code with AI GitHub Copilot app Direct agents from issue to merge MCP Registry New Integrate external tools DEVELOPER WORKFLOWS Actions Automate any workflow Codespaces Instant dev environments Issues Plan and track work Code Review Manage code changes Code Quality Enforce quality at merge APPLICATION SECURITY GitHub Advanced Security Find and fix vulnerabilities Code security Secure your code as you build Secret protection Stop leaks before they start EXPLORE Why GitHub Documentation Blog Changelog Marketplace View all 
+Summary: X. It’s what’s happening / X Log in Sign up See what’s happening Get the app Already have an account? Sign in About · Get App · Grok · Help · Terms · Privacy · Cookies · Careers · Ads & Business · Developers · News · Accessibility · Imprint · © 2026 X Corp.
 
 ## Why Sam shared this
 
@@ -24,7 +24,7 @@ Likely relevant to current Viewport/CompanyOS work; captured for anti-amnesia re
 
 ## Relevant to
 
-Tenant: unknown; Department: engineering
+Tenant: unknown; Department: ops
 
 ## Action potential
 
