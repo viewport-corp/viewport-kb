@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-07-24T20:20:58.068276+00:00
+Generated: 2026-07-27T02:01:14+00:00
 
-Total notes: 55
+Total notes: 56
 
 ## By date
 
@@ -22,6 +22,7 @@ Total notes: 55
 - [decisions/2026-07-20-theviewportbot-now-whatever-is-the-pending-issues-for.md](decisions/2026-07-20-theviewportbot-now-whatever-is-the-pending-issues-for.md)
 - [decisions/2026-07-20-till-the-time-herems-and-openclaw-become-strong.md](decisions/2026-07-20-till-the-time-herems-and-openclaw-become-strong.md)
 - [decisions/2026-07-20-weekly-digest.md](decisions/2026-07-20-weekly-digest.md)
+- [decisions/2026-07-27-weekly-digest.md](decisions/2026-07-27-weekly-digest.md)
 - [ideas/2026-06-05-agent-tokens.md](ideas/2026-06-05-agent-tokens.md)
 - [ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md](ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [public/migration/audit/evidence/history/hermes-week-2026-18.md](public/migration/audit/evidence/history/hermes-week-2026-18.md)
