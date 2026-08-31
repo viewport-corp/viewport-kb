@@ -1,83 +1,70 @@
 ---
 title: Viewport weekly anti-amnesia digest — 2026-08-31
 date: 2026-08-31
+period_start: 2026-08-24T00:00:00+07:00
+period_end: 2026-08-31T09:00:55+07:00
 source: scheduled-hermes
 type: weekly-digest
-status: captured
+status: reviewed
+data_safety: public-safe-paraphrases-only
 ---
 
-# Viewport weekly anti-amnesia digest — 2026-08-31
+# 📊 VIEWPORT WEEKLY DIGEST — 2026-08-31
 
-This digest uses public-safe GitHub and KB data only. It does not include raw Telegram/session content.
+Coverage: 2026-08-24 00:00 through 2026-08-31 09:00 Asia/Vientiane.
 
-📊 VIEWPORT WEEKLY DIGEST — 2026-08-31
+CAPTURED THIS WEEK: **7 issues / 2 ideas / 1 reference / 3 decisions / 1 correction**
 
-CAPTURED THIS WEEK: 7 issues / 2 ideas / 1 references / 3 decisions / 1 corrections
+## GITHUB STATUS
 
-GITHUB STATUS:
-Open / needs attention:
-- #588 [CHAT→CORRECTION] But we discuss about using it ultra mode? Top model so still not using what's wrong with you? (open)
-- #584 [CHAT→TASK] So your saying OpenClaw you read the messages I have forwarded you about OpenClaw and you fix the all issues a (open)
-- #582 [CHAT→DECISION] 3. OpenClaw already has broad API access If have access to all .env or master file like you and access to all  (open)
-- #581 [CHAT→DECISION] Why OpenClaw concurrency 4 or 8 and Hermes cocncurnt children 10 I don't understand at all? Why can't we keep  (open)
-- #580 [CHAT→TASK] Send Me Audio messages and let's discuss so that I will understand faster than the reading this messages and y (open)
-- #579 [CHAT→TASK] So I have an idea that you go to the name my namecheap.com or my cloudflare account and list the all working d (open)
-- #578 [CHAT→DECISION] So till what time we have according to our time and we must use the ultra mode for whatever is pending what do (open)
-- #577 [CHAT→DECISION] The fucking job was to connect upstream? That's all that's the reason we are always ready with our own forked  (open)
-- #576 [CHAT→DECISION] Approved finish the both work till the time don't stop (open)
-- #575 [CHAT→TASK] I only know one thing we have system that we follow which is what we have been doing it so no need to make gar (open)
-- #574 [CHAT→CORRECTION] But it was simple task why won't you complete this task and get us OpenClaw and Hermes updated new version? Pr (open)
-- #573 [CHAT→CORRECTION] What the fuck are you talking about yesterday I have given you the task and clearly instructions and now your  (open)
-- #571 [CHAT→DECISION] Approved don't stop till everything is finished (open)
-- #570 [CHAT→DECISION] What do you think based on real facts ? And your own research with live docs and real practical used cases ple (open)
-- #520 [CHAT→TASK] so im not sure im in laos ( bangkok or vientaine time what codex and claude will follow the 12 augst which tim (open)
+### Open — captured this week (7)
 
-Closed this week:
-- None found.
+- [#578](https://github.com/viewport-corp/viewport-ops/issues/578) — Use the remaining approved highest-capability model allowance before its deadline and return execution evidence.
+- [#579](https://github.com/viewport-corp/viewport-ops/issues/579) — Inventory active domains from approved registrar and DNS sources; keep the pass read-only unless a separate change is approved.
+- [#580](https://github.com/viewport-corp/viewport-ops/issues/580) — Provide concise matching audio and text updates for complex operational discussions.
+- [#581](https://github.com/viewport-corp/viewport-ops/issues/581) — Establish and explain evidence-based concurrency limits for Hermes and OpenClaw.
+- [#582](https://github.com/viewport-corp/viewport-ops/issues/582) — Define a sandbox-scoped API and credential boundary for OpenClaw instead of blanket environment access.
+- [#584](https://github.com/viewport-corp/viewport-ops/issues/584) — Verify the forwarded OpenClaw requirements and close the approved repair scope with evidence.
+- [#588](https://github.com/viewport-corp/viewport-ops/issues/588) — High-priority correction: use the approved highest-capability mode for the remaining scoped work and prove it was actually used.
 
-Blocked list:
-- #501 [CHAT→DECISION] OpenClaw → Hermes privately: blocked by Telegram ( Fix this also ) Yes go ahead fix the issue ! all the best a (open)
-- #500 [CHAT→TASK] OpenClaw → Hermes privately: blocked by Telegram ( Fix this also ) Yes go ahead fix the issue ! all the best a (open)
-- #192 [SECURITY] Session DB contains credential-pattern hits; block raw chat export (open)
+### Closed — captured this week
 
-KB GROWTH:
-New/changed notes:
-- INDEX.md (modified)
-- references/2026-08-30-capture-and-analyze-shared-reference-link.md (added)
-- ideas/2026-08-30-send-me-audio-messages-and-let-s-discuss.md (added)
-- ideas/2026-08-30-so-i-have-an-idea-that-you-go.md (added)
+- None.
 
-References:
-- references/2026-08-30-capture-and-analyze-shared-reference-link.md (added)
+### Blocked — persistent open items
 
-Ideas promoted/captured:
-- ideas/2026-08-30-send-me-audio-messages-and-let-s-discuss.md (added)
-- ideas/2026-08-30-so-i-have-an-idea-that-you-go.md (added)
+- [#500](https://github.com/viewport-corp/viewport-ops/issues/500) and [#501](https://github.com/viewport-corp/viewport-ops/issues/501) — The same OpenClaw-to-Hermes Telegram handoff blocker appears twice. Consolidate only after live bidirectional transport and runtime-admission checks.
+- [#192](https://github.com/viewport-corp/viewport-ops/issues/192) — Raw chat export remains blocked because credential-pattern hits exist. Keep the no-export boundary until redaction, rotation, and verification evidence exists.
 
-Decisions:
-- None found.
+## KB GROWTH
 
-REPEATED TOPICS ⚠️:
-- openclaw: issues #581, #582, #584
+- **3 new non-digest notes** were added and `INDEX.md` changed.
+- **References:** 1 added; **0 fully analyzed**. The note remains `captured-reference` because the stored URL resolves only to a generic GitHub page, so the required source-level second pass is unfinished.
+- **Ideas:** 2 added as `raw-idea`; **0 promoted**. Public-safe topics: multimodal status updates and a read-only domain inventory.
+- **Decisions:** 0 non-digest decision notes added during the coverage window.
+- **Quality gap:** several source issue/note fields are overly literal rather than genuinely paraphrased. This digest does not reproduce them; the intake sanitizer and existing captures need correction.
 
-NEEDS SAM REVIEW:
-- #588 [CHAT→CORRECTION] But we discuss about using it ultra mode? Top model so still not using what's wrong with you? (open)
-- #584 [CHAT→TASK] So your saying OpenClaw you read the messages I have forwarded you about OpenClaw and you fix the all issues a (open)
-- #582 [CHAT→DECISION] 3. OpenClaw already has broad API access If have access to all .env or master file like you and access to all  (open)
-- #581 [CHAT→DECISION] Why OpenClaw concurrency 4 or 8 and Hermes cocncurnt children 10 I don't understand at all? Why can't we keep  (open)
-- #580 [CHAT→TASK] Send Me Audio messages and let's discuss so that I will understand faster than the reading this messages and y (open)
-- #579 [CHAT→TASK] So I have an idea that you go to the name my namecheap.com or my cloudflare account and list the all working d (open)
-- #578 [CHAT→DECISION] So till what time we have according to our time and we must use the ultra mode for whatever is pending what do (open)
-- #577 [CHAT→DECISION] The fucking job was to connect upstream? That's all that's the reason we are always ready with our own forked  (open)
-- #576 [CHAT→DECISION] Approved finish the both work till the time don't stop (open)
-- #575 [CHAT→TASK] I only know one thing we have system that we follow which is what we have been doing it so no need to make gar (open)
-- #574 [CHAT→CORRECTION] But it was simple task why won't you complete this task and get us OpenClaw and Hermes updated new version? Pr (open)
-- #573 [CHAT→CORRECTION] What the fuck are you talking about yesterday I have given you the task and clearly instructions and now your  (open)
+## REPEATED TOPICS ⚠️
 
-TOP 3 PRIORITIES:
-1. Close the anti-amnesia triage queue: assign/resolve the newest chat-capture and decision-log issues with evidence.
-2. Consolidate repeated topics into canonical KB notes/issues to stop re-opening the same loop.
-3. Resolve blocked anti-amnesia/runtime activation items first; they reduce trust in future scheduled capture.
+- **OpenClaw access, concurrency, and repair scope:** [#581](https://github.com/viewport-corp/viewport-ops/issues/581), [#582](https://github.com/viewport-corp/viewport-ops/issues/582), [#584](https://github.com/viewport-corp/viewport-ops/issues/584). Consolidate into one canonical task packet with links to the individual decisions.
+- **Highest-capability mode and paid-allowance deadline:** [#578](https://github.com/viewport-corp/viewport-ops/issues/578), [#588](https://github.com/viewport-corp/viewport-ops/issues/588). Keep one execution record and close the correction with actual usage evidence.
 
-Proof used: GitHub API for viewport-ops issues, viewport-kb INDEX.md/tree/commits, and viewport-os HANDOFF.md. No raw Telegram/Hermes session export was read.
+## NEEDS SAM REVIEW
 
+- [#582](https://github.com/viewport-corp/viewport-ops/issues/582) — Confirm the access decision only if the proposed sandbox-scoped credential contract changes Sam's approved boundary; recommendation: deny blanket environment access.
+- [#581](https://github.com/viewport-corp/viewport-ops/issues/581) — Review the concurrency decision after benchmarks distinguish orchestration fan-out from simultaneous paid-model calls.
+- [#579](https://github.com/viewport-corp/viewport-ops/issues/579) — Confirm the intended account scope if a read-only registrar/DNS inventory would span more than Viewport-owned domains. No DNS mutation is included.
+- [#578](https://github.com/viewport-corp/viewport-ops/issues/578) and [#588](https://github.com/viewport-corp/viewport-ops/issues/588) — No repeated explanation is needed from Sam; Hermes owes execution proof before the allowance deadline.
+- **Capture quality** — The shallow reference and overly literal captures need Hermes-side correction; Sam only needs to intervene if the intended source URL cannot be recovered from approved public-safe context.
+
+## TOP 3 PRIORITIES — HERMES RECOMMENDATION
+
+1. **Close the deadline-sensitive model-use loop today:** execute the already-approved highest-capability work under [#578](https://github.com/viewport-corp/viewport-ops/issues/578) / [#588](https://github.com/viewport-corp/viewport-ops/issues/588) and attach real usage and result evidence.
+2. **Create one canonical Hermes/OpenClaw completion packet:** combine the latest-stable update requirement with [#581](https://github.com/viewport-corp/viewport-ops/issues/581), [#582](https://github.com/viewport-corp/viewport-ops/issues/582), and [#584](https://github.com/viewport-corp/viewport-ops/issues/584); require exact-version proof, sandbox access boundaries, concurrency benchmarks, tests, and a separate named gate for any restart or cutover.
+3. **Repair the anti-amnesia quality loop:** replace overly literal public captures with safe paraphrases, complete source-level reference analysis, consolidate [#500](https://github.com/viewport-corp/viewport-ops/issues/500) / [#501](https://github.com/viewport-corp/viewport-ops/issues/501), and triage the open decision/correction queue with owners and evidence.
+
+## Evidence and safety
+
+Sources used: GitHub API for `viewport-corp/viewport-ops`; `viewport-corp/viewport-kb` `INDEX.md`, note tree, commits, and relevant notes; and `viewport-corp/viewport-os/HANDOFF.md`.
+
+No raw Telegram/Hermes session export was read. No secret values are included. No runtime, DNS, access, or service state was changed.
