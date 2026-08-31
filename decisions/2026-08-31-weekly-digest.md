@@ -42,7 +42,7 @@ CAPTURED THIS WEEK: **7 issues / 2 ideas / 1 reference / 3 decisions / 1 correct
 - **References:** 1 added; **0 fully analyzed**. The note remains `captured-reference` because the stored URL resolves only to a generic GitHub page, so the required source-level second pass is unfinished.
 - **Ideas:** 2 added as `raw-idea`; **0 promoted**. Public-safe topics: multimodal status updates and a read-only domain inventory.
 - **Decisions:** 0 non-digest decision notes added during the coverage window.
-- **Quality gap:** several source issue/note fields are overly literal rather than genuinely paraphrased. This digest does not reproduce them; the intake sanitizer and existing captures need correction.
+- **Quality gap:** several source issue/note fields are overly literal rather than genuinely paraphrased. This digest does not reproduce them; the intake sanitizer and existing captures need correction under [#590](https://github.com/viewport-corp/viewport-ops/issues/590).
 
 ## REPEATED TOPICS ⚠️
 
@@ -55,13 +55,13 @@ CAPTURED THIS WEEK: **7 issues / 2 ideas / 1 reference / 3 decisions / 1 correct
 - [#581](https://github.com/viewport-corp/viewport-ops/issues/581) — Review the concurrency decision after benchmarks distinguish orchestration fan-out from simultaneous paid-model calls.
 - [#579](https://github.com/viewport-corp/viewport-ops/issues/579) — Confirm the intended account scope if a read-only registrar/DNS inventory would span more than Viewport-owned domains. No DNS mutation is included.
 - [#578](https://github.com/viewport-corp/viewport-ops/issues/578) and [#588](https://github.com/viewport-corp/viewport-ops/issues/588) — No repeated explanation is needed from Sam; Hermes owes execution proof before the allowance deadline.
-- **Capture quality** — The shallow reference and overly literal captures need Hermes-side correction; Sam only needs to intervene if the intended source URL cannot be recovered from approved public-safe context.
+- **Capture quality** — [#590](https://github.com/viewport-corp/viewport-ops/issues/590) tracks the shallow reference, safe-paraphrase enforcement, and protected remediation planning. Sam only needs to intervene if the intended source URL cannot be recovered from approved public-safe context or if Git-history remediation is proposed.
 
 ## TOP 3 PRIORITIES — HERMES RECOMMENDATION
 
 1. **Close the deadline-sensitive model-use loop today:** execute the already-approved highest-capability work under [#578](https://github.com/viewport-corp/viewport-ops/issues/578) / [#588](https://github.com/viewport-corp/viewport-ops/issues/588) and attach real usage and result evidence.
 2. **Create one canonical Hermes/OpenClaw completion packet:** combine the latest-stable update requirement with [#581](https://github.com/viewport-corp/viewport-ops/issues/581), [#582](https://github.com/viewport-corp/viewport-ops/issues/582), and [#584](https://github.com/viewport-corp/viewport-ops/issues/584); require exact-version proof, sandbox access boundaries, concurrency benchmarks, tests, and a separate named gate for any restart or cutover.
-3. **Repair the anti-amnesia quality loop:** replace overly literal public captures with safe paraphrases, complete source-level reference analysis, consolidate [#500](https://github.com/viewport-corp/viewport-ops/issues/500) / [#501](https://github.com/viewport-corp/viewport-ops/issues/501), and triage the open decision/correction queue with owners and evidence.
+3. **Repair the anti-amnesia quality loop under [#590](https://github.com/viewport-corp/viewport-ops/issues/590):** replace overly literal public captures with safe paraphrases, complete source-level reference analysis, consolidate [#500](https://github.com/viewport-corp/viewport-ops/issues/500) / [#501](https://github.com/viewport-corp/viewport-ops/issues/501), and triage the open decision/correction queue with owners and evidence.
 
 ## Evidence and safety
 
