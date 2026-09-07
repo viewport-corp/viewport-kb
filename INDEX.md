@@ -1,8 +1,8 @@
 # Viewport KB Index
 
-Generated: 2026-09-05T19:07:48.980765+00:00
+Generated: 2026-09-07T02:18:36Z
 
-Total notes: 65
+Total notes: 66
 
 ## By date
 
@@ -23,6 +23,7 @@ Total notes: 65
 - [decisions/2026-07-20-till-the-time-herems-and-openclaw-become-strong.md](decisions/2026-07-20-till-the-time-herems-and-openclaw-become-strong.md)
 - [decisions/2026-07-20-weekly-digest.md](decisions/2026-07-20-weekly-digest.md)
 - [decisions/2026-08-31-weekly-digest.md](decisions/2026-08-31-weekly-digest.md)
+- [decisions/2026-09-07-weekly-digest.md](decisions/2026-09-07-weekly-digest.md)
 - [ideas/2026-06-05-agent-tokens.md](ideas/2026-06-05-agent-tokens.md)
 - [ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md](ideas/2026-06-10-keep-this-form-idea-for-the-contact-us.md)
 - [ideas/2026-08-30-send-me-audio-messages-and-let-s-discuss.md](ideas/2026-08-30-send-me-audio-messages-and-let-s-discuss.md)
